@@ -299,11 +299,23 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
   .hat-rule { flex-direction:column; text-align:center; }
   .map-wrap { height:240px; }
   .info-section, .map-section, .rsvp-section { padding:3.5rem 1.5rem; }
+  .hero { padding:3rem 1.2rem 5rem; }
+  .hero-title { font-size:clamp(2.4rem,10vw,3.8rem); }
+  .info-card { padding:1.2rem; }
+  .map-card-header { padding:.8rem 1rem; }
+  .map-card-footer { flex-direction:column; gap:.4rem; align-items:flex-start; padding:.8rem 1rem; }
+  .rsvp-btn { font-size:.82rem; padding:.75rem 1.5rem; width:100%; justify-content:center; }
+  .section-title { font-size:clamp(1.5rem,6vw,2.2rem); }
 }
 @media(max-width:480px) {
   .hero-date-row { flex-direction:column; gap:.6rem; }
   .countdown { gap:.3rem; }
   .cd-sep { font-size:1.5rem; }
+  .cd-val { font-size:1.8rem; padding:.2rem .5rem; }
+  .sun { width:140px; height:140px; top:-20px; right:-20px; }
+  .hero-badge { font-size:.65rem; padding:.3rem .9rem; }
+  .hat-rule-text p { font-size:.82rem; }
+  .footer-hats { font-size:1.5rem; letter-spacing:.3rem; }
 }
 </style>
 </head>
@@ -553,83 +565,172 @@ window.addEventListener('load', function(){
 });
 </script>
 
-<!-- Chapeau de paille volant -->
+<!-- Chapeau virevolant + poussière lumineuse -->
+<canvas id="dust-canvas" style="
+  position:fixed; right:0; top:0;
+  width:120px; height:100vh;
+  pointer-events:none; z-index:998;
+  will-change:transform;
+"></canvas>
+
 <div id="flying-hat" style="
-  position:fixed;
-  right:-10px;
-  top:60px;
-  font-size:2.8rem;
-  pointer-events:none;
-  z-index:999;
-  transform-origin:center center;
+  position:fixed; right:8px; top:80px;
+  font-size:clamp(2rem,4vw,2.8rem);
+  pointer-events:none; z-index:999;
+  transform-origin:50% 60%;
   will-change:transform,opacity;
-  filter:drop-shadow(0 4px 10px rgba(0,0,0,.18));
-  transition:opacity .3s;
-  user-select:none;
+  user-select:none; line-height:1;
 ">👒</div>
 
 <script>
 (function(){
-  var hat = document.getElementById('flying-hat');
-  if(!hat) return;
+  var hat  = document.getElementById('flying-hat');
+  var canvas = document.getElementById('dust-canvas');
+  if(!hat || !canvas) return;
 
-  var lastY = window.scrollY || 0;
-  var angle = -18;        // rotation actuelle
-  var velAngle = 0;       // vitesse angulaire
-  var posY = 60;          // position verticale px
-  var raf = null;
+  /* ── resize canvas ── */
+  function resizeCanvas(){
+    canvas.width  = 120;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas, {passive:true});
+
+  var ctx = canvas.getContext('2d');
+
+  /* ── état physique chapeau ── */
+  var scrollY   = window.scrollY || 0;
+  var lastScroll= scrollY;
+  var scrollVel = 0;       // vitesse de scroll filtrée
+  var time      = 0;       // horloge interne (frames)
+
+  // Rotation 3D simulée via rotateZ + scaleX (effet feuille/plume)
+  var rotZ      = -15;     // rotation Z courante
+  var rotZVel   = 0;
+  var flipPhase = 0;       // oscillation du "flip" 3D (scaleX)
+
+  /* ── particules de poussière ── */
+  var particles = [];
+  var MAX_PART  = 35;
+
+  function spawnParticle(x, y){
+    if(particles.length >= MAX_PART) return;
+    var hue = 42 + Math.random()*20;
+    particles.push({
+      x: x + (Math.random()-0.5)*18,
+      y: y + (Math.random()-0.5)*18,
+      vx:(Math.random()-0.5)*1.2,
+      vy:-0.3 - Math.random()*1.1,
+      r:  1.5 + Math.random()*2.5,
+      a:  0.7 + Math.random()*.3,
+      da:-0.012 - Math.random()*.018,
+      hue:hue
+    });
+  }
 
   function getMaxScroll(){
     return Math.max(1, document.body.scrollHeight - window.innerHeight);
   }
 
-  function onScroll(){
-    var scrollY  = window.scrollY || 0;
-    var delta    = scrollY - lastY;
-    lastY = scrollY;
+  /* ── scroll listener ── */
+  window.addEventListener('scroll', function(){
+    var s = window.scrollY || 0;
+    var delta = s - lastScroll;
+    lastScroll = s;
+    scrollVel += delta * 0.25;
+    scrollVel  = Math.max(-22, Math.min(22, scrollVel));
+  }, {passive:true});
 
-    // Vitesse angulaire proportionnelle à la vitesse de scroll
-    velAngle += delta * 0.18;
-    velAngle = Math.max(-18, Math.min(18, velAngle));
+  /* ── boucle principale ── */
+  function loop(){
+    requestAnimationFrame(loop);
+    time++;
 
-    cancelAnimationFrame(raf);
-    raf = requestAnimationFrame(update);
-  }
+    /* amortissement scroll */
+    scrollVel *= 0.84;
+    var curScroll = window.scrollY || 0;
+    var progress  = curScroll / getMaxScroll();
 
-  function update(){
-    // Amortissement
-    velAngle *= 0.88;
-    angle    += velAngle;
+    /* === TRAJECTOIRE CHAPEAU : vol de feuille === */
+    /* Y : suit le scroll sur toute la hauteur de l'écran */
+    var maxDrop = window.innerHeight * 0.78;
+    var baseY   = 80 + progress * maxDrop;
 
-    // Position Y : suit le scroll (30% de la hauteur de page disponible)
-    var scrollY  = window.scrollY || 0;
-    var progress = scrollY / getMaxScroll(); // 0 → 1
-    var maxDrop  = window.innerHeight * 0.72;
-    posY = 60 + progress * maxDrop;
+    /* Dérive laterale sinusoïdale douce (plusieurs fréquences) */
+    var driftX  = Math.sin(time / 55) * 14
+                + Math.sin(time / 23) * 6
+                + Math.sin(time / 11) * 2;
 
-    // Légère oscillation latérale (balancement naturel)
-    var sway = Math.sin(Date.now() / 900) * 6;
+    /* Tremblement vertical léger (turbulence) */
+    var turbY   = Math.sin(time / 19) * 5
+                + Math.sin(time / 7)  * 2;
+
+    /* === ROTATION : virevoltement plume === */
+    /* Impulsion depuis scroll velocity */
+    rotZVel += scrollVel * 0.28;
+    /* Rappel doux vers angle "naturel" de repos (-15°) */
+    rotZVel += (-15 - rotZ) * 0.018;
+    /* Oscillation propre (battement d'aile) */
+    rotZVel += Math.sin(time / 18) * 0.35;
+    rotZVel *= 0.91;
+    rotZ    += rotZVel;
+
+    /* Flip 3D simulé : scaleX oscille entre -1 et 1 */
+    flipPhase += 0.045 + Math.abs(scrollVel) * 0.003;
+    var scaleX = Math.cos(flipPhase);          /* -1 → 1 → -1 */
+    var scaleY = 1 - 0.15 * Math.abs(scaleX); /* léger aplatissement au retournement */
+
+    /* Opacité : fondu en bas */
+    var opacity = progress > 0.90 ? 1-(progress-0.90)/0.10 : 1;
 
     hat.style.transform =
-      'translateY(' + (posY - 60) + 'px) ' +
-      'translateX(' + sway + 'px) ' +
-      'rotate(' + angle + 'deg)';
-
-    // Fondu discret en bas de page
-    var opacity = progress > 0.92 ? 1 - (progress - 0.92) / 0.08 : 1;
+      'translateY('+(baseY - 80 + turbY)+'px) '+
+      'translateX('+driftX+'px) '+
+      'rotateZ('+rotZ+'deg) '+
+      'scaleX('+scaleX+') '+
+      'scaleY('+scaleY+')';
     hat.style.opacity = Math.max(0, opacity).toString();
 
-    // Continue l'oscillation même sans scroll
-    if(Math.abs(velAngle) > 0.05){
-      raf = requestAnimationFrame(update);
+    /* === POUSSIÈRE LUMINEUSE === */
+    /* Spawn proportionnel à la vitesse */
+    var spawnRate = Math.abs(scrollVel) * 0.4 + 0.15;
+    if(Math.random() < spawnRate){
+      /* Position relative au canvas (hat est à right:8px, canvas à right:0) */
+      var hatX = 100 + driftX;              /* dans le repère canvas (120px large) */
+      var hatY = baseY - (window.scrollY||0) + turbY + 20; /* local au canvas */
+      spawnParticle(hatX, hatY);
+    }
+
+    /* update & draw particles */
+    ctx.clearRect(0,0,120,canvas.height);
+    for(var i=particles.length-1; i>=0; i--){
+      var p = particles[i];
+      p.x  += p.vx;
+      p.y  += p.vy;
+      p.vy += 0.025;  /* micro-gravité */
+      p.vx += (Math.random()-0.5)*0.08;
+      p.a  += p.da;
+      if(p.a <= 0){ particles.splice(i,1); continue; }
+
+      /* glow */
+      var grd = ctx.createRadialGradient(p.x,p.y,0, p.x,p.y,p.r*2.5);
+      grd.addColorStop(0, 'hsla('+p.hue+',90%,75%,'+p.a+')');
+      grd.addColorStop(0.5,'hsla('+p.hue+',80%,65%,'+(p.a*0.5)+')');
+      grd.addColorStop(1,  'hsla('+p.hue+',70%,55%,0)');
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r*2.5, 0, Math.PI*2);
+      ctx.fillStyle = grd;
+      ctx.fill();
+
+      /* noyau lumineux */
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r*0.6, 0, Math.PI*2);
+      ctx.fillStyle = 'hsla('+p.hue+',100%,92%,'+(p.a*0.9)+')';
+      ctx.fill();
     }
   }
 
-  window.addEventListener('scroll', onScroll, {passive:true});
-  // Oscillation continue (balancement)
-  setInterval(function(){
-    raf = requestAnimationFrame(update);
-  }, 40);
+  loop();
 })();
 </script>
 </body>
