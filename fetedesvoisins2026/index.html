@@ -552,5 +552,85 @@ window.addEventListener('load', function(){
     }).catch(function(){});
 });
 </script>
+
+<!-- Chapeau de paille volant -->
+<div id="flying-hat" style="
+  position:fixed;
+  right:-10px;
+  top:60px;
+  font-size:2.8rem;
+  pointer-events:none;
+  z-index:999;
+  transform-origin:center center;
+  will-change:transform,opacity;
+  filter:drop-shadow(0 4px 10px rgba(0,0,0,.18));
+  transition:opacity .3s;
+  user-select:none;
+">👒</div>
+
+<script>
+(function(){
+  var hat = document.getElementById('flying-hat');
+  if(!hat) return;
+
+  var lastY = window.scrollY || 0;
+  var angle = -18;        // rotation actuelle
+  var velAngle = 0;       // vitesse angulaire
+  var posY = 60;          // position verticale px
+  var raf = null;
+
+  function getMaxScroll(){
+    return Math.max(1, document.body.scrollHeight - window.innerHeight);
+  }
+
+  function onScroll(){
+    var scrollY  = window.scrollY || 0;
+    var delta    = scrollY - lastY;
+    lastY = scrollY;
+
+    // Vitesse angulaire proportionnelle à la vitesse de scroll
+    velAngle += delta * 0.18;
+    velAngle = Math.max(-18, Math.min(18, velAngle));
+
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(update);
+  }
+
+  function update(){
+    // Amortissement
+    velAngle *= 0.88;
+    angle    += velAngle;
+
+    // Position Y : suit le scroll (30% de la hauteur de page disponible)
+    var scrollY  = window.scrollY || 0;
+    var progress = scrollY / getMaxScroll(); // 0 → 1
+    var maxDrop  = window.innerHeight * 0.72;
+    posY = 60 + progress * maxDrop;
+
+    // Légère oscillation latérale (balancement naturel)
+    var sway = Math.sin(Date.now() / 900) * 6;
+
+    hat.style.transform =
+      'translateY(' + (posY - 60) + 'px) ' +
+      'translateX(' + sway + 'px) ' +
+      'rotate(' + angle + 'deg)';
+
+    // Fondu discret en bas de page
+    var opacity = progress > 0.92 ? 1 - (progress - 0.92) / 0.08 : 1;
+    hat.style.opacity = Math.max(0, opacity).toString();
+
+    // Continue l'oscillation même sans scroll
+    if(Math.abs(velAngle) > 0.05){
+      raf = requestAnimationFrame(update);
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  // Oscillation continue (balancement)
+  setInterval(function(){
+    raf = requestAnimationFrame(update);
+  }, 40);
+})();
+</script>
 </body>
 </html>
