@@ -345,7 +345,7 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
   </div>
 
   <!-- Chapeau + titre -->
-  <div class="hero-hat">🎩</div>
+  <div class="hero-hat" id="hero-hat-anchor">🎩</div>
 
   <div class="hero-badge">🌻 Impasse des Tablettes · Annecy le Vieux</div>
 
@@ -565,168 +565,222 @@ window.addEventListener('load', function(){
 });
 </script>
 
-<!-- Chapeau virevolant + poussière lumineuse -->
+<!-- Canvas plein écran pour la poussière -->
 <canvas id="dust-canvas" style="
-  position:fixed; right:0; top:0;
-  width:120px; height:100vh;
+  position:fixed; left:0; top:0;
+  width:100%; height:100%;
   pointer-events:none; z-index:998;
-  will-change:transform;
 "></canvas>
 
+<!-- Chapeau volant 3D — positionné par JS depuis le hero -->
 <div id="flying-hat" style="
-  position:fixed; right:8px; top:80px;
-  font-size:clamp(2rem,4vw,2.8rem);
+  position:fixed; left:0; top:0;
+  display:none;
+  font-size:clamp(3.5rem,8vw,5.5rem);
   pointer-events:none; z-index:999;
-  transform-origin:50% 60%;
+  transform-origin:50% 55%;
   will-change:transform,opacity;
   user-select:none; line-height:1;
-">👒</div>
+  transform-style:preserve-3d;
+">🎩</div>
 
 <script>
 (function(){
-  var hat  = document.getElementById('flying-hat');
+  var anchor = document.getElementById('hero-hat-anchor');
+  var hat    = document.getElementById('flying-hat');
   var canvas = document.getElementById('dust-canvas');
-  if(!hat || !canvas) return;
+  if(!anchor || !hat || !canvas) return;
 
-  /* ── resize canvas ── */
+  var ctx = canvas.getContext('2d');
+
+  /* ── canvas resize ── */
   function resizeCanvas(){
-    canvas.width  = 120;
+    canvas.width  = window.innerWidth;
     canvas.height = window.innerHeight;
   }
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas, {passive:true});
 
-  var ctx = canvas.getContext('2d');
+  /* ── état ── */
+  var launched   = false;
+  var startX     = 0, startY = 0;
+  var hatX       = 0, hatY   = 0;
+  var targetX    = 0;
+  var scrollVel  = 0;
+  var lastScroll = window.scrollY || 0;
+  var time       = 0;
 
-  /* ── état physique chapeau ── */
-  var scrollY   = window.scrollY || 0;
-  var lastScroll= scrollY;
-  var scrollVel = 0;       // vitesse de scroll filtrée
-  var time      = 0;       // horloge interne (frames)
+  /* 3D rotation angles */
+  var rx = 0,  ry = 0,  rz = -12;
+  var rxV= 0,  ryV= 0,  rzV= 0;
+  var flipY = 0; /* phase de rotation Y continue */
 
-  // Rotation 3D simulée via rotateZ + scaleX (effet feuille/plume)
-  var rotZ      = -15;     // rotation Z courante
-  var rotZVel   = 0;
-  var flipPhase = 0;       // oscillation du "flip" 3D (scaleX)
-
-  /* ── particules de poussière ── */
+  /* particules */
   var particles = [];
-  var MAX_PART  = 35;
+  var MAX_PART  = 50;
 
-  function spawnParticle(x, y){
-    if(particles.length >= MAX_PART) return;
-    var hue = 42 + Math.random()*20;
-    particles.push({
-      x: x + (Math.random()-0.5)*18,
-      y: y + (Math.random()-0.5)*18,
-      vx:(Math.random()-0.5)*1.2,
-      vy:-0.3 - Math.random()*1.1,
-      r:  1.5 + Math.random()*2.5,
-      a:  0.7 + Math.random()*.3,
-      da:-0.012 - Math.random()*.018,
-      hue:hue
-    });
+  /* ── scroll ── */
+  window.addEventListener('scroll', function(){
+    var s = window.scrollY || 0;
+    var delta = s - lastScroll;
+    lastScroll = s;
+    scrollVel += delta * 0.3;
+    scrollVel  = Math.max(-28, Math.min(28, scrollVel));
+
+    if(!launched && s > 8){
+      launched = true;
+      var rect = anchor.getBoundingClientRect();
+      /* centre du chapeau dans le repère écran */
+      startX = rect.left + rect.width  * 0.5;
+      startY = rect.top  + rect.height * 0.5;
+      hatX   = startX;
+      hatY   = startY;
+      /* cible : bord droit */
+      targetX = window.innerWidth - 42;
+      /* cache l'original */
+      anchor.style.transition = 'opacity 0.25s';
+      anchor.style.opacity    = '0';
+      hat.style.display = 'block';
+    }
+  }, {passive:true});
+
+  /* ── particules ── */
+  function spawnParticle(x, y, n){
+    for(var k=0; k<n; k++){
+      if(particles.length >= MAX_PART) break;
+      var hue = 35 + Math.random()*30;
+      var sat = 80 + Math.random()*20;
+      particles.push({
+        x: x + (Math.random()-0.5)*22,
+        y: y + (Math.random()-0.5)*16,
+        vx:(Math.random()-0.5)*2.2,
+        vy:-0.6 - Math.random()*1.8,
+        r:  1.2 + Math.random()*3.2,
+        a:  0.85+ Math.random()*.15,
+        da:-0.009- Math.random()*.016,
+        hue:hue, sat:sat,
+        tw: Math.random()*Math.PI*2  /* phase scintillement */
+      });
+    }
   }
 
   function getMaxScroll(){
     return Math.max(1, document.body.scrollHeight - window.innerHeight);
   }
 
-  /* ── scroll listener ── */
-  window.addEventListener('scroll', function(){
-    var s = window.scrollY || 0;
-    var delta = s - lastScroll;
-    lastScroll = s;
-    scrollVel += delta * 0.25;
-    scrollVel  = Math.max(-22, Math.min(22, scrollVel));
-  }, {passive:true});
-
-  /* ── boucle principale ── */
+  /* ── boucle ── */
   function loop(){
     requestAnimationFrame(loop);
     time++;
 
-    /* amortissement scroll */
-    scrollVel *= 0.84;
+    scrollVel *= 0.85;
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    if(!launched) return;
+
     var curScroll = window.scrollY || 0;
     var progress  = curScroll / getMaxScroll();
 
-    /* === TRAJECTOIRE CHAPEAU : vol de feuille === */
-    /* Y : suit le scroll sur toute la hauteur de l'écran */
-    var maxDrop = window.innerHeight * 0.78;
-    var baseY   = 80 + progress * maxDrop;
+    /* === POSITION CIBLE === */
+    /* X : glisse vers bord droit rapidement */
+    var xEase = Math.min(1, progress * 6);
+    xEase = 1 - Math.pow(1 - xEase, 3); /* ease-out cubic */
+    var destX = startX + (targetX - startX) * xEase;
 
-    /* Dérive laterale sinusoïdale douce (plusieurs fréquences) */
-    var driftX  = Math.sin(time / 55) * 14
-                + Math.sin(time / 23) * 6
-                + Math.sin(time / 11) * 2;
+    /* Y : descend sur toute la page + oscillation organique */
+    var maxDrop = window.innerHeight * 0.82;
+    var waveY   = Math.sin(time/50)*14 + Math.sin(time/21)*5;
+    var destY   = startY + progress * maxDrop + waveY;
 
-    /* Tremblement vertical léger (turbulence) */
-    var turbY   = Math.sin(time / 19) * 5
-                + Math.sin(time / 7)  * 2;
+    /* Interpolation douce */
+    hatX += (destX - hatX) * 0.07;
+    hatY += (destY - hatY) * 0.06;
 
-    /* === ROTATION : virevoltement plume === */
-    /* Impulsion depuis scroll velocity */
-    rotZVel += scrollVel * 0.28;
-    /* Rappel doux vers angle "naturel" de repos (-15°) */
-    rotZVel += (-15 - rotZ) * 0.018;
-    /* Oscillation propre (battement d'aile) */
-    rotZVel += Math.sin(time / 18) * 0.35;
-    rotZVel *= 0.91;
-    rotZ    += rotZVel;
+    /* === 3D ROTATION === */
 
-    /* Flip 3D simulé : scaleX oscille entre -1 et 1 */
-    flipPhase += 0.045 + Math.abs(scrollVel) * 0.003;
-    var scaleX = Math.cos(flipPhase);          /* -1 → 1 → -1 */
-    var scaleY = 1 - 0.15 * Math.abs(scaleX); /* léger aplatissement au retournement */
+    /* Z — virevoltement principal, impulsé par scroll */
+    rzV += scrollVel * 0.38;
+    rzV += Math.sin(time/22) * 0.45;      /* battement propre */
+    rzV += (-12 - rz) * 0.014;            /* rappel vers repos */
+    rzV *= 0.89;
+    rz  += rzV;
 
-    /* Opacité : fondu en bas */
-    var opacity = progress > 0.90 ? 1-(progress-0.90)/0.10 : 1;
+    /* Y — rotation continue : effet plume/feuille qui se retourne */
+    flipY += 0.028 + Math.abs(scrollVel)*0.0025;
+    ry = Math.sin(flipY) * 62;             /* ±62° tilt lateral */
 
+    /* X — inclinaison plongeante */
+    rxV += scrollVel * 0.14;
+    rxV += Math.cos(time/32)*0.28;
+    rxV += (-18 - rx) * 0.022;
+    rxV *= 0.87;
+    rx  += rxV;
+
+    /* Opacité */
+    var opacity = progress > 0.87 ? 1-(progress-0.87)/0.13 : 1;
+
+    /* Scale légèrement pulsante */
+    var sc = 1 + Math.sin(time/38)*0.04;
+
+    hat.style.left    = (hatX - 36) + 'px';
+    hat.style.top     = (hatY - 36) + 'px';
     hat.style.transform =
-      'translateY('+(baseY - 80 + turbY)+'px) '+
-      'translateX('+driftX+'px) '+
-      'rotateZ('+rotZ+'deg) '+
-      'scaleX('+scaleX+') '+
-      'scaleY('+scaleY+')';
-    hat.style.opacity = Math.max(0, opacity).toString();
+      'perspective(240px) ' +
+      'rotateX('+rx.toFixed(2)+'deg) '+
+      'rotateY('+ry.toFixed(2)+'deg) '+
+      'rotateZ('+rz.toFixed(2)+'deg) '+
+      'scale('+sc.toFixed(4)+')';
+    hat.style.opacity = Math.max(0, opacity).toFixed(3);
 
-    /* === POUSSIÈRE LUMINEUSE === */
-    /* Spawn proportionnel à la vitesse */
-    var spawnRate = Math.abs(scrollVel) * 0.4 + 0.15;
-    if(Math.random() < spawnRate){
-      /* Position relative au canvas (hat est à right:8px, canvas à right:0) */
-      var hatX = 100 + driftX;              /* dans le repère canvas (120px large) */
-      var hatY = baseY - (window.scrollY||0) + turbY + 20; /* local au canvas */
-      spawnParticle(hatX, hatY);
+    /* === POUSSIÈRE === */
+    var speed   = Math.abs(scrollVel);
+    var nSpawn  = speed > 2 ? 3 : speed > 0.5 ? 2 : 1;
+    if(Math.random() < 0.35 + speed*0.08){
+      spawnParticle(hatX, hatY, nSpawn);
     }
 
-    /* update & draw particles */
-    ctx.clearRect(0,0,120,canvas.height);
+    /* Rendu particules */
     for(var i=particles.length-1; i>=0; i--){
       var p = particles[i];
+      p.tw += 0.14;
       p.x  += p.vx;
       p.y  += p.vy;
-      p.vy += 0.025;  /* micro-gravité */
-      p.vx += (Math.random()-0.5)*0.08;
+      p.vy += 0.032;
+      p.vx += (Math.random()-0.5)*0.09;
       p.a  += p.da;
       if(p.a <= 0){ particles.splice(i,1); continue; }
 
-      /* glow */
-      var grd = ctx.createRadialGradient(p.x,p.y,0, p.x,p.y,p.r*2.5);
-      grd.addColorStop(0, 'hsla('+p.hue+',90%,75%,'+p.a+')');
-      grd.addColorStop(0.5,'hsla('+p.hue+',80%,65%,'+(p.a*0.5)+')');
-      grd.addColorStop(1,  'hsla('+p.hue+',70%,55%,0)');
+      var ta = p.a * (0.65 + 0.35*Math.sin(p.tw));
+
+      /* Halo diffus */
+      var grd = ctx.createRadialGradient(p.x,p.y,0, p.x,p.y,p.r*3.5);
+      grd.addColorStop(0,   'hsla('+p.hue+','+p.sat+'%,80%,'+ta+')');
+      grd.addColorStop(0.45,'hsla('+p.hue+','+p.sat+'%,62%,'+(ta*.55)+')');
+      grd.addColorStop(1,   'hsla('+p.hue+','+p.sat+'%,45%,0)');
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r*2.5, 0, Math.PI*2);
+      ctx.arc(p.x,p.y,p.r*3.5,0,Math.PI*2);
       ctx.fillStyle = grd;
       ctx.fill();
 
-      /* noyau lumineux */
+      /* Noyau étoilé */
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r*0.6, 0, Math.PI*2);
-      ctx.fillStyle = 'hsla('+p.hue+',100%,92%,'+(p.a*0.9)+')';
+      ctx.arc(p.x,p.y,p.r*0.55,0,Math.PI*2);
+      ctx.fillStyle = 'hsla(55,100%,96%,'+(ta*.95)+')';
       ctx.fill();
+
+      /* Micro-croix scintillante */
+      if(p.r > 2.5 && ta > 0.3){
+        ctx.save();
+        ctx.globalAlpha = ta*0.7;
+        ctx.strokeStyle = 'hsla(55,100%,98%,1)';
+        ctx.lineWidth   = 0.7;
+        ctx.beginPath();
+        ctx.moveTo(p.x-p.r*1.8,p.y); ctx.lineTo(p.x+p.r*1.8,p.y);
+        ctx.moveTo(p.x,p.y-p.r*1.8); ctx.lineTo(p.x,p.y+p.r*1.8);
+        ctx.stroke();
+        ctx.restore();
+      }
     }
   }
 
