@@ -329,7 +329,7 @@ body::after {
 
   <div class="hero-label-wrap"><span class="hero-label">✦ Anniversaire · 2026 ✦</span></div>
   <h1 class="hero-name">Marie</h1>
-  <p class="hero-sub">Danseuse dans l'âme · Jardinière de cœur · Âme latine · Mère de trois</p>
+  <p class="hero-sub">Danseuse de cœur · Jardinière dans l'âme · Âme nahuatl · Maman en or</p>
   <div class="hero-date">
     <span>Samedi</span><div class="sep"></div>
     <span>28 mars 2026</span><div class="sep"></div>
@@ -557,71 +557,74 @@ body::after {
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ══ COUNTDOWN ══
    Fête : 28 mars 2026 à 11h00
-   Anniversaire réel : 29 mars 2026
    "C'est aujourd'hui" uniquement le 28 mars 2026
 */
-const PARTY  = new Date('2026-03-28T11:00:00');
-const BDAY   = new Date('2026-03-29T00:00:00');
+const PARTY = new Date('2026-03-28T11:00:00');
+const BDAY  = new Date('2026-03-29T00:00:00');
 
 function pad(n){ return String(n).padStart(2,'0'); }
 
 function isToday28March(){
-  const now = new Date();
-  return now.getFullYear()===2026 && now.getMonth()===2 && now.getDate()===28;
-}
-function isAfterParty(){
-  return new Date() > BDAY;
+  const d = new Date();
+  return d.getFullYear()===2026 && d.getMonth()===2 && d.getDate()===28;
 }
 
-function animFlip(id, val){
-  const el = document.getElementById(id);
-  if(!el || el.textContent === val) return;
-  el.classList.add('flip');
-  setTimeout(()=>{ el.textContent=val; el.classList.remove('flip'); },180);
+function showMessage(msg){
+  const lbl = document.getElementById('cd-label');
+  const wrap = document.getElementById('countdown');
+  if(lbl) lbl.style.display='none';
+  if(wrap) wrap.innerHTML='<span class="cd-message">'+msg+'</span>';
 }
 
 function tick(){
-  const now  = new Date();
-  const diff = PARTY - now;
-  const wrap = document.getElementById('countdown');
-  const lbl  = document.getElementById('cd-label');
+  if(isToday28March()){ showMessage("C'est aujourd'hui ! 🌿"); return; }
+  if(new Date() > BDAY){ showMessage("Quel beau souvenir 🌿"); return; }
 
-  if(isToday28March()){
-    lbl.style.display='none';
-    wrap.innerHTML='<span class="cd-message">C\'est aujourd\'hui ! 🌿</span>';
-    return;
-  }
-  if(isAfterParty()){
-    lbl.style.display='none';
-    wrap.innerHTML='<span class="cd-message">Quel beau souvenir 🌿</span>';
-    return;
-  }
-  if(diff <= 0){
-    // Entre minuit le 28 et minuit le 29 (fête terminée mais pas encore bday)
-    lbl.style.display='none';
-    wrap.innerHTML='<span class="cd-message">C\'est aujourd\'hui ! 🌿</span>';
-    return;
-  }
+  const diff = PARTY - new Date();
+  if(diff <= 0){ showMessage("C'est aujourd'hui ! 🌿"); return; }
 
-  animFlip('cd-d', pad(Math.floor(diff/86400000)));
-  animFlip('cd-h', pad(Math.floor((diff%86400000)/3600000)));
-  animFlip('cd-m', pad(Math.floor((diff%3600000)/60000)));
-  animFlip('cd-s', pad(Math.floor((diff%60000)/1000)));
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  const s = Math.floor((diff%60000)/1000);
+
+  // Mise à jour directe — pas d'animation qui peut bloquer
+  const ed = document.getElementById('cd-d');
+  const eh = document.getElementById('cd-h');
+  const em = document.getElementById('cd-m');
+  const es = document.getElementById('cd-s');
+
+  if(ed && ed.textContent !== pad(d)) ed.textContent = pad(d);
+  if(eh && eh.textContent !== pad(h)) eh.textContent = pad(h);
+  if(em && em.textContent !== pad(m)) em.textContent = pad(m);
+  if(es && es.textContent !== pad(s)) es.textContent = pad(s);
 }
+
 tick();
-setInterval(tick,1000);
+setInterval(tick, 1000);
 
 /* ══ TIMELINE SCROLL REVEAL ══ */
+function revealChapter(el, delay){
+  setTimeout(()=>el.classList.add('visible'), delay || 0);
+}
+
 const chapters = document.querySelectorAll('.tl-chapter');
+
 const chapObs = new IntersectionObserver(entries=>{
-  entries.forEach((e,i)=>{
+  entries.forEach(e=>{
     if(e.isIntersecting){
-      setTimeout(()=>e.target.classList.add('visible'), i*80);
+      revealChapter(e.target, 0);
       chapObs.unobserve(e.target);
     }
   });
-},{threshold:.15});
+},{threshold:0.05, rootMargin:'0px 0px -40px 0px'});
+
 chapters.forEach(el=>chapObs.observe(el));
+
+// Fallback : révèle tout après 2s si l'observer n'a pas tout déclenché
+setTimeout(()=>{
+  chapters.forEach(el=>el.classList.add('visible'));
+}, 2000);
 
 /* ══ CARTE LEAFLET + IGN + BAN ══ */
 document.addEventListener('DOMContentLoaded',function(){
