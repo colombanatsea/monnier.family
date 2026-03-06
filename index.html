@@ -34,51 +34,39 @@ body::after {
 @keyframes breathe { 0%,100%{opacity:.3;transform:scaleY(.6);transform-origin:top} 50%{opacity:1;transform:scaleY(1);transform-origin:top} }
 @keyframes blink { 0%,100%{opacity:.4} 50%{opacity:.1} }
 @keyframes wave {
-  0%  { transform: rotate(0deg);  }
-  10% { transform: rotate(14deg); }
-  20% { transform: rotate(-8deg); }
-  30% { transform: rotate(14deg); }
-  40% { transform: rotate(-4deg); }
-  50% { transform: rotate(10deg); }
-  60% { transform: rotate(0deg);  }
-  100%{ transform: rotate(0deg);  }
+  0%  { transform:rotate(0deg); } 10% { transform:rotate(14deg); }
+  20% { transform:rotate(-8deg); } 30% { transform:rotate(14deg); }
+  40% { transform:rotate(-4deg); } 50% { transform:rotate(10deg); }
+  60% { transform:rotate(0deg); } 100%{ transform:rotate(0deg); }
 }
+@keyframes slowspin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 
-/* ══════════ HERO ══════════ */
-.hero {
-  min-height:100vh; background:var(--forest);
-  position:relative; display:flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  text-align:center; padding:5rem 2rem 8rem; overflow:hidden;
-}
-.hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 70% 50% at 50% 100%,rgba(74,103,65,.9) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 0% 0%,rgba(45,74,50,.7) 0%,transparent 50%),var(--forest); }
-.leaf-svg { position:absolute; pointer-events:none; }
-.hero-label-wrap { position:relative;z-index:2; display:flex;align-items:center;gap:1.5rem; margin-bottom:2.5rem; animation:fadeUp 1s ease both; }
-.hero-label-wrap::before,.hero-label-wrap::after { content:'';height:1px;width:60px; background:linear-gradient(to right,transparent,var(--gold)); }
+/* ══ HERO ══ */
+.hero { min-height:100vh;background:var(--forest);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 2rem 8rem;overflow:hidden; }
+.hero-bg { position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 100%,rgba(74,103,65,.9) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 0% 0%,rgba(45,74,50,.7) 0%,transparent 50%),var(--forest); }
+.leaf-svg { position:absolute;pointer-events:none; }
+.hero-label-wrap { position:relative;z-index:2;display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem;animation:fadeUp 1s ease both; }
+.hero-label-wrap::before,.hero-label-wrap::after { content:'';height:1px;width:60px;background:linear-gradient(to right,transparent,var(--gold)); }
 .hero-label-wrap::after { background:linear-gradient(to left,transparent,var(--gold)); }
 .hero-label { font-size:.65rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-lt);font-weight:400; }
-.hero-name { font-family:'Cormorant Garamond',serif; font-size:clamp(5.5rem,15vw,12rem); font-weight:300;font-style:italic;color:var(--cream);line-height:.85; position:relative;z-index:2;letter-spacing:-.02em; animation:fadeUp 1s .15s ease both; text-shadow:0 2px 40px rgba(0,0,0,.3); }
-.hero-sub { font-family:'Cormorant Infant',serif;font-style:italic; font-size:clamp(1rem,2.5vw,1.4rem);font-weight:300; color:var(--pale-sage);margin-top:1.5rem; position:relative;z-index:2;letter-spacing:.05em; animation:fadeUp 1s .3s ease both; }
-.hero-date { margin-top:2.5rem;position:relative;z-index:2; display:flex;align-items:center;gap:1.5rem; animation:fadeUp 1s .45s ease both; }
+.hero-name { font-family:'Cormorant Garamond',serif;font-size:clamp(5.5rem,15vw,12rem);font-weight:300;font-style:italic;color:var(--cream);line-height:.85;position:relative;z-index:2;letter-spacing:-.02em;animation:fadeUp 1s .15s ease both;text-shadow:0 2px 40px rgba(0,0,0,.3); }
+.hero-sub { font-family:'Cormorant Infant',serif;font-style:italic;font-size:clamp(1rem,2.5vw,1.4rem);font-weight:300;color:var(--pale-sage);margin-top:1.5rem;position:relative;z-index:2;letter-spacing:.05em;animation:fadeUp 1s .3s ease both; }
+.hero-date { margin-top:2.5rem;position:relative;z-index:2;display:flex;align-items:center;gap:1.5rem;animation:fadeUp 1s .45s ease both; }
 .hero-date span { font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.45); }
 .hero-date .sep { width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0; }
-
-/* COMPTEUR */
-.countdown-wrap { position:relative;z-index:2;margin-top:3.5rem; animation:fadeUp 1s .6s ease both; }
+.countdown-wrap { position:relative;z-index:2;margin-top:3.5rem;animation:fadeUp 1s .6s ease both; }
 .cd-label { font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.2rem; }
 .countdown { display:flex;gap:1rem;align-items:flex-start;justify-content:center; }
 .cd-unit { display:flex;flex-direction:column;align-items:center;gap:.4rem; }
-.cd-val { font-family:'Cormorant Garamond',serif; font-size:clamp(2.8rem,7vw,4.5rem);font-weight:300;font-style:italic; color:white;line-height:1;min-width:2ch;text-align:center; transition:opacity .2s,transform .2s; }
-.cd-val.flip { opacity:0;transform:translateY(-6px); }
+.cd-val { font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,4.5rem);font-weight:300;font-style:italic;color:white;line-height:1;min-width:2ch;text-align:center; }
 .cd-unit-lbl { font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:var(--pale-sage);opacity:.7; }
-.cd-sep { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,5vw,3rem);color:var(--gold);opacity:.4; padding-top:.15em;line-height:1;animation:blink 1s ease-in-out infinite; }
+.cd-sep { font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3rem);color:var(--gold);opacity:.4;padding-top:.15em;line-height:1;animation:blink 1s ease-in-out infinite; }
 .cd-message { font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.5rem,4vw,2.5rem);color:var(--gold-lt);letter-spacing:.05em; }
-
-.hero-scroll { position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%); z-index:2;display:flex;flex-direction:column;align-items:center;gap:.4rem; opacity:.35;animation:fadeUp 1s 1.2s ease both; }
+.hero-scroll { position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.4rem;opacity:.35;animation:fadeUp 1s 1.2s ease both; }
 .hero-scroll span { font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--pale-sage); }
 .hero-scroll-line { width:1px;height:40px;background:linear-gradient(to bottom,var(--pale-sage),transparent);animation:breathe 2s ease-in-out infinite; }
 
-/* ══════════ INTRO ══════════ */
+/* ══ INTRO ══ */
 .intro-section { background:var(--paper);position:relative;overflow:hidden;padding:7rem 2rem; }
 .intro-inner { max-width:780px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center; }
 .intro-eyebrow { font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem; }
@@ -86,7 +74,7 @@ body::after {
 .intro-text p { font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.5vw,1.7rem);font-style:italic;font-weight:300;line-height:1.75;color:var(--forest); }
 .intro-text p strong { font-style:normal;font-weight:600;color:var(--ink); }
 
-/* ══════════ PASSIONS ══════════ */
+/* ══ PASSIONS ══ */
 .passions { background:var(--paper2);border-top:1px solid rgba(45,74,50,.1);border-bottom:1px solid rgba(45,74,50,.1);display:grid;grid-template-columns:repeat(4,1fr); }
 .passion-item { padding:2.5rem 1.5rem;text-align:center;border-right:1px solid rgba(45,74,50,.1);transition:background .4s; }
 .passion-item:last-child { border-right:none; }
@@ -95,98 +83,45 @@ body::after {
 .passion-label { font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--forest); }
 .passion-sub { font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:.3rem; }
 
-/* ══════════ TIMELINE ÉDITORIALE ══════════ */
+/* ══ TIMELINE ══ */
 .timeline-section { background:var(--ink);padding:8rem 2rem;position:relative;overflow:hidden; }
-
-/* Fond texturé vert foncé */
-.timeline-section::before {
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(45,74,50,.4) 0%,transparent 70%);
-}
-
+.timeline-section::before { content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(45,74,50,.4) 0%,transparent 70%); }
 .ts-header { text-align:center;margin-bottom:6rem;position:relative; }
 .ts-eyebrow { font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem; }
 .ts-title { font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:300;font-style:italic;color:white; }
 .ts-title em { color:var(--gold-lt);font-weight:600; }
-
-/* Les chapitres */
 .tl-chapters { max-width:760px;margin:0 auto;position:relative; }
 
-.tl-chapter {
-  display:grid;
-  grid-template-columns:120px 1px 1fr;
-  gap:0 2.5rem;
-  padding:3rem 0;
-  border-bottom:1px solid rgba(255,255,255,.06);
-  opacity:0;transform:translateY(20px);
-  transition:opacity .7s ease,transform .7s ease;
-}
+/* Chapitres : TOUJOURS VISIBLES par défaut */
+.tl-chapter { display:grid;grid-template-columns:120px 1px 1fr;gap:0 2.5rem;padding:3rem 0;border-bottom:1px solid rgba(255,255,255,.06); }
 .tl-chapter:first-child { border-top:1px solid rgba(255,255,255,.06); }
-.tl-chapter.visible { opacity:1;transform:translateY(0); }
+/* JS active .anim pour l'animation — uniquement sur desktop */
+.tl-chapter.anim { opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease; }
+.tl-chapter.anim.show { opacity:1;transform:none; }
 
-/* Colonne année */
-.tl-year-col {
-  display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;
-  padding-top:.25rem;
-}
-.tl-year-num {
-  font-family:'Cormorant Garamond',serif;
-  font-size:3rem;font-weight:600;font-style:italic;
-  color:transparent;-webkit-text-stroke:1px rgba(184,149,90,.4);
-  line-height:1;letter-spacing:-.02em;
-}
-.tl-year-label {
-  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(255,255,255,.2);margin-top:.3rem;text-align:right;
-}
-
-/* Séparateur vertical */
-.tl-vline {
-  width:1px;background:linear-gradient(to bottom,transparent,var(--gold) 20%,rgba(184,149,90,.3) 80%,transparent);
-  position:relative;
-}
-.tl-vline::before {
-  content:'';
-  position:absolute;top:0.3rem;left:50%;transform:translateX(-50%);
-  width:5px;height:5px;border-radius:50%;
-  background:var(--gold);
-  box-shadow:0 0 8px var(--gold);
-}
-
-/* Contenu */
+.tl-year-col { display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;padding-top:.25rem; }
+.tl-year-num { font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;font-style:italic;color:transparent;-webkit-text-stroke:1px rgba(184,149,90,.4);line-height:1;letter-spacing:-.02em; }
+.tl-year-label { font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:.3rem;text-align:right; }
+.tl-vline { width:1px;background:linear-gradient(to bottom,transparent,var(--gold) 20%,rgba(184,149,90,.3) 80%,transparent);position:relative; }
+.tl-vline::before { content:'';position:absolute;top:.3rem;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold); }
 .tl-content { padding-top:.15rem; }
-
-.tl-ornament {
-  display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;
-}
+.tl-ornament { display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem; }
 .tl-ornament-line { height:1px;width:24px;background:linear-gradient(to right,var(--gold),transparent); }
 .tl-ornament-text { font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);opacity:.7; }
-
-.tl-content h3 {
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.3rem,3vw,1.8rem);font-weight:400;font-style:italic;
-  color:white;line-height:1.2;margin-bottom:.7rem;
-}
-
-.tl-content p {
-  font-size:.82rem;line-height:1.85;color:rgba(255,255,255,.5);
-}
-
-/* Dernier chapitre : différent */
-.tl-chapter.now .tl-year-num { -webkit-text-stroke-color:rgba(184,149,90,.9);color:transparent; }
+.tl-content h3 { font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,3vw,1.8rem);font-weight:400;font-style:italic;color:white;line-height:1.2;margin-bottom:.7rem; }
+.tl-content p { font-size:.82rem;line-height:1.85;color:rgba(255,255,255,.5); }
+.tl-chapter.now .tl-year-num { -webkit-text-stroke-color:rgba(184,149,90,.9); }
 .tl-chapter.now .tl-content h3 { color:var(--gold-lt); }
 .tl-chapter.now .tl-vline::before { background:var(--gold-lt);box-shadow:0 0 12px var(--gold-lt);width:7px;height:7px; }
 
-/* ══════════ EVENT ══════════ */
+/* ══ EVENT ══ */
 .event-section { background:var(--ink);padding:7rem 2rem;position:relative;overflow:hidden; }
 .event-bg { position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 15% 50%,rgba(45,74,50,.3) 0%,transparent 55%),radial-gradient(ellipse 50% 50% at 85% 50%,rgba(184,149,90,.08) 0%,transparent 55%); }
 .event-inner { max-width:860px;margin:0 auto;position:relative; }
 .event-top { text-align:center;margin-bottom:4rem; }
-.event-top .ts-eyebrow { color:var(--gold);margin-bottom:1rem; }
 .event-top h2 { font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,7vw,4.5rem);font-weight:300;font-style:italic;color:white;line-height:1; }
 .event-top h2 span { color:var(--gold-lt);font-weight:600; }
 .event-top .event-meta { margin-top:1rem;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3); }
-
 .event-main { display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem; }
 .event-info { display:flex;flex-direction:column;gap:1px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.06);border-radius:4px;overflow:hidden; }
 .ev-card { background:rgba(255,255,255,.03);padding:1.1rem 1.3rem;transition:background .3s; }
@@ -197,94 +132,60 @@ body::after {
 .ev-card a { color:var(--gold);text-decoration:none;font-size:.72rem;border-bottom:1px solid rgba(184,149,90,.3);display:inline-block;margin-top:.2rem;transition:border-color .3s; }
 .ev-card a:hover { border-color:var(--gold); }
 
-/* Carte IGN */
+/* ══ CARTE ══ */
 .map-card { border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;background:rgba(255,255,255,.03); }
 .map-card-header { padding:.9rem 1.2rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.04);flex-shrink:0; }
 .map-pin { width:28px;height:28px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0; }
 .map-card-title { font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:white; }
 .map-card-subtitle { font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:.1rem; }
-#map-ign { filter:saturate(.55) brightness(.7) hue-rotate(12deg) contrast(1.1); }
+/* Hauteur fixe sur le wrapper — Leaflet calcule à partir de ça */
+.map-wrap { position:relative;height:300px; }
+#map-ign { width:100%;height:100%; }
+.leaflet-tile-pane { filter:saturate(.55) brightness(.72) hue-rotate(12deg) contrast(1.1); }
 .map-card-footer { padding:.7rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);flex-shrink:0; }
 .map-card-footer a { font-size:.7rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(184,149,90,.3);transition:border-color .3s; }
 .map-card-footer a:hover { border-color:var(--gold); }
 .map-card-footer-sub { font-size:.65rem;color:rgba(255,255,255,.25); }
 .commune-badge { position:absolute;bottom:.7rem;left:.7rem;background:rgba(26,32,24,.85);border:1px solid rgba(184,149,90,.3);border-radius:3px;padding:.25rem .6rem;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-lt);z-index:1000;font-family:'Montserrat',sans-serif;backdrop-filter:blur(4px);pointer-events:none; }
-
 .event-note { text-align:center;font-family:'Cormorant Infant',serif;font-style:italic;font-size:1rem;color:rgba(255,255,255,.25);margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.06); }
 
-/* ══════════ CADEAU ══════════ */
+/* ══ CADEAU ══ */
 .gift-section { background:var(--paper);padding:7rem 2rem;position:relative;overflow:hidden; }
 .gift-inner { max-width:680px;margin:0 auto; }
 .gift-top { display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:start; }
 .gift-icon { width:100px;height:100px;border-radius:50%;background:var(--forest);display:flex;align-items:center;justify-content:center;font-size:2.5rem;flex-shrink:0;box-shadow:0 4px 30px rgba(45,74,50,.25);animation:slowspin 12s linear infinite; }
-@keyframes slowspin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 .gift-text .ts-eyebrow { text-align:left;font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem; }
 .gift-text h2 { font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;font-style:italic;color:var(--ink);margin-bottom:1rem; }
 .gift-text p { font-size:.88rem;line-height:1.8;color:var(--text);opacity:.75; }
 .gift-tag { display:inline-block;margin-top:1.2rem;padding:.3rem 1rem;border:1px solid var(--gold);color:var(--gold);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;border-radius:1px; }
 .gift-note { margin-top:2rem;padding:1.2rem 1.5rem;border-left:2px solid var(--pale-sage);font-family:'Cormorant Infant',serif;font-style:italic;font-size:1rem;color:var(--moss); }
 
-/* ══════════ FOOTER ══════════ */
+/* ══ FOOTER ══ */
 .footer { background:var(--forest);padding:5rem 2rem;text-align:center;position:relative;overflow:hidden; }
 .footer-botanical { position:absolute;bottom:0;left:50%;transform:translateX(-50%);opacity:.07; }
-.footer-wave {
-  display:inline-block;font-size:clamp(2.5rem,7vw,4.5rem);
-  animation:wave 2.5s ease-in-out infinite;
-  transform-origin:70% 80%;
-  margin-bottom:.5rem;
-  display:block;
-}
+.footer-wave { display:block;font-size:clamp(2.5rem,7vw,4.5rem);animation:wave 2.5s ease-in-out infinite;transform-origin:70% 80%;margin-bottom:.5rem;position:relative; }
 .footer-main { font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2.8rem);font-weight:300;font-style:italic;color:white;margin-top:.3rem;position:relative; }
 .footer-sub { font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.3);position:relative;margin-top:.5rem; }
 
-/* ══════════ RESPONSIVE ══════════ */
-
-/* Carte : hauteur explicite toujours, pas de position:absolute qui échoue */
-.map-frame-wrap {
-  position:relative;
-  height:300px;    /* hauteur fixe, Leaflet peut calculer */
-  flex-shrink:0;
-}
-#map-ign {
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-}
-
+/* ══ RESPONSIVE ══ */
 @media(max-width:900px) {
   .event-main { grid-template-columns:1fr; }
-  /* Sur tablette/mobile la carte prend toute la largeur, hauteur généreuse */
-  .map-frame-wrap { height:280px; }
-  .map-card { min-height:unset; }
+  .map-wrap { height:280px; }
 }
-
 @media(max-width:768px) {
-  /* Intro */
   .intro-inner { grid-template-columns:1fr;gap:2rem; }
   .intro-botanical { display:none; }
   .intro-section { padding:4rem 1.5rem; }
-
-  /* Passions */
   .passions { grid-template-columns:1fr 1fr; }
   .passion-item { border-right:none;border-bottom:1px solid rgba(45,74,50,.08);padding:1.8rem 1rem; }
   .passion-item:nth-child(odd) { border-right:1px solid rgba(45,74,50,.08); }
-
-  /* Hero */
   .hero { padding:4rem 1.5rem 7rem; }
   .hero-sub { font-size:.9rem;letter-spacing:.02em; }
-  .hero-date {
-    flex-direction:column;gap:.6rem;
-    align-items:center;
-  }
+  .hero-date { flex-direction:column;gap:.6rem;align-items:center; }
   .hero-date .sep { display:none; }
   .hero-label-wrap::before,.hero-label-wrap::after { width:30px; }
-
-  /* Countdown */
   .countdown { gap:.4rem; }
   .cd-sep { font-size:1.8rem;padding-top:.2em; }
-
-  /* Timeline */
   .timeline-section { padding:5rem 1.5rem; }
   .tl-chapter { grid-template-columns:56px 1px 1fr;gap:0 1.2rem;padding:2rem 0; }
   .tl-year-num { font-size:1.6rem; }
@@ -292,24 +193,16 @@ body::after {
   .tl-content h3 { font-size:1.1rem; }
   .tl-content p { font-size:.8rem; }
   .ts-header { margin-bottom:3rem; }
-
-  /* Event */
   .event-section { padding:4rem 1.5rem; }
-  .event-main { grid-template-columns:1fr;gap:1rem; }
-  .map-frame-wrap { height:260px; }
-
-  /* Gift */
+  .map-wrap { height:260px; }
   .gift-section { padding:4rem 1.5rem; }
   .gift-top { grid-template-columns:1fr; }
   .gift-icon { display:none; }
-
-  /* Footer */
   .footer { padding:3.5rem 1.5rem; }
 }
-
 @media(max-width:400px) {
   .hero-name { font-size:5rem; }
-  .tl-chapter { grid-template-columns:46px 1px 1fr;gap:0 1rem; }
+  .tl-chapter { grid-template-columns:44px 1px 1fr;gap:0 1rem; }
   .tl-year-num { font-size:1.3rem; }
   .cd-val { font-size:2.2rem; }
   .cd-sep { font-size:1.5rem; }
@@ -319,14 +212,13 @@ body::after {
 </head>
 <body>
 
-<!-- ════════ HERO ════════ -->
+<!-- ════ HERO ════ -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <svg class="leaf-svg" style="top:-40px;left:-60px;width:320px;transform:rotate(-20deg);opacity:.18" viewBox="0 0 200 300" fill="none"><path d="M100 280C100 280 20 200 10 120C0 40 80 10 100 10C120 10 200 40 190 120C180 200 100 280 100 280Z" fill="#7A9E72" stroke="#4A6741" stroke-width="1"/><path d="M100 280L100 10" stroke="#2D4A32" stroke-width=".8" opacity=".6"/><path d="M100 200C70 180 30 160 10 120" stroke="#2D4A32" stroke-width=".5" opacity=".4"/></svg>
+  <svg class="leaf-svg" style="top:-40px;left:-60px;width:320px;transform:rotate(-20deg);opacity:.18" viewBox="0 0 200 300" fill="none"><path d="M100 280C100 280 20 200 10 120C0 40 80 10 100 10C120 10 200 40 190 120C180 200 100 280 100 280Z" fill="#7A9E72" stroke="#4A6741" stroke-width="1"/><path d="M100 280L100 10" stroke="#2D4A32" stroke-width=".8" opacity=".6"/></svg>
   <svg class="leaf-svg" style="top:10%;right:-50px;width:280px;transform:rotate(30deg) scaleX(-1);opacity:.15" viewBox="0 0 200 300" fill="none"><path d="M100 280C100 280 20 200 10 120C0 40 80 10 100 10C120 10 200 40 190 120C180 200 100 280 100 280Z" fill="#4A6741"/><path d="M100 280L100 10" stroke="#2D4A32" stroke-width=".8" opacity=".5"/></svg>
   <svg class="leaf-svg" style="bottom:-20px;right:10%;width:200px;transform:rotate(-10deg);opacity:.14" viewBox="0 0 160 240" fill="none"><path d="M80 220C80 220 15 160 8 95C1 30 60 8 80 8C100 8 159 30 152 95C145 160 80 220 80 220Z" fill="#7A9E72"/><path d="M80 220L80 8" stroke="#2D4A32" stroke-width=".7" opacity=".5"/></svg>
   <svg class="leaf-svg" style="bottom:5%;left:8%;width:180px;transform:rotate(15deg);opacity:.13" viewBox="0 0 140 200" fill="none"><path d="M70 190Q10 130 8 80Q6 20 70 5Q134 20 132 80Q130 130 70 190Z" fill="#4A6741"/><path d="M70 190L70 5" stroke="#2D4A32" stroke-width=".7" opacity=".5"/></svg>
-
   <div class="hero-label-wrap"><span class="hero-label">✦ Anniversaire · 2026 ✦</span></div>
   <h1 class="hero-name">Marie</h1>
   <p class="hero-sub">Danseuse de cœur · Jardinière dans l'âme · Âme nahuatl · Maman en or</p>
@@ -335,7 +227,6 @@ body::after {
     <span>28 mars 2026</span><div class="sep"></div>
     <span>Salle Orchidée · Pringy</span>
   </div>
-
   <div class="countdown-wrap">
     <p class="cd-label" id="cd-label">✦ Rendez-vous dans ✦</p>
     <div class="countdown" id="countdown">
@@ -348,11 +239,10 @@ body::after {
       <div class="cd-unit"><span class="cd-val" id="cd-s">--</span><span class="cd-unit-lbl">sec</span></div>
     </div>
   </div>
-
   <div class="hero-scroll"><span>Défiler</span><div class="hero-scroll-line"></div></div>
 </section>
 
-<!-- ════════ INTRO ════════ -->
+<!-- ════ INTRO ════ -->
 <section class="intro-section">
   <svg style="position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:220px;opacity:.05" viewBox="0 0 200 300" fill="none"><path d="M100 280C100 280 20 200 10 120C0 40 80 10 100 10C120 10 200 40 190 120C180 200 100 280 100 280Z" fill="#2D4A32"/><path d="M100 280L100 10" stroke="#2D4A32" stroke-width="1.5"/></svg>
   <div class="intro-inner">
@@ -363,9 +253,8 @@ body::after {
         <path d="M110 180C110 180 160 150 178 115C192 85 165 68 138 84C124 92 110 118 110 145Z" fill="#4A6741" opacity=".65"/>
         <path d="M110 130C110 130 70 108 55 82C43 60 62 44 85 55C97 61 110 82 110 105Z" fill="#7A9E72" opacity=".6"/>
         <path d="M110 105C110 105 148 82 162 55C173 33 153 18 133 29C122 35 110 56 110 82Z" fill="#4A6741" opacity=".5"/>
-        <path d="M110 60C110 60 85 45 78 28C72 14 85 5 95 12C103 18 110 38 110 52Z" fill="#7A9E72" opacity=".55"/>
-        <path d="M110 52C110 52 135 37 142 20C148 6 135 -3 125 4C117 10 110 30 110 46Z" fill="#4A6741" opacity=".5"/>
-        <circle cx="110" cy="18" r="6" fill="#B8955A" opacity=".8"/><circle cx="110" cy="18" r="3" fill="#D4B07A"/>
+        <circle cx="110" cy="18" r="6" fill="#B8955A" opacity=".8"/>
+        <circle cx="110" cy="18" r="3" fill="#D4B07A"/>
         <circle cx="48" cy="270" r="4" fill="#D4817A" opacity=".6"/>
         <circle cx="60" cy="260" r="3" fill="#D4817A" opacity=".5"/>
       </svg>
@@ -377,7 +266,7 @@ body::after {
   </div>
 </section>
 
-<!-- ════════ PASSIONS ════════ -->
+<!-- ════ PASSIONS ════ -->
 <div class="passions">
   <div class="passion-item"><span class="passion-icon">🩰</span><p class="passion-label">La danse classique</p><p class="passion-sub">Corps & grâce</p></div>
   <div class="passion-item"><span class="passion-icon">🌮</span><p class="passion-label">Le Mexique</p><p class="passion-sub">Couleur & chaleur</p></div>
@@ -385,20 +274,16 @@ body::after {
   <div class="passion-item"><span class="passion-icon">🌿</span><p class="passion-label">Le jardin</p><p class="passion-sub">Terre & patience</p></div>
 </div>
 
-<!-- ════════ TIMELINE ÉDITORIALE ════════ -->
+<!-- ════ TIMELINE ════ -->
 <section class="timeline-section">
   <div class="ts-header">
     <p class="ts-eyebrow">✦ Chapitres ✦</p>
     <h2 class="ts-title">35 ans d'une vie <em>bien remplie</em></h2>
   </div>
-
   <div class="tl-chapters">
 
     <div class="tl-chapter">
-      <div class="tl-year-col">
-        <span class="tl-year-num">96</span>
-        <span class="tl-year-label">1996</span>
-      </div>
+      <div class="tl-year-col"><span class="tl-year-num">96</span><span class="tl-year-label">1996</span></div>
       <div class="tl-vline"></div>
       <div class="tl-content">
         <div class="tl-ornament"><div class="tl-ornament-line"></div><span class="tl-ornament-text">Chapitre I</span></div>
@@ -408,10 +293,7 @@ body::after {
     </div>
 
     <div class="tl-chapter">
-      <div class="tl-year-col">
-        <span class="tl-year-num">05</span>
-        <span class="tl-year-label">2005</span>
-      </div>
+      <div class="tl-year-col"><span class="tl-year-num">05</span><span class="tl-year-label">2005</span></div>
       <div class="tl-vline"></div>
       <div class="tl-content">
         <div class="tl-ornament"><div class="tl-ornament-line"></div><span class="tl-ornament-text">Chapitre II</span></div>
@@ -421,36 +303,27 @@ body::after {
     </div>
 
     <div class="tl-chapter">
-      <div class="tl-year-col">
-        <span class="tl-year-num">20</span>
-        <span class="tl-year-label">2020–2024</span>
-      </div>
+      <div class="tl-year-col"><span class="tl-year-num">19</span><span class="tl-year-label">2019</span></div>
       <div class="tl-vline"></div>
       <div class="tl-content">
         <div class="tl-ornament"><div class="tl-ornament-line"></div><span class="tl-ornament-text">Chapitre III</span></div>
-        <h3>Maman, trois fois</h3>
-        <p>Trois enfants toujours parfaitement sages. Elle mène tout cela avec beaucoup de doigté sans se démonter — et toujours l'énergie pour aller danser.</p>
-      </div>
-    </div>
-
-    <div class="tl-chapter">
-      <div class="tl-year-col">
-        <span class="tl-year-num">19</span>
-        <span class="tl-year-label">2019</span>
-      </div>
-      <div class="tl-vline"></div>
-      <div class="tl-content">
-        <div class="tl-ornament"><div class="tl-ornament-line"></div><span class="tl-ornament-text">Chapitre IV</span></div>
         <h3>Le jardin prend racine</h3>
         <p>Personne n'aurait parié sur le retour au pays de Marie. C'est pourtant à Annecy qu'elle construit patiemment son jardin, avec un talent rare. Aussi bien dehors que dedans…</p>
       </div>
     </div>
 
-    <div class="tl-chapter now">
-      <div class="tl-year-col">
-        <span class="tl-year-num">26</span>
-        <span class="tl-year-label">2026</span>
+    <div class="tl-chapter">
+      <div class="tl-year-col"><span class="tl-year-num">20</span><span class="tl-year-label">2020–2024</span></div>
+      <div class="tl-vline"></div>
+      <div class="tl-content">
+        <div class="tl-ornament"><div class="tl-ornament-line"></div><span class="tl-ornament-text">Chapitre IV</span></div>
+        <h3>Maman, trois fois</h3>
+        <p>Trois enfants toujours parfaitement sages. Elle mène tout cela avec beaucoup de doigté sans se démonter — et toujours l'énergie pour aller danser.</p>
       </div>
+    </div>
+
+    <div class="tl-chapter now">
+      <div class="tl-year-col"><span class="tl-year-num">26</span><span class="tl-year-label">2026</span></div>
       <div class="tl-vline"></div>
       <div class="tl-content">
         <div class="tl-ornament"><div class="tl-ornament-line"></div><span class="tl-ornament-text">Aujourd'hui</span></div>
@@ -462,7 +335,7 @@ body::after {
   </div>
 </section>
 
-<!-- ════════ EVENT + CARTE IGN ════════ -->
+<!-- ════ EVENT ════ -->
 <section class="event-section">
   <div class="event-bg"></div>
   <div class="event-inner">
@@ -471,46 +344,20 @@ body::after {
       <h2>Samedi <span>28 mars</span></h2>
       <p class="event-meta">Salle Orchidée · Pringy · à partir de 11h00</p>
     </div>
-
     <div class="event-main">
       <div class="event-info">
-        <div class="ev-card">
-          <span class="ev-icon">🕚</span>
-          <h4>Horaires</h4>
-          <p>Dès 11h00 · Salle disponible jusqu'à 1h00 du matin 💃</p>
-        </div>
-        <div class="ev-card">
-          <span class="ev-icon">🥂</span>
-          <h4>Apéro & boissons</h4>
-          <p>Punch · bière · jus · apéro — c'est prévu.</p>
-        </div>
-        <div class="ev-card">
-          <span class="ev-icon">🧀</span>
-          <h4>Repas du midi</h4>
-          <p>Raclette · vacherin · vin. Restrictions alimentaires ? <a href="/cdn-cgi/l/email-protection#ec8a8d8185808089ac8183828285899ec28a8d81858095">Écrivez-nous →</a></p>
-        </div>
-        <div class="ev-card">
-          <span class="ev-icon">🍰</span>
-          <h4>Goûter & soir</h4>
-          <p>Goûter prévu. Soir : salades · taboulé · fruits.<br>Prévenez-nous de votre présence !</p>
-        </div>
-        <div class="ev-card">
-          <span class="ev-icon">🎈</span>
-          <h4>Jeux</h4>
-          <p>Apportez des jeux intérieurs et extérieurs — pour les petits et les grands !</p>
-        </div>
+        <div class="ev-card"><span class="ev-icon">🕚</span><h4>Horaires</h4><p>Dès 11h00 · Salle disponible jusqu'à 1h00 du matin 💃</p></div>
+        <div class="ev-card"><span class="ev-icon">🥂</span><h4>Apéro & boissons</h4><p>Punch · bière · jus · apéro — c'est prévu.</p></div>
+        <div class="ev-card"><span class="ev-icon">🧀</span><h4>Repas du midi</h4><p>Raclette · vacherin · vin. Restrictions alimentaires ? <a href="mailto:famille@monnier.family">Écrivez-nous →</a></p></div>
+        <div class="ev-card"><span class="ev-icon">🍰</span><h4>Goûter & soir</h4><p>Goûter prévu. Soir : salades · taboulé · fruits.<br>Prévenez-nous de votre présence !</p></div>
+        <div class="ev-card"><span class="ev-icon">🎈</span><h4>Jeux</h4><p>Apportez des jeux intérieurs et extérieurs — pour les petits et les grands !</p></div>
       </div>
-
-      <!-- Carte IGN -->
       <div class="map-card">
         <div class="map-card-header">
           <div class="map-pin">📍</div>
-          <div>
-            <p class="map-card-title">Salle Orchidée, Pringy</p>
-            <p class="map-card-subtitle">Carte © IGN / Géoplateforme</p>
-          </div>
+          <div><p class="map-card-title">Salle Orchidée, Pringy</p><p class="map-card-subtitle">Carte © IGN / Géoplateforme</p></div>
         </div>
-        <div class="map-frame-wrap">
+        <div class="map-wrap">
           <div id="map-ign"></div>
           <div class="commune-badge" id="commune-badge">4890 Rte de Ferrières · Pringy</div>
         </div>
@@ -520,12 +367,11 @@ body::after {
         </div>
       </div>
     </div>
-
-    <p class="event-note">Une question ? N'hésitez pas — <a href="/cdn-cgi/l/email-protection#f096919d999c9c95b09d9f9e9e999582de96919d999c89" style="color:var(--gold-lt);text-decoration:none;border-bottom:1px solid rgba(212,176,122,.3);"><span class="__cf_email__" data-cfemail="3b5d5a565257575e7b56545555525e49155d5a56525742">[email&#160;protected]</span></a></p>
+    <p class="event-note">Une question ? — <a href="mailto:famille@monnier.family" style="color:var(--gold-lt);text-decoration:none;border-bottom:1px solid rgba(212,176,122,.3);">famille@monnier.family</a></p>
   </div>
 </section>
 
-<!-- ════════ CADEAU ════════ -->
+<!-- ════ CADEAU ════ -->
 <section class="gift-section">
   <svg style="position:absolute;left:-40px;bottom:0;width:200px;opacity:.05;transform:rotate(10deg)" viewBox="0 0 200 300" fill="none"><path d="M100 280C100 280 20 200 10 120C0 40 80 10 100 10C120 10 200 40 190 120C180 200 100 280 100 280Z" fill="#2D4A32"/></svg>
   <div class="gift-inner">
@@ -542,7 +388,7 @@ body::after {
   </div>
 </section>
 
-<!-- ════════ FOOTER ════════ -->
+<!-- ════ FOOTER ════ -->
 <footer class="footer">
   <svg class="footer-botanical" width="400" height="200" viewBox="0 0 400 200" fill="none">
     <path d="M200 190C200 190 80 140 40 90C10 52 60 20 110 50C145 70 200 120 200 150Z" fill="#7A9E72"/>
@@ -554,144 +400,103 @@ body::after {
   <p class="footer-sub">28 mars · Salle Orchidée · Pringy</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* ══ COUNTDOWN ══
-   Fête : 28 mars 2026 à 11h00
-   "C'est aujourd'hui" uniquement le 28 mars 2026
-*/
-const PARTY = new Date('2026-03-28T11:00:00');
-const BDAY  = new Date('2026-03-29T00:00:00');
+<script>
+/* ══ COUNTDOWN ══ */
+(function(){
+  var PARTY = new Date('2026-03-28T11:00:00');
+  var BDAY  = new Date('2026-03-29T00:00:00');
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function isPartyDay(){ var d=new Date(); return d.getFullYear()===2026 && d.getMonth()===2 && d.getDate()===28; }
+  function msg(t){ var l=document.getElementById('cd-label'),w=document.getElementById('countdown'); if(l)l.style.display='none'; if(w)w.innerHTML='<span class="cd-message">'+t+'</span>'; }
+  function tick(){
+    var now=new Date(), diff=PARTY-now;
+    if(isPartyDay()){ msg("C\u2019est aujourd\u2019hui\u00a0! \uD83C\uDF3F"); return; }
+    if(now>BDAY){ msg("Quel beau souvenir \uD83C\uDF3F"); return; }
+    if(diff<=0){ msg("C\u2019est aujourd\u2019hui\u00a0! \uD83C\uDF3F"); return; }
+    var ed=document.getElementById('cd-d'), eh=document.getElementById('cd-h'),
+        em=document.getElementById('cd-m'), es=document.getElementById('cd-s');
+    if(ed) ed.textContent=pad(Math.floor(diff/86400000));
+    if(eh) eh.textContent=pad(Math.floor((diff%86400000)/3600000));
+    if(em) em.textContent=pad(Math.floor((diff%3600000)/60000));
+    if(es) es.textContent=pad(Math.floor((diff%60000)/1000));
+  }
+  tick(); setInterval(tick,1000);
+})();
 
-function pad(n){ return String(n).padStart(2,'0'); }
+/* ══ TIMELINE : animation UNIQUEMENT sur écrans > 480px ══ */
+(function(){
+  if(window.innerWidth < 480 || !window.IntersectionObserver) return;
+  var items = document.querySelectorAll('.tl-chapter');
+  items.forEach(function(el){ el.classList.add('anim'); });
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target); }
+    });
+  }, { threshold:0, rootMargin:'0px 0px -20px 0px' });
+  items.forEach(function(el){ obs.observe(el); });
+  setTimeout(function(){ items.forEach(function(el){ el.classList.add('show'); }); }, 1200);
+})();
 
-function isToday28March(){
-  const d = new Date();
-  return d.getFullYear()===2026 && d.getMonth()===2 && d.getDate()===28;
-}
+/* ══ CARTE IGN ══ */
+(function(){
+  var DEFAULT = [45.9461, 6.1200];
+  var container = document.getElementById('map-ign');
+  if(!container) return;
 
-function showMessage(msg){
-  const lbl = document.getElementById('cd-label');
-  const wrap = document.getElementById('countdown');
-  if(lbl) lbl.style.display='none';
-  if(wrap) wrap.innerHTML='<span class="cd-message">'+msg+'</span>';
-}
-
-function tick(){
-  if(isToday28March()){ showMessage("C'est aujourd'hui ! 🌿"); return; }
-  if(new Date() > BDAY){ showMessage("Quel beau souvenir 🌿"); return; }
-
-  const diff = PARTY - new Date();
-  if(diff <= 0){ showMessage("C'est aujourd'hui ! 🌿"); return; }
-
-  const d = Math.floor(diff/86400000);
-  const h = Math.floor((diff%86400000)/3600000);
-  const m = Math.floor((diff%3600000)/60000);
-  const s = Math.floor((diff%60000)/1000);
-
-  // Mise à jour directe — pas d'animation qui peut bloquer
-  const ed = document.getElementById('cd-d');
-  const eh = document.getElementById('cd-h');
-  const em = document.getElementById('cd-m');
-  const es = document.getElementById('cd-s');
-
-  if(ed && ed.textContent !== pad(d)) ed.textContent = pad(d);
-  if(eh && eh.textContent !== pad(h)) eh.textContent = pad(h);
-  if(em && em.textContent !== pad(m)) em.textContent = pad(m);
-  if(es && es.textContent !== pad(s)) es.textContent = pad(s);
-}
-
-tick();
-setInterval(tick, 1000);
-
-/* ══ TIMELINE SCROLL REVEAL ══ */
-function revealChapter(el, delay){
-  setTimeout(()=>el.classList.add('visible'), delay || 0);
-}
-
-const chapters = document.querySelectorAll('.tl-chapter');
-
-const chapObs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      revealChapter(e.target, 0);
-      chapObs.unobserve(e.target);
-    }
-  });
-},{threshold:0.05, rootMargin:'0px 0px -40px 0px'});
-
-chapters.forEach(el=>chapObs.observe(el));
-
-// Fallback : révèle tout après 2s si l'observer n'a pas tout déclenché
-setTimeout(()=>{
-  chapters.forEach(el=>el.classList.add('visible'));
-}, 2000);
-
-/* ══ CARTE LEAFLET + IGN + BAN ══ */
-document.addEventListener('DOMContentLoaded',function(){
-  // Centre par défaut (Pringy) en attendant le géocodage BAN
-  const DEFAULT = [45.9461, 6.1200];
-  const ZOOM    = 15;
-
-  const map = L.map('map-ign',{
-    center: DEFAULT, zoom: ZOOM,
-    zoomControl: true,
-    scrollWheelZoom: false,
-    attributionControl: true
+  var map = L.map('map-ign', {
+    center: DEFAULT, zoom: 15,
+    zoomControl: true, scrollWheelZoom: false, attributionControl: true,
+    fadeAnimation: false, markerZoomAnimation: false
   });
 
-  // Tuiles IGN Plan V2 via data.geopf.fr (sans clé API)
   L.tileLayer(
-    'https://data.geopf.fr/wmts?' +
-    'REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0' +
-    '&TILEMATRIXSET=PM' +
-    '&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2' +
-    '&STYLE=normal&FORMAT=image/png' +
-    '&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}',
+    'https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0' +
+    '&TILEMATRIXSET=PM&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2' +
+    '&STYLE=normal&FORMAT=image/png&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}',
     { attribution:'© <a href="https://www.ign.fr/">IGN</a> / Géoplateforme', maxZoom:19, tileSize:256 }
   ).addTo(map);
 
-  // Marqueur botanique personnalisé
-  const icon = L.divIcon({
+  var icon = L.divIcon({
     className:'',
-    html:`<div style="width:30px;height:30px;border-radius:50% 50% 50% 0;background:#B8955A;border:2px solid #7A5C2E;transform:rotate(-45deg);box-shadow:0 3px 10px rgba(0,0,0,.5);position:relative;display:flex;align-items:center;justify-content:center;"><span style="transform:rotate(45deg);font-size:13px;">🌿</span></div>`,
+    html:'<div style="width:30px;height:30px;border-radius:50% 50% 50% 0;background:#B8955A;border:2px solid #7A5C2E;transform:rotate(-45deg);box-shadow:0 3px 10px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;"><span style="transform:rotate(45deg);font-size:13px;">🌿</span></div>',
     iconSize:[30,30], iconAnchor:[15,30], popupAnchor:[0,-32]
   });
 
-  let marker = L.marker(DEFAULT,{icon}).addTo(map);
-  marker.bindPopup(`<div style="font-family:'Cormorant Garamond',serif;text-align:center;padding:.2rem"><strong style="font-size:1rem">Salle Orchidée</strong><br><span style="font-size:.8rem;color:#4A6741;font-style:italic">4890 Rte de Ferrières<br>74370 Annecy (Pringy)</span><br><span style="font-size:.7rem;color:#888;display:block;margin-top:.3rem">Samedi 28 mars · 11h00</span></div>`,{maxWidth:200});
+  var marker = L.marker(DEFAULT, {icon:icon}).addTo(map);
+  marker.bindPopup('<div style="font-family:serif;text-align:center"><strong>Salle Orchidée</strong><br><em style="font-size:.85rem;color:#4A6741">4890 Rte de Ferrières · Pringy</em><br><span style="font-size:.75rem;color:#888">Samedi 28 mars · 11h00</span></div>', {maxWidth:200});
 
-  // Géocodage BAN (Base Adresse Nationale) — open data, sans clé
+  function fix(){ map.invalidateSize({pan:false}); }
+  [0, 150, 400, 800, 1600].forEach(function(d){ setTimeout(fix,d); });
+  window.addEventListener('resize', fix, {passive:true});
+  window.addEventListener('orientationchange', function(){ setTimeout(fix,500); }, {passive:true});
+  if(window.IntersectionObserver){
+    new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ fix(); setTimeout(fix,200); } });
+    },{threshold:0}).observe(container);
+  }
+
   fetch('https://api-adresse.data.gouv.fr/search/?q=4890+route+de+ferrieres&postcode=74370&limit=1')
-    .then(r=>r.json())
-    .then(data=>{
-      if(data.features && data.features.length>0){
-        const [lng,lat] = data.features[0].geometry.coordinates;
-        const label = data.features[0].properties.label;
-        map.setView([lat,lng], 16);
-        map.removeLayer(marker);
-        marker = L.marker([lat,lng],{icon}).addTo(map);
-        marker.bindPopup(`<div style="font-family:'Cormorant Garamond',serif;text-align:center;padding:.2rem"><strong style="font-size:1rem">Salle Orchidée</strong><br><span style="font-size:.8rem;color:#4A6741;font-style:italic">${label}</span><br><span style="font-size:.7rem;color:#888;display:block;margin-top:.3rem">Samedi 28 mars · 11h00</span></div>`,{maxWidth:200});
-        document.getElementById('commune-badge').textContent = label;
-      }
-    })
-    .catch(()=>{ /* Silencieux si hors ligne */ });
+    .then(function(r){return r.json();})
+    .then(function(data){
+      if(!data.features||!data.features.length) return;
+      var c=data.features[0].geometry.coordinates, label=data.features[0].properties.label;
+      map.setView([c[1],c[0]],16);
+      map.removeLayer(marker);
+      marker=L.marker([c[1],c[0]],{icon:icon}).addTo(map);
+      marker.bindPopup('<div style="font-family:serif;text-align:center"><strong>Salle Orchidée</strong><br><em style="font-size:.85rem;color:#4A6741">'+label+'</em><br><span style="font-size:.75rem;color:#888">Samedi 28 mars · 11h00</span></div>',{maxWidth:200});
+      var badge=document.getElementById('commune-badge'); if(badge) badge.textContent=label;
+      setTimeout(fix,100);
+    }).catch(function(){});
 
-  // Contour commune de Pringy via geo.api.gouv.fr
   fetch('https://geo.api.gouv.fr/communes?nom=Pringy&codeDepartement=74&format=geojson&geometry=contour')
-    .then(r=>r.json())
-    .then(data=>{
-      if(data.features && data.features.length>0){
-        L.geoJSON({type:'FeatureCollection',features:[data.features[0]]},{
-          style:{ color:'#B8955A',weight:2,opacity:.75,fillColor:'#7A9E72',fillOpacity:.07,dashArray:'4 3' }
-        }).addTo(map);
-      }
-    })
-    .catch(()=>{});
-
-  // Invalidation robuste : au redimensionnement ET dès que la carte devient visible
-  new ResizeObserver(()=>map.invalidateSize()).observe(document.getElementById('map-ign'));
-  
-  // Sur mobile, la carte peut être rendue avant d'être visible dans le DOM
-  window.addEventListener('load', ()=>{ setTimeout(()=>map.invalidateSize(), 200); });
-
-  // Interse
+    .then(function(r){return r.json();})
+    .then(function(data){
+      if(!data.features||!data.features.length) return;
+      L.geoJSON({type:'FeatureCollection',features:[data.features[0]]},{
+        style:{color:'#B8955A',weight:2,opacity:.75,fillColor:'#7A9E72',fillOpacity:.07,dashArray:'4 3'}
+      }).addTo(map);
+    }).catch(function(){});
+})();
+</script>
+</body>
+</html>
