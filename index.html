@@ -30,16 +30,21 @@ body::after {
   opacity:.045;
 }
 
-@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
-@keyframes breathe { 0%,100%{opacity:.3;transform:scaleY(.6);transform-origin:top} 50%{opacity:1;transform:scaleY(1);transform-origin:top} }
-@keyframes blink { 0%,100%{opacity:.4} 50%{opacity:.1} }
+@keyframes fadeUp    { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+@keyframes breathe   { 0%,100%{opacity:.3;transform:scaleY(.6)} 50%{opacity:1;transform:scaleY(1)} }
+@keyframes blink     { 0%,100%{opacity:.4} 50%{opacity:.1} }
+@keyframes slowspin  { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 @keyframes wave {
-  0%  { transform:rotate(0deg); } 10% { transform:rotate(14deg); }
-  20% { transform:rotate(-8deg); } 30% { transform:rotate(14deg); }
-  40% { transform:rotate(-4deg); } 50% { transform:rotate(10deg); }
-  60% { transform:rotate(0deg); } 100%{ transform:rotate(0deg); }
+  0%,60%,100%{ transform:rotate(0deg); }
+  10%{ transform:rotate(14deg); } 20%{ transform:rotate(-8deg); }
+  30%{ transform:rotate(14deg); } 40%{ transform:rotate(-4deg); }
+  50%{ transform:rotate(10deg); }
 }
-@keyframes slowspin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+/* Dividers */
+@keyframes unfurl {
+  from { stroke-dashoffset: 600; opacity:0; }
+  to   { stroke-dashoffset: 0;   opacity:1; }
+}
 
 /* ══ HERO ══ */
 .hero { min-height:100vh;background:var(--forest);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 2rem 8rem;overflow:hidden; }
@@ -66,6 +71,16 @@ body::after {
 .hero-scroll span { font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--pale-sage); }
 .hero-scroll-line { width:1px;height:40px;background:linear-gradient(to bottom,var(--pale-sage),transparent);animation:breathe 2s ease-in-out infinite; }
 
+/* ══ DIVIDERS ══ */
+.divider {
+  position:relative;
+  z-index:10;
+  line-height:0;
+  overflow:visible;
+  pointer-events:none;
+}
+.divider svg { display:block;width:100%; }
+
 /* ══ INTRO ══ */
 .intro-section { background:var(--paper);position:relative;overflow:hidden;padding:7rem 2rem; }
 .intro-inner { max-width:780px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center; }
@@ -91,14 +106,10 @@ body::after {
 .ts-title { font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:300;font-style:italic;color:white; }
 .ts-title em { color:var(--gold-lt);font-weight:600; }
 .tl-chapters { max-width:760px;margin:0 auto;position:relative; }
-
-/* Chapitres : TOUJOURS VISIBLES par défaut */
 .tl-chapter { display:grid;grid-template-columns:120px 1px 1fr;gap:0 2.5rem;padding:3rem 0;border-bottom:1px solid rgba(255,255,255,.06); }
 .tl-chapter:first-child { border-top:1px solid rgba(255,255,255,.06); }
-/* JS active .anim pour l'animation — uniquement sur desktop */
 .tl-chapter.anim { opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease; }
 .tl-chapter.anim.show { opacity:1;transform:none; }
-
 .tl-year-col { display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-start;padding-top:.25rem; }
 .tl-year-num { font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:600;font-style:italic;color:transparent;-webkit-text-stroke:1px rgba(184,149,90,.4);line-height:1;letter-spacing:-.02em; }
 .tl-year-label { font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:.3rem;text-align:right; }
@@ -129,24 +140,22 @@ body::after {
 .ev-icon { font-size:.95rem;margin-bottom:.3rem;display:block; }
 .ev-card h4 { font-family:'Cormorant Garamond',serif;font-size:.85rem;font-style:italic;color:var(--gold-lt);margin-bottom:.25rem; }
 .ev-card p { font-size:.78rem;line-height:1.6;color:rgba(255,255,255,.5); }
-.ev-card a { color:var(--gold);text-decoration:none;font-size:.72rem;border-bottom:1px solid rgba(184,149,90,.3);display:inline-block;margin-top:.2rem;transition:border-color .3s; }
-.ev-card a:hover { border-color:var(--gold); }
+.ev-card a { color:var(--gold);text-decoration:none;font-size:.72rem;border-bottom:1px solid rgba(184,149,90,.3);display:inline-block;margin-top:.2rem; }
 
-/* ══ CARTE ══ */
-.map-card { border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;background:rgba(255,255,255,.03); }
-.map-card-header { padding:.9rem 1.2rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.04);flex-shrink:0; }
+/* ══ CARTE — version mobile-first robuste ══ */
+.map-card { border-radius:4px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03); }
+.map-card-header { padding:.9rem 1.2rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.04); }
 .map-pin { width:28px;height:28px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:.8rem;flex-shrink:0; }
 .map-card-title { font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:white; }
 .map-card-subtitle { font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:.1rem; }
-/* Hauteur fixe sur le wrapper — Leaflet calcule à partir de ça */
-.map-wrap { position:relative;height:300px; }
-#map-ign { width:100%;height:100%; }
+/* Hauteur inline sur map-wrap via HTML — plus fiable que CSS seul sur iOS */
+.map-wrap { position:relative; }
+#map-ign { display:block; }
 .leaflet-tile-pane { filter:saturate(.55) brightness(.72) hue-rotate(12deg) contrast(1.1); }
-.map-card-footer { padding:.7rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);flex-shrink:0; }
-.map-card-footer a { font-size:.7rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(184,149,90,.3);transition:border-color .3s; }
-.map-card-footer a:hover { border-color:var(--gold); }
+.map-card-footer { padding:.7rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02); }
+.map-card-footer a { font-size:.7rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(184,149,90,.3); }
 .map-card-footer-sub { font-size:.65rem;color:rgba(255,255,255,.25); }
-.commune-badge { position:absolute;bottom:.7rem;left:.7rem;background:rgba(26,32,24,.85);border:1px solid rgba(184,149,90,.3);border-radius:3px;padding:.25rem .6rem;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-lt);z-index:1000;font-family:'Montserrat',sans-serif;backdrop-filter:blur(4px);pointer-events:none; }
+.commune-badge { position:absolute;bottom:.7rem;left:.7rem;background:rgba(26,32,24,.88);border:1px solid rgba(184,149,90,.3);border-radius:3px;padding:.25rem .6rem;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-lt);z-index:1000;pointer-events:none; }
 .event-note { text-align:center;font-family:'Cormorant Infant',serif;font-style:italic;font-size:1rem;color:rgba(255,255,255,.25);margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.06); }
 
 /* ══ CADEAU ══ */
@@ -154,7 +163,7 @@ body::after {
 .gift-inner { max-width:680px;margin:0 auto; }
 .gift-top { display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:start; }
 .gift-icon { width:100px;height:100px;border-radius:50%;background:var(--forest);display:flex;align-items:center;justify-content:center;font-size:2.5rem;flex-shrink:0;box-shadow:0 4px 30px rgba(45,74,50,.25);animation:slowspin 12s linear infinite; }
-.gift-text .ts-eyebrow { text-align:left;font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem; }
+.gift-text .ts-eyebrow { text-align:left; }
 .gift-text h2 { font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;font-style:italic;color:var(--ink);margin-bottom:1rem; }
 .gift-text p { font-size:.88rem;line-height:1.8;color:var(--text);opacity:.75; }
 .gift-tag { display:inline-block;margin-top:1.2rem;padding:.3rem 1rem;border:1px solid var(--gold);color:var(--gold);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;border-radius:1px; }
@@ -170,7 +179,6 @@ body::after {
 /* ══ RESPONSIVE ══ */
 @media(max-width:900px) {
   .event-main { grid-template-columns:1fr; }
-  .map-wrap { height:280px; }
 }
 @media(max-width:768px) {
   .intro-inner { grid-template-columns:1fr;gap:2rem; }
@@ -180,12 +188,12 @@ body::after {
   .passion-item { border-right:none;border-bottom:1px solid rgba(45,74,50,.08);padding:1.8rem 1rem; }
   .passion-item:nth-child(odd) { border-right:1px solid rgba(45,74,50,.08); }
   .hero { padding:4rem 1.5rem 7rem; }
-  .hero-sub { font-size:.9rem;letter-spacing:.02em; }
+  .hero-sub { font-size:.9rem; }
   .hero-date { flex-direction:column;gap:.6rem;align-items:center; }
   .hero-date .sep { display:none; }
   .hero-label-wrap::before,.hero-label-wrap::after { width:30px; }
   .countdown { gap:.4rem; }
-  .cd-sep { font-size:1.8rem;padding-top:.2em; }
+  .cd-sep { font-size:1.8rem; }
   .timeline-section { padding:5rem 1.5rem; }
   .tl-chapter { grid-template-columns:56px 1px 1fr;gap:0 1.2rem;padding:2rem 0; }
   .tl-year-num { font-size:1.6rem; }
@@ -194,7 +202,6 @@ body::after {
   .tl-content p { font-size:.8rem; }
   .ts-header { margin-bottom:3rem; }
   .event-section { padding:4rem 1.5rem; }
-  .map-wrap { height:260px; }
   .gift-section { padding:4rem 1.5rem; }
   .gift-top { grid-template-columns:1fr; }
   .gift-icon { display:none; }
@@ -215,10 +222,10 @@ body::after {
 <!-- ════ HERO ════ -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <svg class="leaf-svg" style="top:-40px;left:-60px;width:320px;transform:rotate(-20deg);opacity:.18" viewBox="0 0 200 300" fill="none"><path d="M100 280C100 280 20 200 10 120C0 40 80 10 100 10C120 10 200 40 190 120C180 200 100 280 100 280Z" fill="#7A9E72" stroke="#4A6741" stroke-width="1"/><path d="M100 280L100 10" stroke="#2D4A32" stroke-width=".8" opacity=".6"/></svg>
+  <svg class="leaf-svg" style="top:-40px;left:-60px;width:320px;transform:rotate(-20deg);opacity:.18" viewBox="0 0 200 300" fill="none"><path d="M100 280C100 280 20 200 10 120C0 40 80 10 100 10C120 10 200 40 190 120C180 200 100 280 100 280Z" fill="#7A9E72"/><path d="M100 280L100 10" stroke="#2D4A32" stroke-width=".8" opacity=".6"/></svg>
   <svg class="leaf-svg" style="top:10%;right:-50px;width:280px;transform:rotate(30deg) scaleX(-1);opacity:.15" viewBox="0 0 200 300" fill="none"><path d="M100 280C100 280 20 200 10 120C0 40 80 10 100 10C120 10 200 40 190 120C180 200 100 280 100 280Z" fill="#4A6741"/><path d="M100 280L100 10" stroke="#2D4A32" stroke-width=".8" opacity=".5"/></svg>
-  <svg class="leaf-svg" style="bottom:-20px;right:10%;width:200px;transform:rotate(-10deg);opacity:.14" viewBox="0 0 160 240" fill="none"><path d="M80 220C80 220 15 160 8 95C1 30 60 8 80 8C100 8 159 30 152 95C145 160 80 220 80 220Z" fill="#7A9E72"/><path d="M80 220L80 8" stroke="#2D4A32" stroke-width=".7" opacity=".5"/></svg>
-  <svg class="leaf-svg" style="bottom:5%;left:8%;width:180px;transform:rotate(15deg);opacity:.13" viewBox="0 0 140 200" fill="none"><path d="M70 190Q10 130 8 80Q6 20 70 5Q134 20 132 80Q130 130 70 190Z" fill="#4A6741"/><path d="M70 190L70 5" stroke="#2D4A32" stroke-width=".7" opacity=".5"/></svg>
+  <svg class="leaf-svg" style="bottom:-20px;right:10%;width:200px;transform:rotate(-10deg);opacity:.14" viewBox="0 0 160 240" fill="none"><path d="M80 220C80 220 15 160 8 95C1 30 60 8 80 8C100 8 159 30 152 95C145 160 80 220 80 220Z" fill="#7A9E72"/></svg>
+  <svg class="leaf-svg" style="bottom:5%;left:8%;width:180px;transform:rotate(15deg);opacity:.13" viewBox="0 0 140 200" fill="none"><path d="M70 190Q10 130 8 80Q6 20 70 5Q134 20 132 80Q130 130 70 190Z" fill="#4A6741"/></svg>
   <div class="hero-label-wrap"><span class="hero-label">✦ Anniversaire · 2026 ✦</span></div>
   <h1 class="hero-name">Marie</h1>
   <p class="hero-sub">Danseuse de cœur · Jardinière dans l'âme · Âme nahuatl · Maman en or</p>
@@ -241,6 +248,27 @@ body::after {
   </div>
   <div class="hero-scroll"><span>Défiler</span><div class="hero-scroll-line"></div></div>
 </section>
+
+<!-- ══ DIVIDER 1 : forêt → papier — branche tombante ══ -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="height:90px">
+    <path d="M0,0 L1440,0 L1440,45 Q1200,90 720,70 Q240,50 0,75 Z" fill="#2D4A32"/>
+    <!-- Branche centrale -->
+    <g transform="translate(720,0)">
+      <path d="M0 85 Q-8 60 -20 42 Q-35 22 -22 10" stroke="#B8955A" stroke-width="1" fill="none" opacity=".5"/>
+      <path d="M0 85 Q10 58 18 40 Q30 20 18 8" stroke="#B8955A" stroke-width="1" fill="none" opacity=".5"/>
+      <!-- Feuilles gauche -->
+      <path d="M-12 50 Q-40 40 -38 22 Q-20 28 -12 50Z" fill="#4A6741" opacity=".55"/>
+      <path d="M-18 30 Q-42 18 -36 4 Q-18 12 -18 30Z" fill="#7A9E72" opacity=".4"/>
+      <!-- Feuilles droite -->
+      <path d="M12 48 Q38 36 36 20 Q20 26 12 48Z" fill="#4A6741" opacity=".5"/>
+      <path d="M16 28 Q40 14 34 2 Q16 10 16 28Z" fill="#7A9E72" opacity=".4"/>
+      <!-- Petite fleur -->
+      <circle cx="0" cy="6" r="3" fill="#D4B07A" opacity=".7"/>
+      <circle cx="0" cy="6" r="1.5" fill="#F9F5EC" opacity=".6"/>
+    </g>
+  </svg>
+</div>
 
 <!-- ════ INTRO ════ -->
 <section class="intro-section">
@@ -271,7 +299,37 @@ body::after {
   <div class="passion-item"><span class="passion-icon">🩰</span><p class="passion-label">La danse classique</p><p class="passion-sub">Corps & grâce</p></div>
   <div class="passion-item"><span class="passion-icon">🌮</span><p class="passion-label">Le Mexique</p><p class="passion-sub">Couleur & chaleur</p></div>
   <div class="passion-item"><span class="passion-icon">🏔️</span><p class="passion-label">Annecy</p><p class="passion-sub">Lac & altitude</p></div>
-  <div class="passion-item"><span class="passion-icon">🌿</span><p class="passion-label">Le jardin</p><p class="passion-sub">Terre & patience</p></div>
+  <div class="passion-item"><span class="passion-icon">🌿</span><p class="passion-label">Le jardin</p><p class="passion-sub">Enracinement & patience</p></div>
+</div>
+
+<!-- ══ DIVIDER 2 : papier → encre — arabesque danse ══ -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 100" preserveAspectRatio="none" style="height:100px">
+    <!-- Fond qui monte -->
+    <path d="M0,100 L1440,100 L1440,40 Q1080,0 720,20 Q360,40 0,10 Z" fill="#1A2018"/>
+    <!-- Silhouette arabesque — bras levé, jambe tendue -->
+    <g transform="translate(720,55)" opacity=".18" fill="#D4B07A">
+      <!-- Corps -->
+      <ellipse cx="0" cy="-8" rx="3" ry="5"/>
+      <!-- Tête -->
+      <circle cx="0" cy="-17" r="4"/>
+      <!-- Bras gauche levé -->
+      <path d="M-3,-10 Q-18,-22 -28,-18" stroke="#D4B07A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Bras droit étendu -->
+      <path d="M3,-10 Q16,-8 26,-4" stroke="#D4B07A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Jambe gauche -->
+      <path d="M-2,-3 Q-4,8 -3,18" stroke="#D4B07A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Jambe droite arabesque tendue -->
+      <path d="M2,-3 Q12,6 22,2" stroke="#D4B07A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </g>
+    <!-- Petites feuilles de part et d'autre -->
+    <g opacity=".25">
+      <path d="M660,62 Q640,50 644,38 Q654,44 660,62Z" fill="#4A6741"/>
+      <path d="M780,60 Q800,48 796,36 Q786,42 780,60Z" fill="#4A6741"/>
+      <path d="M650,40 Q634,30 638,20 Q648,26 650,40Z" fill="#7A9E72"/>
+      <path d="M790,38 Q806,28 802,18 Q792,24 790,38Z" fill="#7A9E72"/>
+    </g>
+  </svg>
 </div>
 
 <!-- ════ TIMELINE ════ -->
@@ -335,6 +393,19 @@ body::after {
   </div>
 </section>
 
+<!-- ══ DIVIDER 3 : séparateur interne encre/encre — vigne dorée ══ -->
+<div style="background:var(--ink);position:relative;z-index:2;text-align:center;padding:.5rem 0" aria-hidden="true">
+  <svg viewBox="0 0 400 24" style="width:min(400px,90%);opacity:.4" fill="none">
+    <line x1="0" y1="12" x2="155" y2="12" stroke="#B8955A" stroke-width=".5"/>
+    <line x1="245" y1="12" x2="400" y2="12" stroke="#B8955A" stroke-width=".5"/>
+    <!-- Petite branche centrale -->
+    <path d="M170,12 Q180,4 200,6 Q220,4 230,12" stroke="#B8955A" stroke-width="1" fill="none"/>
+    <path d="M183,10 Q178,3 185,1 Q188,6 183,10Z" fill="#4A6741" opacity=".8"/>
+    <path d="M217,10 Q222,3 215,1 Q212,6 217,10Z" fill="#4A6741" opacity=".8"/>
+    <circle cx="200" cy="5" r="2" fill="#D4B07A"/>
+  </svg>
+</div>
+
 <!-- ════ EVENT ════ -->
 <section class="event-section">
   <div class="event-bg"></div>
@@ -352,13 +423,14 @@ body::after {
         <div class="ev-card"><span class="ev-icon">🍰</span><h4>Goûter & soir</h4><p>Goûter prévu. Soir : salades · taboulé · fruits.<br>Prévenez-nous de votre présence !</p></div>
         <div class="ev-card"><span class="ev-icon">🎈</span><h4>Jeux</h4><p>Apportez des jeux intérieurs et extérieurs — pour les petits et les grands !</p></div>
       </div>
+      <!-- CARTE : hauteur fixée en inline style, pas de overflow:hidden sur le parent -->
       <div class="map-card">
         <div class="map-card-header">
           <div class="map-pin">📍</div>
           <div><p class="map-card-title">Salle Orchidée, Pringy</p><p class="map-card-subtitle">Carte © IGN / Géoplateforme</p></div>
         </div>
-        <div class="map-wrap">
-          <div id="map-ign"></div>
+        <div class="map-wrap" style="height:280px">
+          <div id="map-ign" style="width:100%;height:280px;display:block"></div>
           <div class="commune-badge" id="commune-badge">4890 Rte de Ferrières · Pringy</div>
         </div>
         <div class="map-card-footer">
@@ -370,6 +442,27 @@ body::after {
     <p class="event-note">Une question ? — <a href="mailto:famille@monnier.family" style="color:var(--gold-lt);text-decoration:none;border-bottom:1px solid rgba(212,176,122,.3);">famille@monnier.family</a></p>
   </div>
 </section>
+
+<!-- ══ DIVIDER 4 : encre → papier — pétales qui tombent ══ -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px">
+    <path d="M0,0 L1440,0 L1440,20 Q1100,80 720,60 Q340,40 0,70 Z" fill="#1A2018"/>
+    <!-- Pétales dispersés -->
+    <g fill="#B8955A" opacity=".35">
+      <ellipse cx="340" cy="35" rx="7" ry="12" transform="rotate(-30 340 35)"/>
+      <ellipse cx="520" cy="48" rx="5" ry="9" transform="rotate(20 520 48)"/>
+      <ellipse cx="700" cy="28" rx="6" ry="11" transform="rotate(-15 700 28)"/>
+      <ellipse cx="880" cy="44" rx="5" ry="10" transform="rotate(35 880 44)"/>
+      <ellipse cx="1060" cy="32" rx="7" ry="11" transform="rotate(-25 1060 32)"/>
+    </g>
+    <g fill="#D4B07A" opacity=".2">
+      <ellipse cx="430" cy="52" rx="4" ry="7" transform="rotate(45 430 52)"/>
+      <ellipse cx="620" cy="38" rx="4" ry="8" transform="rotate(-40 620 38)"/>
+      <ellipse cx="820" cy="55" rx="5" ry="8" transform="rotate(20 820 55)"/>
+      <ellipse cx="980" cy="24" rx="4" ry="7" transform="rotate(-35 980 24)"/>
+    </g>
+  </svg>
+</div>
 
 <!-- ════ CADEAU ════ -->
 <section class="gift-section">
@@ -388,6 +481,26 @@ body::after {
   </div>
 </section>
 
+<!-- ══ DIVIDER 5 : papier → forêt — branche ascendante ══ -->
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" style="height:80px">
+    <path d="M0,80 L1440,80 L1440,30 Q1200,0 720,18 Q240,36 0,8 Z" fill="#2D4A32"/>
+    <!-- Petit motif floral centré -->
+    <g transform="translate(720,40)">
+      <line x1="-60" y1="0" x2="-8" y2="0" stroke="#B8955A" stroke-width=".7" opacity=".4"/>
+      <line x1="8" y1="0" x2="60" y2="0" stroke="#B8955A" stroke-width=".7" opacity=".4"/>
+      <!-- Rose stylisée -->
+      <path d="M0,-8 Q5,-3 0,2 Q-5,-3 0,-8Z" fill="#D4817A" opacity=".5"/>
+      <path d="M-6,-4 Q-1,1 -6,6 Q-9,0 -6,-4Z" fill="#D4817A" opacity=".4"/>
+      <path d="M6,-4 Q1,1 6,6 Q9,0 6,-4Z" fill="#D4817A" opacity=".4"/>
+      <circle cx="0" cy="-1" r="2" fill="#D4B07A" opacity=".7"/>
+      <!-- Feuilles -->
+      <path d="M-4,5 Q-14,8 -12,14 Q-4,10 -4,5Z" fill="#7A9E72" opacity=".5"/>
+      <path d="M4,5 Q14,8 12,14 Q4,10 4,5Z" fill="#7A9E72" opacity=".5"/>
+    </g>
+  </svg>
+</div>
+
 <!-- ════ FOOTER ════ -->
 <footer class="footer">
   <svg class="footer-botanical" width="400" height="200" viewBox="0 0 400 200" fill="none">
@@ -403,100 +516,109 @@ body::after {
 <script>
 /* ══ COUNTDOWN ══ */
 (function(){
-  var PARTY = new Date('2026-03-28T11:00:00');
-  var BDAY  = new Date('2026-03-29T00:00:00');
-  function pad(n){ return (n < 10 ? '0' : '') + n; }
-  function isPartyDay(){ var d=new Date(); return d.getFullYear()===2026 && d.getMonth()===2 && d.getDate()===28; }
-  function msg(t){ var l=document.getElementById('cd-label'),w=document.getElementById('countdown'); if(l)l.style.display='none'; if(w)w.innerHTML='<span class="cd-message">'+t+'</span>'; }
+  var PARTY=new Date('2026-03-28T11:00:00'),BDAY=new Date('2026-03-29T00:00:00');
+  function pad(n){return(n<10?'0':'')+n;}
+  function isToday(){var d=new Date();return d.getFullYear()===2026&&d.getMonth()===2&&d.getDate()===28;}
+  function msg(t){var l=document.getElementById('cd-label'),w=document.getElementById('countdown');if(l)l.style.display='none';if(w)w.innerHTML='<span class="cd-message">'+t+'</span>';}
   function tick(){
-    var now=new Date(), diff=PARTY-now;
-    if(isPartyDay()){ msg("C\u2019est aujourd\u2019hui\u00a0! \uD83C\uDF3F"); return; }
-    if(now>BDAY){ msg("Quel beau souvenir \uD83C\uDF3F"); return; }
-    if(diff<=0){ msg("C\u2019est aujourd\u2019hui\u00a0! \uD83C\uDF3F"); return; }
-    var ed=document.getElementById('cd-d'), eh=document.getElementById('cd-h'),
-        em=document.getElementById('cd-m'), es=document.getElementById('cd-s');
-    if(ed) ed.textContent=pad(Math.floor(diff/86400000));
-    if(eh) eh.textContent=pad(Math.floor((diff%86400000)/3600000));
-    if(em) em.textContent=pad(Math.floor((diff%3600000)/60000));
-    if(es) es.textContent=pad(Math.floor((diff%60000)/1000));
+    var now=new Date(),diff=PARTY-now;
+    if(isToday()){msg("C\u2019est aujourd\u2019hui\u00a0! \uD83C\uDF3F");return;}
+    if(now>BDAY){msg("Quel beau souvenir \uD83C\uDF3F");return;}
+    if(diff<=0){msg("C\u2019est aujourd\u2019hui\u00a0! \uD83C\uDF3F");return;}
+    var ed=document.getElementById('cd-d'),eh=document.getElementById('cd-h'),em=document.getElementById('cd-m'),es=document.getElementById('cd-s');
+    if(ed)ed.textContent=pad(Math.floor(diff/86400000));
+    if(eh)eh.textContent=pad(Math.floor((diff%86400000)/3600000));
+    if(em)em.textContent=pad(Math.floor((diff%3600000)/60000));
+    if(es)es.textContent=pad(Math.floor((diff%60000)/1000));
   }
-  tick(); setInterval(tick,1000);
+  tick();setInterval(tick,1000);
 })();
 
-/* ══ TIMELINE : animation UNIQUEMENT sur écrans > 480px ══ */
+/* ══ TIMELINE animation desktop seulement ══ */
 (function(){
-  if(window.innerWidth < 480 || !window.IntersectionObserver) return;
-  var items = document.querySelectorAll('.tl-chapter');
-  items.forEach(function(el){ el.classList.add('anim'); });
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target); }
-    });
-  }, { threshold:0, rootMargin:'0px 0px -20px 0px' });
-  items.forEach(function(el){ obs.observe(el); });
-  setTimeout(function(){ items.forEach(function(el){ el.classList.add('show'); }); }, 1200);
+  if(window.innerWidth<480||!window.IntersectionObserver)return;
+  var items=document.querySelectorAll('.tl-chapter');
+  items.forEach(function(el){el.classList.add('anim');});
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');obs.unobserve(e.target);}});
+  },{threshold:0,rootMargin:'0px 0px -20px 0px'});
+  items.forEach(function(el){obs.observe(el);});
+  setTimeout(function(){items.forEach(function(el){el.classList.add('show');});},1200);
 })();
 
-/* ══ CARTE IGN ══ */
-(function(){
-  var DEFAULT = [45.9461, 6.1200];
-  var container = document.getElementById('map-ign');
-  if(!container) return;
+/* ══ CARTE — init après window.load, hauteur explicite inline ══ */
+window.addEventListener('load', function() {
+  var el = document.getElementById('map-ign');
+  if (!el) return;
 
-  var map = L.map('map-ign', {
-    center: DEFAULT, zoom: 15,
-    zoomControl: true, scrollWheelZoom: false, attributionControl: true,
-    fadeAnimation: false, markerZoomAnimation: false
+  /* S'assurer que les dimensions sont bien là */
+  el.style.width  = '100%';
+  el.style.height = '280px';
+  el.style.display = 'block';
+
+  var DEFAULT = [45.9461, 6.12];
+
+  var map = L.map(el, {
+    center: DEFAULT,
+    zoom: 15,
+    zoomControl: true,
+    scrollWheelZoom: false,
+    fadeAnimation: false,
+    markerZoomAnimation: false
   });
 
   L.tileLayer(
     'https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0' +
     '&TILEMATRIXSET=PM&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2' +
     '&STYLE=normal&FORMAT=image/png&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}',
-    { attribution:'© <a href="https://www.ign.fr/">IGN</a> / Géoplateforme', maxZoom:19, tileSize:256 }
+    { attribution:'© IGN / Géoplateforme', maxZoom:19, tileSize:256 }
   ).addTo(map);
 
   var icon = L.divIcon({
     className:'',
-    html:'<div style="width:30px;height:30px;border-radius:50% 50% 50% 0;background:#B8955A;border:2px solid #7A5C2E;transform:rotate(-45deg);box-shadow:0 3px 10px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;"><span style="transform:rotate(45deg);font-size:13px;">🌿</span></div>',
-    iconSize:[30,30], iconAnchor:[15,30], popupAnchor:[0,-32]
+    html:'<div style="width:28px;height:28px;border-radius:50% 50% 50% 0;background:#B8955A;border:2px solid #7A5C2E;transform:rotate(-45deg);box-shadow:0 2px 8px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;"><span style="transform:rotate(45deg);font-size:12px">🌿</span></div>',
+    iconSize:[28,28], iconAnchor:[14,28], popupAnchor:[0,-30]
   });
 
   var marker = L.marker(DEFAULT, {icon:icon}).addTo(map);
-  marker.bindPopup('<div style="font-family:serif;text-align:center"><strong>Salle Orchidée</strong><br><em style="font-size:.85rem;color:#4A6741">4890 Rte de Ferrières · Pringy</em><br><span style="font-size:.75rem;color:#888">Samedi 28 mars · 11h00</span></div>', {maxWidth:200});
+  marker.bindPopup('<b>Salle Orchidée</b><br><i>4890 Rte de Ferrières · Pringy</i><br>Samedi 28 mars · 11h00', {maxWidth:180});
 
-  function fix(){ map.invalidateSize({pan:false}); }
-  [0, 150, 400, 800, 1600].forEach(function(d){ setTimeout(fix,d); });
+  function fix() { map.invalidateSize({pan:false}); }
+  setTimeout(fix, 50);
+  setTimeout(fix, 250);
+  setTimeout(fix, 600);
+  setTimeout(fix, 1400);
   window.addEventListener('resize', fix, {passive:true});
-  window.addEventListener('orientationchange', function(){ setTimeout(fix,500); }, {passive:true});
-  if(window.IntersectionObserver){
+  window.addEventListener('orientationchange', function(){ setTimeout(fix,500); });
+
+  if (window.IntersectionObserver) {
     new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ fix(); setTimeout(fix,200); } });
-    },{threshold:0}).observe(container);
+      entries.forEach(function(e){ if(e.isIntersecting){ fix(); setTimeout(fix,200); }});
+    }, {threshold:0}).observe(el);
   }
 
   fetch('https://api-adresse.data.gouv.fr/search/?q=4890+route+de+ferrieres&postcode=74370&limit=1')
     .then(function(r){return r.json();})
-    .then(function(data){
-      if(!data.features||!data.features.length) return;
-      var c=data.features[0].geometry.coordinates, label=data.features[0].properties.label;
+    .then(function(d){
+      if(!d.features||!d.features.length)return;
+      var c=d.features[0].geometry.coordinates, label=d.features[0].properties.label;
       map.setView([c[1],c[0]],16);
       map.removeLayer(marker);
       marker=L.marker([c[1],c[0]],{icon:icon}).addTo(map);
-      marker.bindPopup('<div style="font-family:serif;text-align:center"><strong>Salle Orchidée</strong><br><em style="font-size:.85rem;color:#4A6741">'+label+'</em><br><span style="font-size:.75rem;color:#888">Samedi 28 mars · 11h00</span></div>',{maxWidth:200});
-      var badge=document.getElementById('commune-badge'); if(badge) badge.textContent=label;
+      marker.bindPopup('<b>Salle Orchidée</b><br><i>'+label+'</i><br>Samedi 28 mars · 11h00',{maxWidth:180});
+      var b=document.getElementById('commune-badge');if(b)b.textContent=label;
       setTimeout(fix,100);
     }).catch(function(){});
 
   fetch('https://geo.api.gouv.fr/communes?nom=Pringy&codeDepartement=74&format=geojson&geometry=contour')
     .then(function(r){return r.json();})
-    .then(function(data){
-      if(!data.features||!data.features.length) return;
-      L.geoJSON({type:'FeatureCollection',features:[data.features[0]]},{
-        style:{color:'#B8955A',weight:2,opacity:.75,fillColor:'#7A9E72',fillOpacity:.07,dashArray:'4 3'}
+    .then(function(d){
+      if(!d.features||!d.features.length)return;
+      L.geoJSON({type:'FeatureCollection',features:[d.features[0]]},{
+        style:{color:'#B8955A',weight:1.5,opacity:.6,fillColor:'#7A9E72',fillOpacity:.06,dashArray:'4 3'}
       }).addTo(map);
     }).catch(function(){});
-})();
+});
 </script>
 </body>
 </html>
