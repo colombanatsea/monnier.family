@@ -285,10 +285,18 @@ body{
   </div>
 
   <div style="text-align:center;margin-bottom:0.5rem;">
-    <a href="mailto:famille@monnier.family?subject=Famille+Monnier" class="btn-famille">✉ Écrire à la famille Monnier</a>
+    <a href="#" data-mailto-home="1" class="btn-famille">✉ Écrire à la famille Monnier</a>
   </div>
   <p class="footer-credit">Fait avec 💙 par <a href="https://colombanatsea.com" target="_blank" rel="noopener">Colomban</a></p>
 
 </div>
+<script>
+(function(){
+  document.querySelectorAll('[data-mailto-home]').forEach(function(el){
+    el.href='mailto:famille@monnier.family?subject=Famille+Monnier';
+    el.removeAttribute('data-mailto-home');
+  });
+})();
+</script>
 </body>
 </html>
