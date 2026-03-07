@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <!-- ══ SÉCURITÉ ══ -->
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="robots" content="noindex, nofollow">
 <meta charset="UTF-8">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -536,7 +541,7 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
       <div class="event-info">
         <div class="ev-card"><span class="ev-icon">🕚</span><h4>Horaires</h4><p>Dès 11h00 · Salle disponible jusqu'à 1h00 du matin 💃</p></div>
         <div class="ev-card"><span class="ev-icon">🥂</span><h4>Apéro & boissons</h4><p>Punch · bière · jus · apéro — c'est prévu.</p></div>
-        <div class="ev-card"><span class="ev-icon">🧀</span><h4>Repas du midi</h4><p>Raclette · vacherin · vin. Restrictions alimentaires ? <a href="mailto:famille@monnier.family">Écrivez-nous →</a></p></div>
+        <div class="ev-card"><span class="ev-icon">🧀</span><h4>Repas du midi</h4><p>Raclette · vacherin · vin. Restrictions alimentaires ? <a href="#" data-mailto="1">Écrivez-nous →</a></p></div>
         <div class="ev-card"><span class="ev-icon">🍰</span><h4>Goûter & soir</h4><p>Goûter prévu. Soir : salades · taboulé · fruits.<br>Prévenez-nous de votre présence !</p></div>
         <div class="ev-card"><span class="ev-icon">🎈</span><h4>Jeux</h4><p>Apportez des jeux intérieurs et extérieurs — pour les petits et les grands !</p></div>
       </div>
@@ -557,7 +562,7 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
         </div>
       </div>
     </div>
-    <p class="event-note">Une question ? — <a href="mailto:famille@monnier.family" style="color:var(--gold-lt);text-decoration:none;border-bottom:1px solid rgba(212,176,122,.3);">famille@monnier.family</a></p>
+    <p class="event-note">Une question ? — <a href="#" data-mailto="1" style="color:var(--gold-lt);text-decoration:none;border-bottom:1px solid rgba(212,176,122,.3);">famille@monnier.family</a></p>
   </div>
 </section>
 
@@ -735,6 +740,16 @@ window.addEventListener('load',function(){
       }).addTo(map);
     }).catch(function(){});
 });
+</script>
+<script>
+/* Anti-scraping : email reconstruit côté client uniquement */
+(function(){
+  var u='famille',d='monnier.family';
+  document.querySelectorAll('[data-mailto]').forEach(function(el){
+    el.href='mailto:'+u+'@'+d+(el.dataset.subject?'?subject='+encodeURIComponent(el.dataset.subject):'');
+    el.removeAttribute('data-mailto');
+  });
+})();
 </script>
 </body>
 </html>
