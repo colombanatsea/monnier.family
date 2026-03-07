@@ -236,10 +236,9 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
   border-radius:20px; overflow:hidden;
   border:2px solid rgba(0,0,0,.07);
   box-shadow:0 8px 40px rgba(0,0,0,.1);
-  /* Mobile WebKit fix: isolate stacking context */
+  /* Stacking context sans transform (évite de casser Leaflet) */
   isolation:isolate;
-  transform:translateZ(0);
-  -webkit-transform:translateZ(0);
+  will-change:transform;
 }
 .map-card-header {
   background:white; padding:1rem 1.4rem;
@@ -248,7 +247,7 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
   flex-wrap:wrap;
   overflow:hidden; /* contient le ripple */
 }
-.map-card-header > div { min-width:0; flex:1; }
+.map-card-header > div:not(.map-pin-dot) { min-width:0; flex:1; overflow:hidden; }
 .map-pin-dot {
   width:32px; height:32px; border-radius:50%;
   background:var(--terr); display:flex; align-items:center; justify-content:center;
@@ -268,7 +267,7 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
 .map-card-title { font-family:'Fraunces',serif; font-weight:700; font-size:clamp(.82rem,2.5vw,1rem); color:var(--ink); white-space:normal; word-break:break-word; }
 .map-card-sub { font-size:.72rem; color:rgba(30,26,16,.45); margin-top:.1rem; }
 
-.map-wrap { position:relative; height:300px; }
+.map-wrap { position:relative; height:300px; z-index:0; overflow:hidden; border-radius:0; }
 #map-fdv { width:100%; height:100%; display:block; }
 /* Leaflet z-index fix on mobile */
 .map-wrap .leaflet-container { width:100% !important; height:100% !important; }
