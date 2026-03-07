@@ -188,6 +188,9 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
 .footer-wave { display:block;font-size:clamp(2.5rem,7vw,4.5rem);animation:wave 2.5s ease-in-out infinite;transform-origin:70% 80%;margin-bottom:.5rem;position:relative; }
 .footer-main { font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,2.8rem);font-weight:300;font-style:italic;color:white;margin-top:.3rem;position:relative; }
 .footer-sub { font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.3);position:relative;margin-top:.5rem; }
+.footer-credit { font-size:.7rem;color:rgba(255,255,255,.22);margin-top:1rem;position:relative; }
+.footer-credit a { color:rgba(255,255,255,.4);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.18);transition:color .2s; }
+.footer-credit a:hover { color:rgba(255,255,255,.75); }
 
 /* ════ RESPONSIVE ════ */
 @media(max-width:900px) {
@@ -624,6 +627,7 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
   <span class="footer-wave">👋</span>
   <p class="footer-main">À samedi !</p>
   <p class="footer-sub">28 mars · Salle Orchidée · Pringy</p>
+  <p class="footer-credit">Fait avec 💙 par <a href="https://colombanatsea.com" target="_blank" rel="noopener">Colomban</a></p>
 </footer>
 
 <script>
