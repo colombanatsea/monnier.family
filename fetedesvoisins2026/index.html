@@ -246,17 +246,24 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
   display:flex; align-items:center; gap:.9rem;
   border-bottom:1.5px solid rgba(0,0,0,.06);
   flex-wrap:wrap;
+  overflow:hidden; /* contient le ripple */
 }
 .map-card-header > div { min-width:0; flex:1; }
 .map-pin-dot {
   width:32px; height:32px; border-radius:50%;
   background:var(--terr); display:flex; align-items:center; justify-content:center;
   font-size:.9rem; flex-shrink:0; position:relative;
+  /* isolation pour le ripple */
+  isolation:isolate;
 }
 .map-pin-dot::after {
-  content:''; position:absolute; inset:-4px; border-radius:50%;
-  border:2px solid rgba(224,122,58,.3);
+  content:''; position:absolute;
+  /* max scale(2) = 64px, reste dans le header */
+  inset:-8px; border-radius:50%;
+  border:2px solid rgba(224,122,58,.35);
   animation:ripple 2s ease-out infinite;
+  pointer-events:none;
+  z-index:-1;
 }
 .map-card-title { font-family:'Fraunces',serif; font-weight:700; font-size:clamp(.82rem,2.5vw,1rem); color:var(--ink); white-space:normal; word-break:break-word; }
 .map-card-sub { font-size:.72rem; color:rgba(30,26,16,.45); margin-top:.1rem; }
