@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 · Vous voguez en eaux inconnues</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;1,300;1,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:    #0e1a2e;
+    --sea:    #1a4a6e;
+    --wave:   #2a7ab8;
+    --foam:   #a8d4f0;
+    --sand:   #f5edd8;
+    --gold:   #c8912a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--ink);
+    color: var(--sand);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* ── Stars ── */
+  .stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+  .star {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s);
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: var(--min, .1); }
+    50% { opacity: var(--max, .7); }
+  }
+
+  /* ── Horizon + sea ── */
+  .sea-scene {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 45vh;
+  }
+
+  .sea-scene svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* ── Content ── */
+  .content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+    max-width: 640px;
+    margin-bottom: 20vh;
+  }
+
+  .error-num {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(6rem, 20vw, 10rem);
+    font-weight: 700;
+    line-height: 1;
+    color: var(--foam);
+    opacity: 0.15;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    letter-spacing: -.02em;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .compass {
+    font-size: clamp(3rem, 10vw, 5rem);
+    display: block;
+    margin: 0 auto 1.5rem;
+    animation: spin 20s linear infinite;
+    transform-origin: center;
+    filter: drop-shadow(0 0 20px rgba(200,145,42,.4));
+  }
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp .8s .2s forwards;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    line-height: 1.2;
+    color: var(--sand);
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp .8s .35s forwards;
+  }
+
+  .desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--foam);
+    opacity: 0;
+    animation: fadeUp .8s .5s forwards;
+    max-width: 420px;
+    margin: 0 auto 2rem;
+  }
+
+  .coords {
+    font-family: 'Fraunces', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    opacity: 0.6;
+    margin-bottom: 2rem;
+    font-style: italic;
+    animation: fadeUp .8s .65s forwards;
+    opacity: 0;
+  }
+
+  .btn-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--gold);
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.75em 1.8em;
+    border-radius: 2em;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    transition: background .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 4px 24px rgba(200,145,42,.3);
+    opacity: 0;
+    animation: fadeUp .8s .8s forwards;
+  }
+  .btn-home:hover {
+    background: #daa53a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(200,145,42,.4);
+  }
+
+  /* ── Boat SVG ── */
+  .boat-wrap {
+    position: fixed;
+    bottom: 42vh;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    animation: bob 3.5s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateX(-50%) translateY(0) rotate(-.8deg); }
+    50%       { transform: translateX(-50%) translateY(-6px) rotate(.8deg); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 480px) {
+    .content { margin-bottom: 26vh; }
+    .boat-wrap { bottom: 44vh; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Stars -->
+<div class="stars" id="stars"></div>
+
+<!-- Sea scene -->
+<div class="sea-scene">
+  <svg viewBox="0 0 1440 400" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#1a4a6e"/>
+        <stop offset="100%" stop-color="#0a2035"/>
+      </linearGradient>
+    </defs>
+    <!-- Back wave -->
+    <path d="M0,120 C180,80 360,160 540,120 C720,80 900,160 1080,120 C1260,80 1380,140 1440,120 L1440,400 L0,400 Z" fill="#0f2d47" opacity="0.9">
+      <animate attributeName="d"
+        dur="6s" repeatCount="indefinite"
+        values="
+          M0,120 C180,80 360,160 540,120 C720,80 900,160 1080,120 C1260,80 1380,140 1440,120 L1440,400 L0,400 Z;
+          M0,140 C180,100 360,140 540,100 C720,60 900,140 1080,100 C1260,60 1380,120 1440,100 L1440,400 L0,400 Z;
+          M0,120 C180,80 360,160 540,120 C720,80 900,160 1080,120 C1260,80 1380,140 1440,120 L1440,400 L0,400 Z
+        "/>
+    </path>
+    <!-- Mid wave -->
+    <path d="M0,160 C240,120 480,200 720,160 C960,120 1200,180 1440,160 L1440,400 L0,400 Z" fill="#14395a" opacity="0.95">
+      <animate attributeName="d"
+        dur="4.5s" repeatCount="indefinite"
+        values="
+          M0,160 C240,120 480,200 720,160 C960,120 1200,180 1440,160 L1440,400 L0,400 Z;
+          M0,180 C240,140 480,180 720,140 C960,100 1200,160 1440,140 L1440,400 L0,400 Z;
+          M0,160 C240,120 480,200 720,160 C960,120 1200,180 1440,160 L1440,400 L0,400 Z
+        "/>
+    </path>
+    <!-- Front wave -->
+    <path d="M0,200 C180,160 360,240 540,200 C720,160 900,240 1080,200 C1260,160 1380,200 1440,190 L1440,400 L0,400 Z" fill="url(#seaGrad)">
+      <animate attributeName="d"
+        dur="3.5s" repeatCount="indefinite"
+        values="
+          M0,200 C180,160 360,240 540,200 C720,160 900,240 1080,200 C1260,160 1380,200 1440,190 L1440,400 L0,400 Z;
+          M0,220 C180,180 360,220 540,180 C720,140 900,220 1080,180 C1260,140 1380,180 1440,170 L1440,400 L0,400 Z;
+          M0,200 C180,160 360,240 540,200 C720,160 900,240 1080,200 C1260,160 1380,200 1440,190 L1440,400 L0,400 Z
+        "/>
+    </path>
+    <!-- Foam flecks -->
+    <g opacity="0.4">
+      <ellipse cx="200" cy="198" rx="18" ry="3" fill="white">
+        <animate attributeName="opacity" dur="2s" values="0.4;0;0.4" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="680" cy="195" rx="24" ry="3" fill="white">
+        <animate attributeName="opacity" dur="2.5s" begin=".6s" values="0.4;0;0.4" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="1100" cy="196" rx="20" ry="3" fill="white">
+        <animate attributeName="opacity" dur="1.8s" begin="1s" values="0.4;0;0.4" repeatCount="indefinite"/>
+      </ellipse>
+    </g>
+  </svg>
+</div>
+
+<!-- Boat -->
+<div class="boat-wrap">
+  <svg width="120" height="80" viewBox="0 0 120 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Hull -->
+    <path d="M10,52 L20,68 L100,68 L110,52 Z" fill="#8B5E3C" stroke="#5a3a1a" stroke-width="1.5"/>
+    <!-- Deck rail -->
+    <rect x="18" y="48" width="84" height="5" rx="2" fill="#a87040"/>
+    <!-- Mast -->
+    <line x1="60" y1="48" x2="60" y2="4" stroke="#d4b896" stroke-width="2.5"/>
+    <!-- Sail main -->
+    <path d="M60,8 L62,44 L94,34 Z" fill="#f5edd8" opacity=".9" stroke="#ddd0b8" stroke-width="1"/>
+    <!-- Sail front -->
+    <path d="M60,14 L58,44 L32,38 Z" fill="#e8ddc8" opacity=".8"/>
+    <!-- Flag -->
+    <path d="M60,4 L60,13 L74,8.5 Z" fill="#c8912a"/>
+    <!-- Porthole -->
+    <circle cx="42" cy="58" r="4" fill="#1a4a6e" stroke="#d4b896" stroke-width="1"/>
+    <circle cx="78" cy="58" r="4" fill="#1a4a6e" stroke="#d4b896" stroke-width="1"/>
+    <!-- Wake -->
+    <path d="M10,70 Q30,66 50,70 Q70,74 110,70" stroke="rgba(168,212,240,.5)" stroke-width="1.5" fill="none"/>
+    <path d="M5,74 Q35,70 65,74 Q90,78 115,74" stroke="rgba(168,212,240,.3)" stroke-width="1" fill="none"/>
+  </svg>
+</div>
+
+<div class="content">
+  <div class="error-num">404</div>
+  <span class="compass">🧭</span>
+  <p class="eyebrow">Erreur de navigation</p>
+  <h1>Vous voguez<br>en eaux inconnues</h1>
+  <p class="desc">Cette page a quitté le port sans laisser d'adresse. Même le capitaine ne sait pas où elle est allée.</p>
+  <p class="coords">45°54′N · 6°07′E · lac d'Annecy</p>
+  <a href="/" class="btn-home">⚓ Regagner le port</a>
+</div>
+
+<script>
+// Generate stars
+(function() {
+  var container = document.getElementById('stars');
+  for (var i = 0; i < 120; i++) {
+    var s = document.createElement('div');
+    s.className = 'star';
+    var size = Math.random() < 0.8 ? 1 : Math.random() < 0.7 ? 2 : 3;
+    s.style.cssText = [
+      'width:' + size + 'px',
+      'height:' + size + 'px',
+      'left:' + (Math.random()*100) + '%',
+      'top:' + (Math.random()*58) + '%',
+      '--d:' + (2 + Math.random()*4) + 's',
+      '--delay:-' + (Math.random()*6) + 's',
+      '--min:' + (0.05 + Math.random()*.15),
+      '--max:' + (0.4 + Math.random()*.6),
+    ].join(';');
+    container.appendChild(s);
+  }
+})();
+</script>
+</body>
+</html>
