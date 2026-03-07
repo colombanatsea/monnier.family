@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#87CEEB"/>
+  <!-- brim -->
+  <ellipse cx="16" cy="20" rx="13" ry="4" fill="#E8B84B"/>
+  <ellipse cx="16" cy="19" rx="13" ry="4" fill="#F0C555"/>
+  <!-- crown -->
+  <rect x="10" y="9" width="12" height="11" rx="1" fill="#E0A838"/>
+  <!-- crown top -->
+  <ellipse cx="16" cy="9" rx="6" ry="2.2" fill="#F5C842"/>
+  <!-- band -->
+  <rect x="10" y="16" width="12" height="2.5" rx=".5" fill="#7B4A18"/>
+  <!-- straw lines -->
+  <line x1="10" y1="11.5" x2="22" y2="11.5" stroke="#C88A20" stroke-width=".6" opacity=".5"/>
+  <line x1="10" y1="13.5" x2="22" y2="13.5" stroke="#C88A20" stroke-width=".6" opacity=".5"/>
+</svg>
