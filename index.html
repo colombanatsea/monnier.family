@@ -133,6 +133,7 @@ body{
 }
 .btn-marie .btn-icon{background:rgba(180,120,160,.25);}
 .btn-fdv   .btn-icon{background:rgba(245,200,66,.2);}
+.btn-bapteme .btn-icon{background:rgba(46,78,160,.2);}
 
 .btn-text{flex:1;text-align:left;}
 .btn-label{
@@ -176,6 +177,27 @@ body{
   html,body{overflow:auto;}
   .content{height:auto;min-height:100vh;justify-content:flex-end;padding-bottom:max(5vh,env(safe-area-inset-bottom,20px));}
 }
+
+  .btn-famille {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.12);
+    color: white;
+    text-decoration: none;
+    padding: 0.65em 1.4em;
+    border-radius: 2em;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: background 0.2s, transform 0.2s;
+    margin-bottom: 0.8rem;
+  }
+  .btn-famille:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-1px);
+  }
 </style>
 </head>
 <body>
@@ -209,8 +231,20 @@ body{
       </div>
       <span class="btn-arrow">→</span>
     </a>
+
+    <a href="/baptemeelise" class="btn btn-bapteme">
+      <div class="btn-icon">✝</div>
+      <div class="btn-text">
+        <span class="btn-label">Baptême d'Élise</span>
+        <span class="btn-sub">16 mai 2026 · Annecy-le-Vieux</span>
+      </div>
+      <span class="btn-arrow">→</span>
+    </a>
   </div>
 
+  <div style="text-align:center;margin-bottom:0.5rem;">
+    <a href="mailto:famille@monnier.family?subject=Famille+Monnier" class="btn-famille">✉ Écrire à la famille Monnier</a>
+  </div>
   <p class="footer-credit">Fait avec 💙 par <a href="https://colombanatsea.com" target="_blank" rel="noopener">Colomban</a></p>
 
 </div>

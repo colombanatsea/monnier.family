@@ -367,6 +367,39 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
   .rsvp-section { padding:3rem 1rem; }
   .rsvp-icon { font-size:2.5rem; }
 }
+
+  .btn-famille {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--sun);
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.65em 1.5em;
+    border-radius: 2em;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 14px rgba(245,200,66,0.3);
+    margin-top: 1rem;
+    display: inline-flex;
+  }
+  .btn-famille:hover {
+    background: var(--sun-lt);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(245,200,66,0.45);
+  }
+  .footer-back {
+    display: block;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s;
+  }
+  .footer-back:hover { color: rgba(255,255,255,0.6); }
 </style>
 </head>
 <body>
@@ -522,9 +555,13 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
 
 <!-- ════ FOOTER ════ -->
 <footer class="footer">
+  <a href="/" class="footer-back">← monnier.family</a>
   <div class="footer-hats">🎩 👒 🧢 👑 🎓</div>
   <p class="footer-text">À samedi 6 juin, avec votre plus beau chapeau !</p>
   <p class="footer-sub">Impasse des Tablettes · Annecy le Vieux · 17h30</p>
+  <a href="#" data-mailto="1" data-subject="Fête des Voisins 2026 - Question" class="btn-famille">
+    ✉ Écrire à la famille Monnier
+  </a>
   <p class="footer-credit">Fait avec 💙 par <a href="https://colombanatsea.com" target="_blank" rel="noopener">Colomban</a></p>
 </footer>
 
