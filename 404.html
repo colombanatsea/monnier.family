@@ -29,7 +29,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     overflow: hidden;
     position: relative;
   }
@@ -57,7 +57,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 45vh;
+    height: 36vh;
   }
 
   .sea-scene svg {
@@ -72,8 +72,9 @@
     z-index: 10;
     text-align: center;
     padding: 2rem;
+    padding-top: clamp(2rem, 5vh, 4rem);
     max-width: 640px;
-    margin-bottom: 32vh;
+    width: 100%;
   }
 
   .error-num {
@@ -175,7 +176,7 @@
   /* ── Boat SVG ── */
   .boat-wrap {
     position: fixed;
-    bottom: 37vh;
+    bottom: 33vh;
     left: 50%;
     transform: translateX(-50%);
     z-index: 5;
@@ -192,8 +193,7 @@
   }
 
   @media (max-width: 480px) {
-    .content { margin-bottom: 34vh; }
-    .boat-wrap { bottom: 39vh; }
+    .boat-wrap { bottom: 31vh; }
   }
 </style>
 </head>
