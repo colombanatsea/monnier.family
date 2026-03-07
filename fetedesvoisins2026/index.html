@@ -22,6 +22,10 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 :root {
+  --btn-bg: var(--sun);
+  --btn-fg: var(--ink);
+  --btn-glow: rgba(245,200,66,0.30);
+
   --sun:    #F5C842;
   --sun-lt: #FDE98A;
   --terr:   #E07A3A;
@@ -368,27 +372,26 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
   .rsvp-icon { font-size:2.5rem; }
 }
 
+/* ── Bouton famille (partagé) ── */
   .btn-famille {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: var(--sun);
-    color: var(--ink);
+    background: var(--btn-bg);
+    color: var(--btn-fg);
     text-decoration: none;
     padding: 0.65em 1.5em;
     border-radius: 2em;
-    font-size: 0.82rem;
+    font-size: 0.83rem;
     font-weight: 600;
     letter-spacing: 0.04em;
-    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 14px rgba(245,200,66,0.3);
-    margin-top: 1rem;
-    display: inline-flex;
+    transition: filter .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 2px 16px var(--btn-glow);
   }
   .btn-famille:hover {
-    background: var(--sun-lt);
+    filter: brightness(1.08);
     transform: translateY(-1px);
-    box-shadow: 0 6px 24px rgba(245,200,66,0.45);
+    box-shadow: 0 6px 24px var(--btn-glow);
   }
 
   /* ── Back nav pill ── */
@@ -425,6 +428,21 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
     .back-nav a { font-size: 0.65rem; padding: 0.35em 0.75em; }
   }
 </style>
+  <!-- Open Graph / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Monnier · de Savoie">
+  <meta property="og:url" content="https://monnier.family/fetedesvoisins2026">
+  <meta property="og:title" content="Fête des Voisins 2026 · 6 juin">
+  <meta property="og:description" content="Fête des Voisins à l'Impasse des Tablettes, Annecy-le-Vieux · 17h30">
+  <meta property="og:image" content="https://monnier.family/og/fdv.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fête des Voisins 2026 · 6 juin">
+  <meta name="twitter:description" content="Fête des Voisins à l'Impasse des Tablettes, Annecy-le-Vieux · 17h30">
+  <meta name="twitter:image" content="https://monnier.family/og/fdv.png">
 </head>
 <body>
 <nav class="back-nav"><a href="/">← monnier.family</a></nav>

@@ -198,7 +198,49 @@ body{
     background: rgba(255,255,255,0.2);
     transform: translateY(-1px);
   }
+:root {
+  --btn-bg: rgba(255,255,255,0.15);
+  --btn-fg: white;
+  --btn-glow: rgba(255,255,255,0.12);
+}
+
+  /* ── Bouton famille (partagé) ── */
+  .btn-famille {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--btn-bg);
+    color: var(--btn-fg);
+    text-decoration: none;
+    padding: 0.65em 1.5em;
+    border-radius: 2em;
+    font-size: 0.83rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: filter .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 2px 16px var(--btn-glow);
+  }
+  .btn-famille:hover {
+    filter: brightness(1.08);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px var(--btn-glow);
+  }
 </style>
+  <!-- Open Graph / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Monnier · de Savoie">
+  <meta property="og:url" content="https://monnier.family/">
+  <meta property="og:title" content="Monnier de Savoie">
+  <meta property="og:description" content="Bienvenue chez nous — Annecy le Vieux, Savoie.">
+  <meta property="og:image" content="https://monnier.family/og/home.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Monnier de Savoie">
+  <meta name="twitter:description" content="Bienvenue chez nous — Annecy le Vieux, Savoie.">
+  <meta name="twitter:image" content="https://monnier.family/og/home.png">
 </head>
 <body>
 

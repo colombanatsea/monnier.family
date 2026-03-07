@@ -15,6 +15,9 @@
 <style>
   :root {
     --blue: #2e4ea0;
+    --btn-bg: var(--blue);
+    --btn-fg: white;
+    --btn-glow: rgba(46,78,160,0.25);
     --blue-light: #3a5cbb;
     --pink: #e2a9f1;
     --teal: #19577e;
@@ -529,27 +532,27 @@
   }
 
 
+/* ── Bouton famille (partagé) ── */
   .btn-famille {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: var(--blue);
-    color: white;
+    background: var(--btn-bg);
+    color: var(--btn-fg);
     text-decoration: none;
-    padding: 0.65em 1.4em;
+    padding: 0.65em 1.5em;
     border-radius: 2em;
-    font-size: 0.82rem;
-    font-weight: 500;
+    font-size: 0.83rem;
+    font-weight: 600;
     letter-spacing: 0.04em;
-    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 12px rgba(46,78,160,0.22);
+    transition: filter .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 2px 16px var(--btn-glow);
   }
   .btn-famille:hover {
-    background: var(--blue-light);
+    filter: brightness(1.08);
     transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(46,78,160,0.28);
+    box-shadow: 0 6px 24px var(--btn-glow);
   }
-  .btn-famille-icon { font-style: normal; }
 
   .footer-credit-text {
     font-size: 0.75rem;
@@ -558,6 +561,21 @@
   }
 
 </style>
+  <!-- Open Graph / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Monnier · de Savoie">
+  <meta property="og:url" content="https://monnier.family/baptemeelise">
+  <meta property="og:title" content="Baptême d'Élise · 16 mai 2026">
+  <meta property="og:description" content="Cérémonie à l'Église Saint-Laurent, Annecy-le-Vieux · 10h30">
+  <meta property="og:image" content="https://monnier.family/og/bapteme.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Baptême d'Élise · 16 mai 2026">
+  <meta name="twitter:description" content="Cérémonie à l'Église Saint-Laurent, Annecy-le-Vieux · 10h30">
+  <meta name="twitter:image" content="https://monnier.family/og/bapteme.png">
 </head>
 <body>
 
@@ -627,8 +645,7 @@
     </div>
 
     <section class="contact-section">
-      <a href="#" data-mailto-bapteme="1" class="btn-famille">
-        <span class="btn-famille-icon">✉</span> Écrire à la famille Monnier
+      <a href="#" data-mailto-bapteme="1" class="btn-famille">Écrire à la famille Monnier
       </a>
     </section>
 

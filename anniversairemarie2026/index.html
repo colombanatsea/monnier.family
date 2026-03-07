@@ -16,6 +16,10 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <style>
 :root {
+  --btn-bg: var(--gold);
+  --btn-fg: var(--forest);
+  --btn-glow: rgba(184,149,90,0.28);
+
   --paper:     #F4EFE4;
   --paper2:    #EDE5D4;
   --ink:       #1A2018;
@@ -240,27 +244,26 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
   .countdown { gap:.25rem; }
 }
 
-  .btn-famille-wrap { margin-top: 1.2rem; position: relative; }
+/* ── Bouton famille (partagé) ── */
   .btn-famille {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    background: var(--gold);
-    color: var(--forest);
+    background: var(--btn-bg);
+    color: var(--btn-fg);
     text-decoration: none;
     padding: 0.65em 1.5em;
     border-radius: 2em;
-    font-size: 0.82rem;
+    font-size: 0.83rem;
     font-weight: 600;
     letter-spacing: 0.04em;
-    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 14px rgba(184,149,90,0.25);
-    font-family: 'Jost', 'Josefin Sans', sans-serif;
+    transition: filter .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 2px 16px var(--btn-glow);
   }
   .btn-famille:hover {
-    background: var(--gold-lt);
+    filter: brightness(1.08);
     transform: translateY(-1px);
-    box-shadow: 0 6px 24px rgba(184,149,90,0.35);
+    box-shadow: 0 6px 24px var(--btn-glow);
   }
 
   /* ── Back nav pill ── */
@@ -297,6 +300,21 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
     .back-nav a { font-size: 0.65rem; padding: 0.35em 0.75em; }
   }
 </style>
+  <!-- Open Graph / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Monnier · de Savoie">
+  <meta property="og:url" content="https://monnier.family/anniversairemarie2026">
+  <meta property="og:title" content="Anniversaire de Marie · 28 mars 2026">
+  <meta property="og:description" content="Marie fête ses 35 ans · Salle Orchidée, Pringy · 11h00">
+  <meta property="og:image" content="https://monnier.family/og/marie.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Anniversaire de Marie · 28 mars 2026">
+  <meta name="twitter:description" content="Marie fête ses 35 ans · Salle Orchidée, Pringy · 11h00">
+  <meta name="twitter:image" content="https://monnier.family/og/marie.png">
 </head>
 <body>
 <nav class="back-nav"><a href="/">← monnier.family</a></nav>
