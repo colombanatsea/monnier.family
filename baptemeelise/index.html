@@ -552,15 +552,37 @@
     gap: 1rem;
   }
 
-  .footer-back {
-    color: var(--blue);
-    opacity: 0.4;
-    font-size: 0.75rem;
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    transition: opacity 0.2s;
+
+
+  .back-nav {
+    position: fixed;
+    top: 1.1rem;
+    left: 1.1rem;
+    z-index: 100;
   }
-  .footer-back:hover { opacity: 0.7; }
+  .back-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #2e4ea0;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    padding: 0.4em 0.9em;
+    border-radius: 2em;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    transition: background 0.2s, transform 0.2s;
+    white-space: nowrap;
+  }
+  .back-nav a:hover {
+    background: white;
+    transform: translateX(-2px);
+  }
+
 
   .btn-famille {
     display: inline-flex;
@@ -594,6 +616,7 @@
 </head>
 <body>
 
+<nav class="back-nav"><a href="/">← monnier.family</a></nav>
 <canvas id="bubbles"></canvas>
 
 <div class="page">
@@ -709,7 +732,6 @@
   </main>
 
   <footer>
-    <a href="/" class="footer-back">← monnier.family</a>
     <span class="footer-credit-text">Fait avec 💙 par Colomban</span>
   </footer>
 
