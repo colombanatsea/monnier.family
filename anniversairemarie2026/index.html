@@ -239,6 +239,39 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
   .cd-sep { font-size:1.5rem; }
   .countdown { gap:.25rem; }
 }
+
+  .btn-famille-wrap { margin-top: 1.2rem; position: relative; }
+  .btn-famille {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gold);
+    color: var(--forest);
+    text-decoration: none;
+    padding: 0.65em 1.5em;
+    border-radius: 2em;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 14px rgba(184,149,90,0.25);
+    font-family: 'Jost', 'Josefin Sans', sans-serif;
+  }
+  .btn-famille:hover {
+    background: var(--gold-lt);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 24px rgba(184,149,90,0.35);
+  }
+  .footer-back {
+    display: block;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.8rem;
+    transition: color 0.2s;
+  }
+  .footer-back:hover { color: rgba(255,255,255,0.65); }
 </style>
 </head>
 <body>
@@ -631,9 +664,15 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
     <path d="M200 190C200 190 320 140 360 90C390 52 340 20 290 50C255 70 200 120 200 150Z" fill="#4A6741"/>
     <path d="M200 190L200 50" stroke="#2D4A32" stroke-width="1.5"/>
   </svg>
+  <a href="/" class="footer-back">← monnier.family</a>
   <span class="footer-wave">👋</span>
   <p class="footer-main">À samedi !</p>
   <p class="footer-sub">28 mars · Salle Orchidée · Pringy</p>
+  <div class="btn-famille-wrap">
+    <a href="#" data-mailto="1" data-subject="Anniversaire de Marie 2026" class="btn-famille">
+      ✉ Écrire à la famille Monnier
+    </a>
+  </div>
   <p class="footer-credit">Fait avec 💙 par <a href="https://colombanatsea.com" target="_blank" rel="noopener">Colomban</a></p>
 </footer>
 
