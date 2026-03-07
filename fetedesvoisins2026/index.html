@@ -230,12 +230,18 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
   border-radius:20px; overflow:hidden;
   border:2px solid rgba(0,0,0,.07);
   box-shadow:0 8px 40px rgba(0,0,0,.1);
+  /* Mobile WebKit fix: isolate stacking context */
+  isolation:isolate;
+  transform:translateZ(0);
+  -webkit-transform:translateZ(0);
 }
 .map-card-header {
   background:white; padding:1rem 1.4rem;
   display:flex; align-items:center; gap:.9rem;
   border-bottom:1.5px solid rgba(0,0,0,.06);
+  flex-wrap:wrap;
 }
+.map-card-header > div { min-width:0; flex:1; }
 .map-pin-dot {
   width:32px; height:32px; border-radius:50%;
   background:var(--terr); display:flex; align-items:center; justify-content:center;
@@ -246,17 +252,20 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
   border:2px solid rgba(224,122,58,.3);
   animation:ripple 2s ease-out infinite;
 }
-.map-card-title { font-family:'Fraunces',serif; font-weight:700; font-size:1rem; color:var(--ink); }
+.map-card-title { font-family:'Fraunces',serif; font-weight:700; font-size:clamp(.82rem,2.5vw,1rem); color:var(--ink); white-space:normal; word-break:break-word; }
 .map-card-sub { font-size:.72rem; color:rgba(30,26,16,.45); margin-top:.1rem; }
 
 .map-wrap { position:relative; height:300px; }
-#map-fdv { width:100%; height:100%; }
+#map-fdv { width:100%; height:100%; display:block; }
+/* Leaflet z-index fix on mobile */
+.map-wrap .leaflet-container { width:100% !important; height:100% !important; }
 .leaflet-tile-pane { filter:saturate(.8) brightness(.95) hue-rotate(5deg); }
 
 .map-card-footer {
   background:white; padding:.8rem 1.4rem;
   display:flex; align-items:center; justify-content:space-between;
   border-top:1.5px solid rgba(0,0,0,.06);
+  flex-wrap:wrap; gap:.4rem;
 }
 .map-card-footer a {
   font-size:.75rem; font-weight:500; color:var(--terr);
@@ -299,6 +308,9 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
 .footer-hats { font-size:2rem; letter-spacing:.5rem; margin-bottom:.8rem; opacity:.6; }
 .footer-text { font-family:'Fraunces',serif; font-style:italic; font-size:1.1rem; color:rgba(255,255,255,.5); }
 .footer-sub { font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.2); margin-top:.4rem; }
+.footer-credit { font-size:.72rem; color:rgba(255,255,255,.25); margin-top:.8rem; }
+.footer-credit a { color:rgba(255,255,255,.45); text-decoration:none; border-bottom:1px solid rgba(255,255,255,.2); transition:color .2s; }
+.footer-credit a:hover { color:rgba(255,255,255,.8); }
 
 /* ══ RESPONSIVE ══ */
 @media(max-width:900px) {
@@ -501,6 +513,7 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
   <div class="footer-hats">🎩 👒 🧢 👑 🎓</div>
   <p class="footer-text">À samedi 6 juin, avec votre plus beau chapeau !</p>
   <p class="footer-sub">Impasse des Tablettes · Annecy le Vieux · 17h30</p>
+  <p class="footer-credit">Fait avec 💙 par <a href="https://colombanatsea.com" target="_blank" rel="noopener">Colomban</a></p>
 </footer>
 
 <script>
