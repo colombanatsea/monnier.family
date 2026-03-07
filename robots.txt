@@ -1,0 +1,10 @@
+# monnier.family
+User-agent: *
+# Bloquer l'indexation des pages d'événements (adresse, dates, contacts)
+Disallow: /anniversairemarie2026/
+Disallow: /fetedesvoisins2026/
+
+# Autoriser la racine (page d'accueil générique)
+Allow: /
+
+Sitemap: https://monnier.family/sitemap.xml
