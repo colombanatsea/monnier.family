@@ -39,6 +39,17 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='1'/%3E%3C/svg%3E");
   opacity:.045; }
 
+/* ════ JOUR-J ANIMATION ════ */
+.jourj-overlay{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
+.jourj-particle{position:absolute;top:-60px;will-change:transform,opacity;animation:jourjFall linear forwards}
+@keyframes jourjFall{0%{opacity:1;transform:translateY(0) rotate(0deg) scale(1)}70%{opacity:1}100%{opacity:0;transform:translateY(calc(100vh + 80px)) rotate(var(--rot,360deg)) scale(var(--end-scale,.7))}}
+.jourj-banner{position:fixed;top:0;left:0;right:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:.9rem 1.5rem;
+  background:linear-gradient(135deg,var(--forest),#3a5e3f);color:var(--gold-lt);
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,3vw,1.6rem);
+  letter-spacing:.06em;box-shadow:0 4px 24px rgba(0,0,0,.25);
+  animation:jourjBannerIn .8s cubic-bezier(.22,1,.36,1) both}
+@keyframes jourjBannerIn{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+
 @keyframes fadeUp    { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
 @keyframes breathe   { 0%,100%{opacity:.3;transform:scaleY(.6)} 50%{opacity:1;transform:scaleY(1)} }
 @keyframes blink     { 0%,100%{opacity:.4} 50%{opacity:.1} }
@@ -831,6 +842,47 @@ window.addEventListener('load',function(){
     el.href='mailto:'+u+'@'+d+(el.dataset.subject?'?subject='+encodeURIComponent(el.dataset.subject):'');
     el.removeAttribute('data-mailto');
   });
+})();
+</script>
+<script>
+/* ══ JOUR-J : fleurs & feuilles ══ */
+(function(){
+  var d=new Date();
+  if(!(d.getFullYear()===2026&&d.getMonth()===2&&d.getDate()===28))return;
+
+  /* Banner */
+  var b=document.createElement('div');b.className='jourj-banner';
+  b.textContent="\uD83C\uDF3F C\u2019est aujourd\u2019hui\u00a0! \uD83C\uDF3F";
+  document.body.appendChild(b);
+
+  /* Overlay */
+  var o=document.createElement('div');o.className='jourj-overlay';document.body.appendChild(o);
+  var emojis=['\uD83C\uDF38','\uD83C\uDF3A','\uD83C\uDF3F','\uD83C\uDF42','\uD83C\uDF43','\uD83C\uDF3B','\uD83C\uDFF5\uFE0F'];
+  var count=window.innerWidth<600?25:45;
+  var wave=0;
+
+  function burst(){
+    for(var i=0;i<count;i++){
+      (function(i){
+        setTimeout(function(){
+          var p=document.createElement('span');p.className='jourj-particle';
+          p.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+          p.style.left=Math.random()*100+'%';
+          p.style.fontSize=(1+Math.random()*1.8)+'rem';
+          p.style.setProperty('--rot',(Math.random()*720-360)+'deg');
+          p.style.setProperty('--end-scale',(0.4+Math.random()*0.4).toFixed(2));
+          var dur=4+Math.random()*5;
+          p.style.animationDuration=dur+'s';
+          p.style.animationDelay=(Math.random()*3)+'s';
+          o.appendChild(p);
+          setTimeout(function(){if(p.parentNode)p.parentNode.removeChild(p);},((dur+3)*1000)+100);
+        },Math.random()*2000);
+      })(i);
+    }
+    wave++;
+    if(wave<4)setTimeout(burst,6000);
+  }
+  burst();
 })();
 </script>
 </body>
