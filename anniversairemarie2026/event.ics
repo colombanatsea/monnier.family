@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//monnier.family//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260328T110000
+DTEND:20260328T200000
+SUMMARY:Anniversaire de Marie – 35 ans 🌿
+DESCRIPTION:Rendez-vous à partir de 11h00.\nApéro · Raclette · Jeux · Goûter · Soirée !\n[retiré], [retiré], [retiré].\nhttps://monnier.family/anniversairemarie2026/
+LOCATION:[retiré], [retiré], [retiré]
+URL:https://monnier.family/anniversairemarie2026/
+END:VEVENT
+END:VCALENDAR

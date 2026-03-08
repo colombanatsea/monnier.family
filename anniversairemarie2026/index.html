@@ -19,6 +19,9 @@
   --btn-bg: var(--gold);
   --btn-fg: var(--forest);
   --btn-glow: rgba(184,149,90,0.28);
+  --cal-border: var(--gold);
+  --cal-bg:     transparent;
+  --cal-fg:     var(--gold);
 
   --paper:     #F4EFE4;
   --paper2:    #EDE5D4;
@@ -312,6 +315,22 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
   @media (max-width: 480px) {
     .back-nav a { font-size: 0.65rem; padding: 0.35em 0.75em; }
   }
+  /* ── Ajouter au calendrier ── */
+  .cal-wrap{display:flex;justify-content:center;margin:1.5rem 0 .5rem}
+  .cal-dropdown{position:relative;display:inline-block}
+  .cal-btn{display:inline-flex;align-items:center;gap:.55rem;padding:.55rem 1.3rem;border-radius:2rem;border:2px solid var(--cal-border);background:var(--cal-bg);color:var(--cal-fg);font-family:inherit;font-size:.85rem;font-weight:600;letter-spacing:.03em;cursor:pointer;transition:opacity .2s,transform .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent}
+  .cal-btn:hover,.cal-btn:focus-visible{opacity:.78;outline:none}
+  .cal-btn:active{transform:scale(.97)}
+  .cal-chevron{transition:transform .2s;flex-shrink:0}
+  .cal-dropdown.open .cal-chevron{transform:rotate(180deg)}
+  .cal-menu{position:absolute;bottom:calc(100% + .6rem);left:50%;transform:translateX(-50%) translateY(6px);min-width:215px;background:#fff;border-radius:1rem;box-shadow:0 8px 32px rgba(0,0,0,.18);overflow:hidden;z-index:500;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s}
+  .cal-dropdown.open .cal-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+  .cal-menu a{display:flex;align-items:center;gap:.8rem;padding:.8rem 1.15rem;color:#1a1a1a;text-decoration:none;font-size:.85rem;font-weight:500;line-height:1;border-bottom:1px solid #f0f0f0;transition:background .14s}
+  .cal-menu a:last-child{border-bottom:none}
+  .cal-menu a:hover,.cal-menu a:focus-visible{background:#f4f4f4;outline:none}
+  .cal-menu a svg{width:1.3rem;height:1.3rem;flex-shrink:0}
+  @media(max-width:400px){.cal-menu{min-width:190px}.cal-menu a{padding:.7rem 1rem;font-size:.8rem}}
+  @media(prefers-reduced-motion:reduce){.cal-menu,.cal-btn,.cal-chevron{transition:none}}
 </style>
   <!-- Open Graph / WhatsApp -->
   <meta property="og:type" content="website">
@@ -653,6 +672,29 @@ body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:
       </div>
     </div>
     <div style="text-align:center;margin-top:.8rem;"><a href="#" data-mailto="1" data-subject="Anniversaire de Marie 2026" class="btn-famille">✉ Écrire à la famille Monnier</a></div>
+    <div class="cal-wrap">
+      <div class="cal-dropdown" id="cal-marie">
+        <button class="cal-btn" aria-haspopup="true" aria-expanded="false" aria-controls="cal-marie-menu">
+          <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" width="15" height="15"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+          Ajouter à mon agenda
+          <svg class="cal-chevron" aria-hidden="true" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="11" height="11"><path d="M1 1.5l5 5 5-5"/></svg>
+        </button>
+        <div class="cal-menu" id="cal-marie-menu" role="menu">
+          <a href="/anniversairemarie2026/event.ics" download="anniversaire-marie-2026.ics" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            iCalendar / Apple
+          </a>
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Anniversaire%20de%20Marie%20%E2%80%93%2035%20ans&dates=20260328T110000%2F20260328T200000&details=Rendez-vous%20%C3%A0%20partir%20de%2011h00.%20Ap%C3%A9ro%2C%20raclette%2C%20jeux%2C%20go%C3%BBter%20!&location=Salle%20Orch%C3%ADd%C3%A9e%2C%204890%20Rte%20de%20Ferri%C3%A8res%2C%2074370%20Pringy" target="_blank" rel="noopener noreferrer" role="menuitem">
+            <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.79-.07-1.54-.19-2.27h-11.3v4.51h6.46c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.57-5.17 3.57-8.82z"/><path fill="#34A853" d="M12.255 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96h-3.98v3.09C3.515 21.3 7.565 24 12.255 24z"/><path fill="#FBBC05" d="M5.525 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62h-3.98a11.86 11.86 0 000 10.76l3.98-3.09z"/><path fill="#EA4335" d="M12.255 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C18.205 1.19 15.495 0 12.255 0c-4.69 0-8.74 2.7-10.71 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
+            Google Agenda
+          </a>
+          <a href="https://outlook.live.com/calendar/0/deeplink/compose?subject=Anniversaire%20de%20Marie%20%E2%80%93%2035%20ans&startdt=2026-03-28T11%3A00%3A00&enddt=2026-03-28T20%3A00%3A00&body=Rendez-vous%20%C3%A0%20partir%20de%2011h00.%20Ap%C3%A9ro%2C%20raclette%2C%20jeux%2C%20go%C3%BBter%20!&location=Salle%20Orch%C3%ADd%C3%A9e%2C%204890%20Rte%20de%20Ferri%C3%A8res%2C%2074370%20Pringy" target="_blank" rel="noopener noreferrer" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="3" fill="#0078D4"/><path d="M5 7h6.5c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5H5V7z" fill="#fff"/><circle cx="8.25" cy="11" r="2.25" fill="#0078D4"/><path d="M13 9.5l6-1.5v7l-6-1.5V9.5z" fill="#fff"/></svg>
+            Outlook
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -886,6 +928,10 @@ window.addEventListener('load',function(){
   }
   burst();
 })();
+</script>
+<!-- Ajouter au calendrier -->
+<script>
+(function(){'use strict';document.querySelectorAll('.cal-dropdown').forEach(function(dd){var btn=dd.querySelector('.cal-btn');function open(){dd.classList.add('open');btn.setAttribute('aria-expanded','true');}function close(){dd.classList.remove('open');btn.setAttribute('aria-expanded','false');}btn.addEventListener('click',function(e){e.stopPropagation();dd.classList.contains('open')?close():open();});document.addEventListener('click',function(e){if(!dd.contains(e.target))close();});document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});dd.querySelector('.cal-menu').querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});});})();
 </script>
 </body>
 </html>
