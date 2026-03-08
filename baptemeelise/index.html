@@ -50,15 +50,17 @@
   }
 
   /* ── JOUR-J ANIMATION ── */
-  .jourj-overlay{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
+  .jourj-overlay{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden;contain:strict}
   .jourj-particle{position:absolute;bottom:-60px;will-change:transform,opacity;animation:jourjRise linear forwards}
   @keyframes jourjRise{0%{opacity:.9;transform:translateY(0) scale(1)}70%{opacity:.8}100%{opacity:0;transform:translateY(calc(-100vh - 80px)) scale(var(--end-scale,.5))}}
-  .jourj-banner{position:fixed;top:0;left:0;right:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:.9rem 1.5rem;
+  .jourj-banner{position:fixed;top:0;left:0;right:0;z-index:10000;display:flex;align-items:center;justify-content:center;
+    padding:.9rem 1.5rem;padding-top:max(.9rem,env(safe-area-inset-top,.9rem));
     background:linear-gradient(135deg,#2e4ea0,#19577e);color:#fff;
     font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.1rem,3vw,1.6rem);
     letter-spacing:.06em;box-shadow:0 4px 24px rgba(0,0,0,.18);
     animation:jourjBannerIn .8s cubic-bezier(.22,1,.36,1) both}
   @keyframes jourjBannerIn{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+  @media(prefers-reduced-motion:reduce){.jourj-particle{animation:none!important;display:none!important}.jourj-banner{animation:none}}
 
   /* ── Layout ── */
   .page {
@@ -763,21 +765,26 @@
   var d=new Date();
   if(!(d.getFullYear()===2026&&d.getMonth()===4&&d.getDate()===16))return;
 
-  /* Banner */
+  /* Banner — toujours affichée */
   var b=document.createElement('div');b.className='jourj-banner';
   b.textContent="\u2728 C\u2019est aujourd\u2019hui\u00a0! \u2728";
   document.body.appendChild(b);
+
+  /* Respect prefers-reduced-motion */
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 
   /* Overlay */
   var o=document.createElement('div');o.className='jourj-overlay';document.body.appendChild(o);
   var colors=['#2e4ea0','#e2a9f1','#19577e','#d1e1e7','#a0c4ff','#bdb2ff','#ffc6ff'];
   var count=window.innerWidth<600?20:35;
+  var MAX_DOM=180;
   var wave=0;
 
   function burst(){
     for(var i=0;i<count;i++){
       (function(i){
         setTimeout(function(){
+          if(o.childElementCount>MAX_DOM)return;
           var p=document.createElement('span');p.className='jourj-particle';
           var size=8+Math.random()*28;
           var c=colors[Math.floor(Math.random()*colors.length)];
@@ -791,7 +798,7 @@
           p.style.animationDuration=dur+'s';
           p.style.animationDelay=(Math.random()*3)+'s';
           o.appendChild(p);
-          setTimeout(function(){if(p.parentNode)p.parentNode.removeChild(p);},((dur+3)*1000)+100);
+          setTimeout(function(){try{if(p.parentNode)p.parentNode.removeChild(p)}catch(e){}},((dur+3)*1000)+100);
         },Math.random()*2500);
       })(i);
     }

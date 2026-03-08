@@ -48,15 +48,17 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
 @keyframes ripple   { 0%{transform:scale(1);opacity:.5} 100%{transform:scale(2.5);opacity:0} }
 
 /* ══ JOUR-J ANIMATION ══ */
-.jourj-overlay{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden}
+.jourj-overlay{position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden;contain:strict}
 .jourj-particle{position:absolute;top:-60px;will-change:transform,opacity;animation:jourjFall linear forwards}
 @keyframes jourjFall{0%{opacity:1;transform:translateY(0) rotate(0deg) scale(1)}70%{opacity:1}100%{opacity:0;transform:translateY(calc(100vh + 80px)) rotate(var(--rot,360deg)) scale(var(--end-scale,.7))}}
-.jourj-banner{position:fixed;top:0;left:0;right:0;z-index:10000;display:flex;align-items:center;justify-content:center;padding:.9rem 1.5rem;
+.jourj-banner{position:fixed;top:0;left:0;right:0;z-index:10000;display:flex;align-items:center;justify-content:center;
+  padding:.9rem 1.5rem;padding-top:max(.9rem,env(safe-area-inset-top,.9rem));
   background:linear-gradient(135deg,#D4860B,#F5C842);color:#1a1a1a;
   font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.1rem,3vw,1.6rem);
   letter-spacing:.04em;box-shadow:0 4px 24px rgba(0,0,0,.18);
   animation:jourjBannerIn .8s cubic-bezier(.22,1,.36,1) both}
 @keyframes jourjBannerIn{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+@media(prefers-reduced-motion:reduce){.jourj-particle{animation:none!important;display:none!important}.jourj-banner{animation:none}}
 
 /* ══ HERO ══ */
 .hero {
@@ -1043,21 +1045,26 @@ window.addEventListener('load', function(){
   var d=new Date();
   if(!(d.getFullYear()===2026&&d.getMonth()===5&&d.getDate()===6))return;
 
-  /* Banner */
+  /* Banner — toujours affichée */
   var b=document.createElement('div');b.className='jourj-banner';
   b.textContent="\uD83C\uDF89 C\u2019est aujourd\u2019hui\u00a0! \uD83C\uDF89";
   document.body.appendChild(b);
+
+  /* Respect prefers-reduced-motion */
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 
   /* Overlay */
   var o=document.createElement('div');o.className='jourj-overlay';document.body.appendChild(o);
   var emojis=['\uD83C\uDF3B','\uD83C\uDF3B','\uD83C\uDF3B','\u2600\uFE0F','\uD83C\uDF3E'];
   var count=window.innerWidth<600?22:40;
+  var MAX_DOM=180;
   var wave=0;
 
   function burst(){
     for(var i=0;i<count;i++){
       (function(i){
         setTimeout(function(){
+          if(o.childElementCount>MAX_DOM)return;
           var p=document.createElement('span');p.className='jourj-particle';
           p.textContent=emojis[Math.floor(Math.random()*emojis.length)];
           p.style.left=Math.random()*100+'%';
@@ -1068,7 +1075,7 @@ window.addEventListener('load', function(){
           p.style.animationDuration=dur+'s';
           p.style.animationDelay=(Math.random()*3)+'s';
           o.appendChild(p);
-          setTimeout(function(){if(p.parentNode)p.parentNode.removeChild(p);},((dur+3)*1000)+100);
+          setTimeout(function(){try{if(p.parentNode)p.parentNode.removeChild(p)}catch(e){}},((dur+3)*1000)+100);
         },Math.random()*2000);
       })(i);
     }
