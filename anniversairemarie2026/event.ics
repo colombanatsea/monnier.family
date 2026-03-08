@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//monnier.family//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260328T110000
+DTEND:20260328T200000
+SUMMARY:Anniversaire de Marie – 35 ans 🌿
+DESCRIPTION:Rendez-vous à partir de 11h00.\nApéro · Raclette · Jeux · Goûter · Soirée !\nSalle Orchidée\, 4890 Rte de Ferrières\, 74370 Pringy.\nhttps://monnier.family/anniversairemarie2026/
+LOCATION:Salle Orchidée\, 4890 Rte de Ferrières\, 74370 Pringy
+URL:https://monnier.family/anniversairemarie2026/
+END:VEVENT
+END:VCALENDAR

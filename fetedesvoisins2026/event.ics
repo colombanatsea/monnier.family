@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//monnier.family//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260606T173000
+DTEND:20260606T220000
+SUMMARY:🌻 Fête des Voisins – Impasse des Tablettes
+DESCRIPTION:Fête des Voisins chez la famille Monnier de Savoie.\nApportez un truc salé et quelque chose à boire — le sucré est offert !\n28 Impasse des Tablettes\, 74940 Annecy-le-Vieux.\nhttps://monnier.family/fetedesvoisins2026/
+LOCATION:28 Impasse des Tablettes\, 74940 Annecy-le-Vieux
+URL:https://monnier.family/fetedesvoisins2026/
+END:VEVENT
+END:VCALENDAR

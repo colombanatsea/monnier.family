@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//monnier.family//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260516T103000
+DTEND:20260516T170000
+SUMMARY:Baptême d'Élise ✝️
+DESCRIPTION:Cérémonie à 10h30 — Église Saint-Laurent\, Annecy-le-Vieux.\nDéjeuner au 28 impasse des Tablettes\, 74940 Annecy-le-Vieux.\nhttps://monnier.family/baptemeelise/
+LOCATION:Église Saint-Laurent\, Annecy-le-Vieux
+URL:https://monnier.family/baptemeelise/
+END:VEVENT
+END:VCALENDAR
