@@ -254,9 +254,7 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
   border-radius:20px; overflow:hidden;
   border:2px solid rgba(0,0,0,.07);
   box-shadow:0 8px 40px rgba(0,0,0,.1);
-  /* Stacking context sans transform (évite de casser Leaflet) */
   isolation:isolate;
-  will-change:transform;
 }
 .map-card-header {
   background:white; padding:1rem 1.4rem;
@@ -542,13 +540,13 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
 <section class="info-section">
   <div class="info-inner">
     <p class="section-eyebrow">Programme</p>
-    <h2 class="section-title">Ce soir-là,<br>on fait <em>voisinage</em></h2>
+    <h2 class="section-title">Ce soir-là,<br>on fête <em>les voisins</em></h2>
 
     <div class="cards-grid">
       <div class="info-card">
         <span class="info-card-icon">🧀</span>
         <h3>Vous apportez</h3>
-        <p>Un truc salé et quelque chose à boire. Faites-vous plaisir — charcuterie, fromage, tapenade, salades… tout est bienvenu.</p>
+        <p>Un truc salé et quelque chose à boire. Faites-vous plaisir : charcuterie, fromage, tapenade, salades… tout est bienvenu.</p>
         <span class="tag">Salé + boissons</span>
       </div>
       <div class="info-card">
@@ -560,7 +558,7 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
       <div class="info-card">
         <span class="info-card-icon">🌞</span>
         <h3>L'ambiance</h3>
-        <p>Décontractée, estivale, en plein air. On est voisins, on se connaît — ou on va se connaître.</p>
+        <p>Décontractée, estivale, en plein air. On est voisins, on se connaît… ou on va se connaître.</p>
         <span class="tag">Été · Convivial</span>
       </div>
     </div>
@@ -569,7 +567,7 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
       <span class="hat-emoji">👒</span>
       <div class="hat-rule-text">
         <h3>La règle d'or : le chapeau</h3>
-        <p>C'est l'été, on a tous un chapeau. Bob, panama, canotier, casquette, sombrero ou chapeau de jardinier — peu importe, mais il faut le porter. C'est la règle, c'est la fête.</p>
+        <p>C'est l'été, on a tous un chapeau. Bob, panama, canotier, casquette, sombrero ou chapeau de jardinier… peu importe, mais il faut le porter. C'est la règle, c'est la fête.</p>
       </div>
     </div>
   </div>
@@ -642,7 +640,7 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
   <div class="rsvp-inner">
     <span class="rsvp-icon">✉️</span>
     <h2 class="rsvp-title">Vous venez ?<br><em>Dites-le nous !</em></h2>
-    <p class="rsvp-sub">Pour qu'on soit prêts en nombre — et qu'il y ait assez de desserts. Un petit mot suffit, on est voisins après tout.</p>
+    <p class="rsvp-sub">Pour qu'on soit prêts en nombre, et qu'il y ait assez de desserts. Un petit mot suffit, on est voisins après tout.</p>
     <a href="#" data-mailto="1" data-subject="Fête des Voisins 2026 - Je viens !" class="rsvp-btn">
       📬 Écrire à la famille Monnier
     </a>
@@ -654,7 +652,7 @@ body { background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-ser
   <div class="footer-hats">🎩 👒 🧢 👑 🎓</div>
   <p class="footer-text">À samedi 13 juin, avec votre plus beau chapeau !</p>
   <p class="footer-sub">Impasse des Tablettes · Annecy le Vieux · 17h30</p>
-  <p class="footer-credit">Fait avec 💙 par <a href="https://colombanatsea.com" target="_blank" rel="noopener">Colomban</a> — Protégé par <a href="https://vaiata-dynamics.com/fr/cyber/" target="_blank" rel="noopener noreferrer">VAIATA Cyber</a></p>
+  <p class="footer-credit">Fait avec 💙 par <a href="https://colombanatsea.com" target="_blank" rel="noopener">Colomban</a> · Protégé par <a href="https://vaiata-dynamics.com/fr/cyber/" target="_blank" rel="noopener noreferrer">VAIATA Cyber</a></p>
 </footer>
 
 <script>
@@ -698,12 +696,19 @@ window.addEventListener('load', function(){
   var DEFAULT = [45.9147, 6.1558]; /* Annecy le Vieux */
   var map = L.map(el, { center:DEFAULT, zoom:16, scrollWheelZoom:false, fadeAnimation:false });
 
-  L.tileLayer(
+  var ign = L.tileLayer(
     'https://data.geopf.fr/wmts?REQUEST=GetTile&SERVICE=WMTS&VERSION=1.0.0' +
     '&TILEMATRIXSET=PM&LAYER=GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2' +
     '&STYLE=normal&FORMAT=image/png&TILECOL={x}&TILEROW={y}&TILEMATRIX={z}',
     { attribution:'© IGN / Géoplateforme', maxZoom:19, tileSize:256 }
   ).addTo(map);
+  var ignFailed=false;
+  ign.on('tileerror',function(){
+    if(ignFailed) return; ignFailed=true;
+    map.removeLayer(ign);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {attribution:'© OpenStreetMap',maxZoom:19}).addTo(map);
+  });
 
   var icon = L.divIcon({
     className:'',
