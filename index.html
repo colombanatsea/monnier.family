@@ -189,7 +189,40 @@ body{
 }
 .footer-credit a:hover{color:rgba(255,255,255,.65);}
 
-/* ── Mobile ── */
+/* ── Past events toggle ── */
+#past-toggle{
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  background:none;border:none;
+  color:rgba(255,255,255,.38);
+  font-family:'DM Sans',sans-serif;
+  font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+  cursor:pointer;
+  padding:.5rem 1rem;
+  margin-bottom:.4rem;
+  transition:color .2s;
+}
+#past-toggle:hover{color:rgba(255,255,255,.65);}
+.past-toggle-arrow{
+  font-size:.65rem;
+  transition:transform .25s;
+  display:inline-block;
+}
+#past-toggle[aria-expanded="true"] .past-toggle-arrow{
+  transform:rotate(180deg);
+}
+#past-section{
+  width:100%;max-width:340px;
+  overflow:hidden;
+}
+#past-section .buttons{
+  margin-bottom:0;
+  opacity:.72;
+}
+#past-section .btn{
+  border-color:rgba(255,255,255,.1);
+}
+
+
 @media(max-width:480px){
   .content{padding:0 1.2rem 5vh;}
   .buttons{max-width:100%;}
@@ -276,8 +309,8 @@ body{
     <p class="subtitle">Bienvenue à vous</p>
   </div>
 
-  <div class="buttons">
-    <a href="/anniversairemarie2026" class="btn btn-marie">
+  <div class="buttons" id="upcoming-buttons">
+    <a href="/anniversairemarie2026" class="btn btn-marie" data-event-date="2026-03-28">
       <div class="btn-icon">🩰</div>
       <div class="btn-text">
         <span class="btn-label">Anniversaire de Marie</span>
@@ -286,7 +319,7 @@ body{
       <span class="btn-arrow">→</span>
     </a>
 
-    <a href="/baptemeelise" class="btn btn-bapteme">
+    <a href="/baptemeelise" class="btn btn-bapteme" data-event-date="2026-05-16">
       <div class="btn-icon">✝</div>
       <div class="btn-text">
         <span class="btn-label">Baptême d'Élise</span>
@@ -295,7 +328,7 @@ body{
       <span class="btn-arrow">→</span>
     </a>
 
-    <a href="/fetedesvoisins2026" class="btn btn-fdv">
+    <a href="/fetedesvoisins2026" class="btn btn-fdv" data-event-date="2026-06-13">
       <div class="btn-icon">👒</div>
       <div class="btn-text">
         <span class="btn-label">Fête des Voisins</span>
@@ -303,6 +336,15 @@ body{
       </div>
       <span class="btn-arrow">→</span>
     </a>
+  </div>
+
+  <!-- Événements passés — injectés par JS si besoin -->
+  <button id="past-toggle" style="display:none;" aria-expanded="false">
+    <span class="past-toggle-label">Événements passés</span>
+    <span class="past-toggle-arrow" aria-hidden="true">▾</span>
+  </button>
+  <div id="past-section" style="display:none;" aria-hidden="true">
+    <div class="buttons" id="past-buttons"></div>
   </div>
 
   <div style="text-align:center;margin-bottom:0.5rem;">
@@ -317,6 +359,46 @@ body{
     el.href='mailto:famille@monnier.family?subject=Famille+Monnier';
     el.removeAttribute('data-mailto-home');
   });
+
+  // ── Événements passés (7 jours après la date) ──
+  var today = new Date();
+  today.setHours(0,0,0,0);
+  var upcomingContainer = document.getElementById('upcoming-buttons');
+  var pastContainer     = document.getElementById('past-buttons');
+  var pastSection       = document.getElementById('past-section');
+  var toggle            = document.getElementById('past-toggle');
+  if(!upcomingContainer || !pastContainer) return;
+
+  var pastItems = [];
+  var allBtns = Array.prototype.slice.call(upcomingContainer.querySelectorAll('.btn'));
+  allBtns.forEach(function(btn){
+    var d = btn.getAttribute('data-event-date');
+    if(!d) return;
+    var parts = d.split('-');
+    var eventDate = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+    var threshold = new Date(eventDate);
+    threshold.setDate(threshold.getDate() + 7);
+    if(threshold <= today){
+      pastItems.push(btn);
+    }
+  });
+
+  if(pastItems.length > 0){
+    pastItems.forEach(function(btn){ pastContainer.appendChild(btn); });
+    toggle.style.display = 'flex';
+    toggle.addEventListener('click', function(){
+      var open = pastSection.style.display !== 'none';
+      if(open){
+        pastSection.style.display = 'none';
+        pastSection.setAttribute('aria-hidden','true');
+        toggle.setAttribute('aria-expanded','false');
+      } else {
+        pastSection.style.display = 'block';
+        pastSection.setAttribute('aria-hidden','false');
+        toggle.setAttribute('aria-expanded','true');
+      }
+    });
+  }
 })();
 </script>
 </body>
