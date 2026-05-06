@@ -1,0 +1,1239 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livret de cérémonie · Baptême d’Élise · 16 mai 2026</title>
+
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="strict-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="description" content="Livret de la cérémonie de baptême d’Élise, samedi 16 mai 2026, Église Saint-Laurent d’Annecy-le-Vieux.">
+
+<meta property="og:title" content="Livret de cérémonie · Baptême d’Élise">
+<meta property="og:description" content="Samedi 16 mai 2026 · Église Saint-Laurent · Annecy-le-Vieux">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://monnier.family/og/bapteme.png">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 60' fill='none' stroke='%232e4ea0' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='20' y1='6' x2='20' y2='54'/%3E%3Cline x1='8' y1='20' x2='32' y2='20'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink:        #2e4ea0;
+    --ink-soft:   #19577e;
+    --ink-light:  #3a5cbb;
+    --rose:       #f4d6e0;
+    --rose-deep:  #e2a9f1;
+    --sky:        #dde8f2;
+    --sand:       #f1e7d4;
+    --cream:      #f7f5f0;
+    --paper:      #fbfaf6;
+    --grey:       #d1e1e7;
+    --rule:       rgba(46,78,160,.18);
+    --rule-soft:  rgba(46,78,160,.08);
+    --serif: 'Cormorant Garamond', 'Garamond', Georgia, serif;
+    --sans:  'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    margin: 0;
+    background: #ece5d8;
+    padding: 24px 16px;
+    font-family: var(--sans);
+    color: var(--ink);
+  }
+
+  .toolbar {
+    max-width: 980px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: .75;
+  }
+  .toolbar a {
+    color: inherit;
+    text-decoration: none;
+    padding: 6px 14px;
+    border: 1px solid var(--ink-soft);
+    border-radius: 2em;
+    transition: background .2s, color .2s;
+  }
+  .toolbar a:hover { background: var(--ink-soft); color: var(--cream); }
+  .toolbar .back-link { padding-left: 4px; border: 0; }
+
+  .spread {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    max-width: 980px;
+    margin: 0 auto 24px;
+  }
+  .page {
+    width: 100%;
+    aspect-ratio: 148 / 210;
+    background: var(--paper);
+    box-shadow: 0 4px 30px rgba(46,78,160,.10), 0 1px 4px rgba(0,0,0,.06);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border: 1px solid var(--ink-soft);
+    padding: .4em 1em;
+    border-radius: 2em;
+  }
+  .fleuron { color: var(--rose-deep); font-size: 14px; line-height: 1; }
+  .rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ink) 30%, var(--ink) 70%, transparent);
+    opacity: .18;
+    margin: 0 auto 12px;
+    width: 60%;
+    border: 0;
+  }
+
+  /* ════════ COUVERTURE ════════ */
+  .cover {
+    background: var(--cream);
+    align-items: center;
+    justify-content: space-between;
+    padding: 26px 24px 26px;
+    text-align: center;
+  }
+  .cover-art {
+    position: relative;
+    width: 60%;
+    margin: 0 auto;
+    aspect-ratio: 200 / 280;
+  }
+  .cover-art .halo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  .cover-art .clocher {
+    position: absolute;
+    top: 4%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 92%;
+    width: auto;
+    z-index: 1;
+  }
+  .cover h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 48px;
+    line-height: .95;
+    color: var(--ink);
+    margin: 8px 0 0;
+  }
+  .cover h1 em { font-style: italic; color: var(--ink-soft); }
+  .cover .date {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink);
+    margin-top: 10px;
+  }
+  .cover .place {
+    font-family: var(--sans);
+    font-size: 9px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: .8;
+    margin-top: 4px;
+  }
+
+  /* ════════ PAGES INTÉRIEURES ════════ */
+  .inner { padding: 22px 22px 20px; }
+  .inner .eb {
+    font-family: var(--sans);
+    font-size: 8.5px;
+    font-weight: 500;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: .75;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .inner h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 21px;
+    color: var(--ink);
+    text-align: center;
+    line-height: 1.2;
+    margin: 0 0 4px;
+  }
+  .inner h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--ink);
+    margin: 12px 0 4px;
+    line-height: 1.3;
+  }
+
+  .step {
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 10px;
+    align-items: baseline;
+    page-break-inside: avoid;
+  }
+  .step-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--ink-soft);
+  }
+  .step-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 12.5px;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .step-text {
+    font-family: var(--sans);
+    font-size: 9px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    opacity: .92;
+    margin-top: 3px;
+  }
+  .step-text em { color: var(--ink); font-style: italic; }
+  .step-text strong { font-weight: 500; color: var(--ink); }
+
+  /* Sens du rite : compact, italique, libellé inline */
+  .sens {
+    background: var(--sky);
+    padding: 5px 8px;
+    margin: 4px 0 0;
+    border-radius: 3px;
+    font-family: var(--sans);
+    font-size: 7px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  .sens .sens-eb {
+    font-size: 6px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    opacity: .75;
+    display: inline;
+    font-style: normal;
+    margin-right: 4px;
+  }
+  .sens .sens-eb::after { content: " ·"; }
+
+  .dialogue {
+    background: var(--cream);
+    border-left: 2px solid var(--ink);
+    padding: 7px 10px;
+    margin: 4px 0 0;
+    font-family: var(--sans);
+    font-size: 8.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .dialogue p { margin: 0 0 3px; }
+  .dialogue p:last-child { margin: 0; }
+  .dialogue strong { color: var(--ink); font-weight: 500; }
+
+  .priere {
+    background: var(--paper);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 8px 4px;
+    margin: 5px 0 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 11px;
+    line-height: 1.55;
+    color: var(--ink);
+    text-align: center;
+    text-wrap: pretty;
+  }
+  .priere strong {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  /* Lectures bibliques en intégralité */
+  .lecture {
+    font-family: var(--serif);
+    font-size: 10.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    background: var(--cream);
+    padding: 8px 11px;
+    margin: 4px 0 0;
+    border-left: 2px solid var(--rose-deep);
+    text-wrap: pretty;
+  }
+  .lecture .lec-eb {
+    font-family: var(--sans);
+    font-size: 7.5px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .lecture p { margin: 0 0 4px; }
+  .lecture p:last-child { margin: 0; }
+  .lecture .strophe {
+    display: block;
+    margin: 4px 0;
+    padding-left: 10px;
+    border-left: 1px solid var(--rule);
+    font-style: italic;
+  }
+
+  .refrains { margin: 4px 0 0; }
+  .refrain-item {
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    gap: 8px;
+    margin-bottom: 5px;
+    font-family: var(--sans);
+    font-size: 8.5px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .refrain-item:last-child { margin-bottom: 0; }
+  .refrain-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .refrain-langue {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 11.5px;
+    color: var(--ink);
+    margin-bottom: 1px;
+  }
+  .refrain-tradition {
+    font-size: 7.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: .65;
+  }
+
+  .litanies {
+    column-count: 2;
+    column-gap: 16px;
+    font-family: var(--sans);
+    font-size: 9px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 4px 0 0;
+  }
+  .litanies p { margin: 0 0 3px; break-inside: avoid; }
+
+  .verse-block { text-align: center; margin: 6px 0; }
+  .verse-block .verse {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+  .verse-block .ref {
+    font-family: var(--sans);
+    font-size: 7.5px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: .7;
+    margin-top: 4px;
+  }
+
+  /* Chants intégrés au fil du déroulé */
+  .chant-inline {
+    background: var(--sky);
+    padding: 7px 10px;
+    margin: 5px 0 0;
+    border-radius: 3px;
+    page-break-inside: avoid;
+  }
+  .chant-inline .ch-eb {
+    font-family: var(--sans);
+    font-size: 6.5px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .chant-inline .ch-source {
+    font-family: var(--sans);
+    font-size: 7px;
+    color: var(--ink-soft);
+    opacity: .6;
+    margin-bottom: 4px;
+  }
+  .chant-inline .ch-refrain {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 10px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 3px;
+  }
+  .chant-inline .ch-refrain strong {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--ink-soft);
+    font-size: 6.5px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 1px;
+  }
+  .chant-inline .ch-couplet {
+    font-family: var(--serif);
+    font-size: 9px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0 0 3px;
+    padding-left: 14px;
+    text-indent: -14px;
+  }
+  .chant-inline .ch-couplet:last-child { margin-bottom: 0; }
+  .chant-inline .ch-couplet .ch-num {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin-right: 4px;
+  }
+
+  /* Note patristique en marge */
+  .note-pat {
+    border-top: 1px dashed var(--rule);
+    margin-top: 6px;
+    padding-top: 5px;
+    font-family: var(--sans);
+    font-size: 7px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    opacity: .85;
+    font-style: italic;
+  }
+  .note-pat strong {
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-size: 6px;
+    color: var(--ink);
+    opacity: .85;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* QR Code & musique */
+  .qr-zone {
+    text-align: center;
+    margin-top: 10px;
+    padding: 12px 8px;
+    background: var(--cream);
+    border-radius: 4px;
+  }
+  .qr-zone img {
+    width: 110px;
+    height: 110px;
+    display: block;
+    margin: 0 auto 8px;
+  }
+  .qr-zone .qr-titre {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 3px;
+  }
+  .qr-zone .qr-sub {
+    font-family: var(--sans);
+    font-size: 8px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: .7;
+    margin-bottom: 6px;
+  }
+  .qr-zone .qr-url {
+    font-family: var(--sans);
+    font-size: 7.5px;
+    color: var(--ink-soft);
+    opacity: .65;
+  }
+
+  .back {
+    background: var(--cream);
+    align-items: center;
+    justify-content: center;
+    padding: 36px 28px;
+    text-align: center;
+    gap: 18px;
+  }
+  .back .back-bulles { width: 110px; margin: 0 auto; }
+  .back .back-bulles svg { width: 100%; height: auto; display: block; }
+  .back .star { color: var(--rose-deep); font-size: 12px; margin: 4px 0; }
+  .back blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.6;
+    max-width: 280px;
+    margin: 0 auto;
+    text-wrap: pretty;
+  }
+  .back cite {
+    font-style: normal;
+    font-family: var(--sans);
+    font-size: 8.5px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: .75;
+    display: block;
+    margin-top: 10px;
+  }
+  .back .signature {
+    margin-top: auto;
+    padding-top: 24px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    opacity: .8;
+  }
+  .back .sources {
+    font-family: var(--sans);
+    font-size: 6.5px;
+    letter-spacing: .08em;
+    color: var(--ink-soft);
+    opacity: .55;
+    line-height: 1.5;
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  /* ════════ IMPRESSION A4 paysage 2-up recto-verso ════════ */
+  @media print {
+    @page { size: A4 landscape; margin: 0; }
+    html, body {
+      background: white;
+      padding: 0;
+      margin: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .toolbar { display: none; }
+    .spread {
+      display: flex;
+      flex-direction: row;
+      width: 297mm;
+      height: 210mm;
+      max-width: none;
+      margin: 0;
+      gap: 0;
+      page-break-after: always;
+      break-after: page;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .spread:last-child { page-break-after: auto; break-after: auto; }
+    .page {
+      width: 148.5mm;
+      height: 210mm;
+      aspect-ratio: auto;
+      box-shadow: none;
+      page-break-after: auto;
+      break-after: auto;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a class="back-link" href="/baptemeelise/">← Retour</a>
+  <span>Livret · 16 pages · Impression A4 paysage recto-verso, 2-up</span>
+  <a href="javascript:window.print()">Imprimer</a>
+</div>
+
+<!-- ════════ SPREAD 1 · I + II ════════ -->
+<div class="spread">
+
+  <div class="page cover">
+    <span class="badge">Cérémonie · Annecy-le-Vieux</span>
+
+    <div class="cover-art">
+      <svg class="halo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <g opacity="0.65">
+          <circle cx="32"  cy="58"  r="20" fill="#f4d6e0"/>
+          <circle cx="160" cy="46"  r="14" fill="#dde8f2"/>
+          <circle cx="22"  cy="138" r="11" fill="#d1e1e7"/>
+          <circle cx="178" cy="128" r="18" fill="#e2a9f1" opacity=".55"/>
+          <circle cx="38"  cy="220" r="14" fill="#dde8f2"/>
+          <circle cx="170" cy="232" r="22" fill="#f4d6e0" opacity=".7"/>
+          <circle cx="86"  cy="262" r="8"  fill="#19577e" opacity=".18"/>
+          <circle cx="146" cy="266" r="10" fill="#e2a9f1" opacity=".5"/>
+        </g>
+        <g fill="#fff" opacity=".55">
+          <circle cx="28"  cy="52"  r="4"/>
+          <circle cx="172" cy="220" r="5"/>
+          <circle cx="20"  cy="134" r="3"/>
+        </g>
+      </svg>
+      <img class="clocher" src="clocher.png" alt="Clocher de l'église Saint-Laurent">
+    </div>
+
+    <div>
+      <h1>Baptême<br><em>d’Élise</em></h1>
+      <div class="fleuron" style="margin: 8px 0 0">✦</div>
+      <div class="date">Samedi 16 mai 2026</div>
+      <div class="place">Église Saint-Laurent · Annecy-le-Vieux</div>
+    </div>
+  </div>
+
+  <div class="page inner">
+    <div class="eb">Préambule</div>
+    <h2>L’accueil de l’enfant</h2>
+    <hr class="rule">
+
+    <p style="font-family: var(--serif); font-style: italic; font-size: 11px; line-height: 1.55; color: var(--ink); text-align: center; margin: 0 0 10px; text-wrap: pretty;">
+      Élise reçoit le sacrement du baptême, plongée dans la Pâque du Christ. Sa famille la confie à l’amour de Dieu et à la communion de l’Église.
+    </p>
+
+    <h3 style="text-align: center; margin-top: 12px; font-size: 12px;">Présentation à l’Église</h3>
+    <div class="dialogue" style="text-align: center; border-left: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 7px 6px;">
+      <p><strong>Père David</strong> · Quel prénom avez-vous choisi pour l’enfant ?</p>
+      <p><strong>Les parents</strong> · Élisabeth.</p>
+      <p style="margin-top: 5px;"><strong>Père David</strong> · Que demandez-vous à l’Église ?</p>
+      <p><strong>Les parents</strong> · Qu’elle trouve la Vérité, la Joie et l’Amour dans la foi chrétienne. Qu’elle bénéficie du soutien de l’Église.</p>
+    </div>
+
+    <div class="step" style="margin-top: 12px;">
+      <span class="step-num">i.</span>
+      <div>
+        <div class="step-title">Signe de la Croix</div>
+        <div class="step-text">Le prêtre accueille Élise sur le seuil et trace sur son front la croix du Christ. Les parents, le parrain et la marraine font de même.</div>
+        <div class="sens">
+          <span class="sens-eb">Sens du rite</span>
+          Depuis les origines de l’Église, celui qui veut devenir chrétien est marqué de la croix du Christ.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">ii.</span>
+      <div>
+        <div class="step-title">Chant d’entrée · Prière de Jésus</div>
+        <div class="chant-inline">
+          <div class="ch-source">Pères du désert · Tradition hésychaste</div>
+          <div class="ch-refrain" style="font-family: var(--serif); font-style: italic;"><em>Господи Иисусе Христе, Сыне Божий, помилуй мя, грешнаго.</em></div>
+          <div style="font-family: var(--serif); font-size: 9.5px; line-height: 1.5; color: var(--ink-soft); text-align: center; margin-top: 4px; font-style: italic;">Seigneur Jésus Christ, Fils de Dieu, aie pitié de moi, pécheur.</div>
+        </div>
+        <div class="note-pat">
+          Interprétation du chœur du monastère Sainte-Élisabeth de Minsk. Saint Grégoire Palamas, archevêque de Thessalonique au XIVᵉ siècle et théologien classique de cette prière du cœur, y décrit la voie qui fait descendre l’intelligence dans le cœur et ouvre à la lumière incréée.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ SPREAD 2 · III + IV ════════ -->
+<div class="spread">
+
+  <!-- Page III : Lectures Isaïe + Psaume 23 -->
+  <div class="page inner">
+    <div class="eb">Première partie</div>
+    <h2>Liturgie de la Parole</h2>
+    <hr class="rule">
+
+    <div class="step">
+      <span class="step-num">iii.</span>
+      <div>
+        <div class="step-title">Première lecture · Isaïe 43, 1-4</div>
+        <div class="lecture">
+          <span class="lec-eb">Lecture du livre du prophète Isaïe</span>
+          <p>Maintenant, ainsi parle le Seigneur, lui qui t’a créé, qui t’a façonné : « Ne crains pas, car je t’ai racheté, je t’ai appelé par ton nom, tu es à moi. »</p>
+          <p>« Quand tu traverseras les eaux, je serai avec toi, et les fleuves, ils ne te submergeront pas. Quand tu marcheras dans le feu, tu ne te brûleras pas, la flamme ne te consumera pas. »</p>
+          <p>« Car je suis le Seigneur, ton Dieu, le Saint d’Israël, ton sauveur. Parce que tu as du prix à mes yeux, parce que tu as du poids et que je t’aime, je donne des hommes à ta place, des peuples en échange de ta vie. »</p>
+        </div>
+        <div class="sens">
+          <span class="sens-eb">Sens de la lecture</span>
+          « N’aie pas peur » est gravé au dos de la croix d’Élise. La peur étant le contraire de l’Amour, c’est un élément central de son éducation.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">iv.</span>
+      <div>
+        <div class="step-title">Psaume 23 <span style="font-style: italic; font-weight: 400; color: var(--ink-soft); font-size: 10px;">, lu par Marie Reine</span></div>
+        <div class="lecture">
+          <span class="lec-eb">Psaume du roi David</span>
+          <p><span class="strophe">Le Seigneur est mon berger : je ne manque de rien.<br>Sur des prés d’herbe fraîche, il me fait reposer.</span></p>
+          <p><span class="strophe">Il me mène vers les eaux tranquilles et me fait revivre ;<br>il me conduit par le juste chemin pour l’honneur de son nom.</span></p>
+          <p><span class="strophe">Si je traverse les ravins de la mort, je ne crains aucun mal,<br>car tu es avec moi : ton bâton me guide et me rassure.</span></p>
+          <p><span class="strophe">Grâce et bonheur m’accompagnent tous les jours de ma vie ;<br>j’habiterai la maison du Seigneur pour la durée de mes jours.</span></p>
+        </div>
+        <div class="sens">
+          <span class="sens-eb">Sens de la lecture</span>
+          Confiance absolue : le Seigneur conduit son enfant aux eaux du repos et le préserve dans la traversée des ravins. « Tu es avec moi » : pour Élise et pour chacun, traverser sans peur parce qu’il est là.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page IV : Éphésiens + Évangile + Homélie -->
+  <div class="page inner">
+    <div class="eb">Première partie · Suite</div>
+    <h2>Liturgie de la Parole</h2>
+    <hr class="rule">
+
+    <div class="step">
+      <span class="step-num">v.</span>
+      <div>
+        <div class="step-title">Deuxième lecture · Éphésiens 3, 13-21</div>
+        <div class="lecture">
+          <span class="lec-eb">Lecture de la lettre de saint Paul aux Éphésiens</span>
+          <p>Frères, je tombe à genoux devant le Père, de qui toute paternité, au ciel et sur la terre, tient son nom.</p>
+          <p>Lui qui est si riche en gloire, qu’il vous donne, par son Esprit, d’être puissamment fortifiés dans votre être intérieur ; que le Christ habite en vos cœurs par la foi ; restez enracinés dans l’amour, établis dans l’amour.</p>
+          <p>Ainsi vous serez à même de comprendre, avec tous les saints, ce qu’est la largeur, la longueur, la hauteur, la profondeur, vous connaîtrez ce qui dépasse toute connaissance : l’amour du Christ. Alors vous serez comblés jusqu’à entrer dans toute la plénitude de Dieu.</p>
+          <p>À celui qui peut réaliser, par la puissance qui agit en nous, infiniment plus que ce que nous pouvons demander ou imaginer, à lui la gloire dans l’Église et dans le Christ Jésus, pour toutes les générations, dans tous les siècles. Amen.</p>
+        </div>
+        <div class="sens">
+          <span class="sens-eb">Sens de la lecture</span>
+          L’amour du Christ dépasse toute connaissance : largeur, longueur, hauteur, profondeur. Pour Élise et pour nous, c’est dans cet amour qu’on s’enracine. Et c’est cet amour qui chasse la peur (1 Jn 4, 18).
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">vi.</span>
+      <div>
+        <div class="step-title">Évangile · Matthieu 28, 16-20 <span style="font-style: italic; font-weight: 400; color: var(--ink-soft); font-size: 10px;">, lu par Alain</span></div>
+        <div class="lecture">
+          <span class="lec-eb">Évangile selon saint Matthieu</span>
+          <p>Les onze disciples s’en allèrent en Galilée, à la montagne où Jésus leur avait ordonné de se rendre. Quand ils le virent, ils se prosternèrent, mais certains eurent des doutes.</p>
+          <p>Jésus s’approcha d’eux et leur adressa ces paroles : « Tout pouvoir m’a été donné au ciel et sur la terre. Allez ! De toutes les nations faites des disciples : baptisez-les au nom du Père, et du Fils, et du Saint-Esprit, apprenez-leur à observer tout ce que je vous ai commandé. Et moi, je suis avec vous tous les jours jusqu’à la fin du monde. »</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">vii.</span>
+      <div>
+        <div class="step-title">Homélie</div>
+        <div class="step-text">Le Père David commente les textes.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ SPREAD 3 · V + VI ════════ -->
+<div class="spread">
+
+  <!-- Page V : Prière universelle -->
+  <div class="page inner">
+    <div class="eb">Deuxième partie</div>
+    <h2>Prière universelle</h2>
+    <hr class="rule">
+
+    <p style="font-family: var(--serif); font-style: italic; font-size: 10.5px; line-height: 1.5; color: var(--ink); text-align: center; margin: 0 0 8px;">
+      Quatre intentions, quatre langues, une seule prière qui rassemble :<br>Seigneur, prends pitié.
+    </p>
+
+    <div class="refrains">
+
+      <div class="refrain-item">
+        <span class="refrain-num">1.</span>
+        <div>
+          <div class="refrain-langue">« Seigneur, aie pitié de nous »</div>
+          <div class="refrain-tradition">Français · Langue maternelle</div>
+          <div class="step-text" style="margin-top: 3px;">Pour les enfants et leurs parents qui traversent les épreuves, la guerre, la misère ou la faim. Seigneur, nous te prions.</div>
+        </div>
+      </div>
+
+      <div class="refrain-item">
+        <span class="refrain-num">2.</span>
+        <div>
+          <div class="refrain-langue">« Domine, miserere nobis »</div>
+          <div class="refrain-tradition">Latin · Tradition romaine</div>
+          <div class="step-text" style="margin-top: 3px;">Pour guider nos dirigeants et dirigeantes afin d’établir la paix dans le monde. Seigneur, nous te prions.</div>
+        </div>
+      </div>
+
+      <div class="refrain-item">
+        <span class="refrain-num">3.</span>
+        <div>
+          <div class="refrain-langue">« Kyrie eleison »</div>
+          <div class="refrain-tradition">Grec · Tradition byzantine</div>
+          <div class="step-text" style="margin-top: 3px;">Pour nos familles et nos proches, afin que nous grandissions ensemble dans l’Amour fraternel et la joie pour te servir. Seigneur, nous te prions.</div>
+        </div>
+      </div>
+
+      <div class="refrain-item">
+        <span class="refrain-num">4.</span>
+        <div>
+          <div class="refrain-langue">« Gospodi pomiluj » <span style="font-size: 8.5px; color: var(--ink-soft); opacity: .7;">(Gospodi pomiloï)</span></div>
+          <div class="refrain-tradition">Slavon · Tradition slave</div>
+          <div class="step-text" style="margin-top: 3px;">Pour les défunts de nos familles, afin que tu les accueilles près de toi et qu’il nous soit donné, un jour, d’être tous réunis dans ton royaume. Seigneur, nous te prions.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Page VI : Litanie des saints -->
+  <div class="page inner">
+    <div class="eb">Communion des saints</div>
+    <h2>Litanie des saints</h2>
+    <hr class="rule">
+
+    <p style="font-family: var(--serif); font-style: italic; font-size: 10.5px; line-height: 1.55; color: var(--ink-soft); text-align: center; margin: 0 0 10px;">
+      L’assemblée invoque les saints qui ont précédé Élise. Ils intercèdent auprès de Dieu pour elle.
+    </p>
+
+    <p style="font-family: var(--sans); font-size: 8px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink); text-align: center; margin: 0 0 10px; opacity: .7;">
+      À chaque invocation, l’assemblée répond : « priez pour nous »
+    </p>
+
+    <div class="litanies">
+      <p>Sainte Marie, Mère de Dieu</p>
+      <p>Saint Michel et tous les anges</p>
+      <p>Saint Jean-Baptiste</p>
+      <p>Saint Joseph</p>
+      <p>Saint Pierre et saint Paul</p>
+      <p>Sainte Élisabeth</p>
+      <p>Saint Colomban</p>
+      <p>Saint David</p>
+      <p>Saint François-Xavier</p>
+      <p>Sainte Nathalie</p>
+      <p>Saint Alain</p>
+      <p>Sainte Marie l’Égyptienne</p>
+      <p>Saint Jean et saint Claude</p>
+      <p>Sainte Isabelle</p>
+      <p>Saint Laurent</p>
+      <p>Vous tous, saints et saintes de Dieu</p>
+    </div>
+
+    
+
+    <div class="sens" style="margin-top: 12px;">
+      <span class="sens-eb">Sens du rite</span>
+      Les litanies des saints illustrent la confiance de l’Église en leur intercession. Elles mettent en valeur la communion qui unit l’Église de la Jérusalem céleste à celle qui pèlerine sur la terre.
+    </div>
+  </div>
+</div>
+
+<!-- ════════ SPREAD 4 · VII + VIII ════════ -->
+<div class="spread">
+
+  <!-- Page VII : Au bord de l'eau -->
+  <div class="page inner">
+    <div class="eb">Troisième partie</div>
+    <h2>Au bord de l’eau</h2>
+    <hr class="rule">
+
+    <div class="step">
+      <span class="step-num">viii.</span>
+      <div>
+        <div class="step-title">Prière de délivrance &amp; imposition de la main</div>
+        <div class="priere" style="font-size: 10.5px; padding: 8px 6px;">
+          Dieu tout-puissant, tu as envoyé ton Fils unique pour délivrer l’homme, esclave du péché. Pour Élise, qui se prépare à recevoir le baptême, nous te prions humblement : fais qu’elle échappe au pouvoir de Satan et accorde-lui de marcher dans la liberté des enfants de Dieu. Par Jésus, le Christ, notre Seigneur.
+        </div>
+        <div class="sens">
+          <span class="sens-eb">Sens du rite</span>
+          L’imposition de la main et la prière de délivrance demandent à Dieu de protéger Élise du mal et de la conduire dans la liberté des enfants de Dieu.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">ix.</span>
+      <div>
+        <div class="step-title">Bénédiction de l’eau</div>
+        <div class="step-text">Le Père David bénit l’eau en mémoire des actes de salut accomplis par l’eau dans toute l’histoire du salut : aux origines, au déluge, à la mer Rouge, au Jourdain.</div>
+        <div class="sens">
+          <span class="sens-eb">Sens du rite</span>
+          La bénédiction proclame que l’efficacité du baptême ne vient pas de l’eau seule, mais de l’Esprit Saint qui agit par elle.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">x.</span>
+      <div>
+        <div class="step-title">Renonciation au mal</div>
+        <div class="dialogue">
+          <p><strong>Père David</strong> · Pour vivre dans la liberté des enfants de Dieu, rejetez-vous le péché ?</p>
+          <p><strong>Les parents, le parrain et la marraine</strong> · Nous le rejetons.</p>
+          <p style="margin-top: 4px;"><strong>Père David</strong> · Pour échapper à l’emprise du péché, rejetez-vous ce qui conduit au mal ?</p>
+          <p><strong>Tous</strong> · Nous le rejetons.</p>
+          <p style="margin-top: 4px;"><strong>Père David</strong> · Pour suivre Jésus Christ, rejetez-vous Satan, qui est l’auteur du péché ?</p>
+          <p><strong>Tous</strong> · Nous le rejetons.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xi.</span>
+      <div>
+        <div class="step-title">Profession de foi</div>
+        <div class="dialogue">
+          <p><strong>Père David</strong> · Croyez-vous en Dieu, le Père tout-puissant ?</p>
+          <p><strong>Tous</strong> · Nous croyons.</p>
+          <p style="margin-top: 4px;"><strong>Père David</strong> · Croyez-vous en Jésus Christ, son Fils unique, mort et ressuscité ?</p>
+          <p><strong>Tous</strong> · Nous croyons.</p>
+          <p style="margin-top: 4px;"><strong>Père David</strong> · Croyez-vous en l’Esprit Saint, à la sainte Église, à la communion des saints, à la vie éternelle ?</p>
+          <p><strong>Tous</strong> · Nous croyons.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page VIII : Le baptême -->
+  <div class="page inner" style="background: var(--paper);">
+    <div class="eb">Quatrième partie</div>
+    <h2>Le baptême</h2>
+    <hr class="rule">
+
+    <div class="step">
+      <span class="step-num">xii.</span>
+      <div>
+        <div class="step-title">Le sacrement</div>
+        <div class="priere" style="font-size: 12.5px; padding: 14px 8px; line-height: 1.7;">
+          « Élisabeth, je te baptise au nom du Père,<br>
+          et du Fils,<br>
+          et du Saint-Esprit. »
+        </div>
+        <div class="sens" style="margin-top: 12px;">
+          <span class="sens-eb">Sens du rite</span>
+          L’eau versée trois fois plonge Élise dans la mort et la résurrection du Christ. Purification de tout mal et naissance à la vie nouvelle. La croix tracée sur le front au seuil de l’Église marque déjà l’appartenance au Christ.
+        </div>
+      </div>
+    </div>
+
+    <div class="verse-block" style="margin-top: 24px;">
+      <div class="fleuron" style="margin-bottom: 6px;">✦</div>
+      <div class="verse" style="font-size: 13px;">« L’eau du baptême est pour vous à la fois tombeau et mère. »</div>
+      <div class="ref">Saint Cyrille de Jérusalem</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ SPREAD 5 · IX + X ════════ -->
+<div class="spread">
+
+  <!-- Page IX : Rites complémentaires -->
+  <div class="page inner">
+    <div class="eb">Cinquième partie</div>
+    <h2>Rites complémentaires</h2>
+    <hr class="rule">
+
+    <div class="step">
+      <span class="step-num">xiii.</span>
+      <div>
+        <div class="step-title">Saint Chrême</div>
+        <div class="step-text">Onction sur le front d’Élise.</div>
+        <div class="sens">
+          <span class="sens-eb">Sens du rite</span>
+          Le saint chrême est une huile parfumée consacrée. Son onction confère le don de l’Esprit Saint et marque la nouvelle baptisée comme prêtre, prophète et roi par sa configuration au Christ.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xiv.</span>
+      <div>
+        <div class="step-title">Vêtement blanc</div>
+        <div class="step-text">Élise revêt le Christ, robe de la résurrection.</div>
+        <div class="sens">
+          <span class="sens-eb">Sens du rite</span>
+          Le vêtement blanc signifie la dignité nouvelle de la baptisée, revêtue du Christ comme on enfile un habit de fête. C’est l’écho visible de la parole de saint Paul : « Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ » (Galates 3, 27).
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xv.</span>
+      <div>
+        <div class="step-title">Cierge allumé au cierge pascal</div>
+        <div class="step-text">Lumière transmise de proche en proche.</div>
+        <div class="sens">
+          <span class="sens-eb">Sens du rite</span>
+          Le cierge pascal signifie la présence vivante du Christ ressuscité. Les Pères grecs depuis Justin appellent le baptême φωτισμός, illumination.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xvi.</span>
+      <div>
+        <div class="step-title">Effata · « Ouvre-toi »</div>
+        <div class="step-text">Le prêtre touche les oreilles et les lèvres d’Élise.</div>
+        <div class="sens">
+          <span class="sens-eb">Sens du rite</span>
+          Geste évangélique tiré de Marc 7. Il exprime la nécessité de la grâce pour entendre la Parole de Dieu et la proclamer.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page X : Tu es devenu enfant de Dieu -->
+  <div class="page inner">
+    <div class="eb">Cinquième partie · Suite</div>
+    <h2>Chant après le baptême</h2>
+    <hr class="rule">
+
+    <div class="step">
+      <span class="step-num">xvii.</span>
+      <div>
+        <div class="step-title">Tu es devenu enfant de Dieu</div>
+        <div class="chant-inline">
+          <span class="ch-eb">Refrain</span>
+          <div class="ch-source">D. Bourgeois &amp; J.-P. Revel · Musique : A. Gouzes, o.p.</div>
+          <div class="ch-refrain"><em>Tu es devenu enfant de Dieu et frère de Jésus, alléluia ! Aujourd’hui l’Esprit repose en toi et chante alléluia.</em></div>
+          <p class="ch-couplet"><span class="ch-num">1.</span> Tu rentres dans la ronde, la ronde de son amour, tu danses avec tes frères la danse de sa joie.</p>
+          <p class="ch-couplet"><span class="ch-num">2.</span> Tu portes sa lumière, lumière de sa beauté, tu chantes ses merveilles, merveilles de son cœur.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="verse-block" style="margin-top: 24px;">
+      <div class="fleuron" style="margin-bottom: 6px;">✦</div>
+      <div class="verse" style="font-size: 12px;">« Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ. »</div>
+      <div class="ref">Galates 3, 27</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ SPREAD 6 · XI + XII ════════ -->
+<div class="spread">
+
+  <!-- Page XI : Envoi (Notre Père + bénédiction) -->
+  <div class="page inner">
+    <div class="eb">Sixième partie</div>
+    <h2>Envoi</h2>
+    <hr class="rule">
+
+    <div class="step">
+      <span class="step-num">xviii.</span>
+      <div>
+        <div class="step-title">Notre Père</div>
+        <div class="priere" style="font-size: 10px;">
+          Notre Père, qui es aux cieux,<br>
+          que ton nom soit sanctifié,<br>
+          que ton règne vienne,<br>
+          que ta volonté soit faite sur la terre comme au ciel.<br>
+          Donne-nous aujourd’hui notre pain de ce jour.<br>
+          Pardonne-nous nos offenses,<br>
+          comme nous pardonnons aussi à ceux qui nous ont offensés.<br>
+          Et ne nous laisse pas entrer en tentation,<br>
+          mais délivre-nous du Mal. Amen.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xix.</span>
+      <div>
+        <div class="step-title">Bénédiction finale</div>
+        <div class="step-text">Le Père David bénit l’assemblée, les parents, le parrain, la marraine et toute la famille.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xx.</span>
+      <div>
+        <div class="step-title">Signatures des registres</div>
+        <div class="step-text">Le parrain Xavier et la marraine Nathalie signent les registres de la paroisse.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page XII : Consécration à Marie Théotokos + Couronnée d'étoiles + médaille -->
+  <div class="page inner" style="background: var(--cream);">
+    <div class="eb">Septième partie</div>
+    <h2>Consécration à Marie · Théotokos</h2>
+    <hr class="rule">
+
+    <p style="font-family: var(--serif); font-style: italic; font-size: 11px; line-height: 1.5; color: var(--ink-soft); text-align: center; margin: 0 0 8px;">
+      Élise est confiée à la Mère de Dieu.
+    </p>
+
+    <div class="priere" style="font-size: 11.5px; padding: 10px 8px; line-height: 1.6; background: var(--paper);">
+      Marie, pleine de grâce,<br>
+      le Seigneur est avec toi.<br>
+      Tu es bénie entre toutes les femmes,<br>
+      et Jésus, le fruit de tes entrailles, est béni.<br>
+      Tu as donné naissance<br>
+      au Sauveur de nos âmes.
+    </div>
+
+    <div class="step" style="margin-top: 10px;">
+      <span class="step-num">xxi.</span>
+      <div>
+        <div class="step-title">Remise de la médaille</div>
+        <div class="step-text">Le Père David bénit la médaille. Nathalie et Xavier la mettent ensemble autour du cou d’Élise pendant le chant marial.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xxii.</span>
+      <div>
+        <div class="step-title">Couronnée d’étoiles</div>
+        <div class="chant-inline">
+          <span class="ch-eb">Refrain</span>
+          <div class="ch-refrain"><em>Nous te saluons, ô toi Notre Dame, Marie Vierge sainte que drape le soleil. Couronnée d’étoiles, la lune est sous tes pas, en toi nous est donnée l’aurore du salut.</em></div>
+          <p class="ch-couplet" style="margin-top: 5px;"><span class="ch-num">1.</span> Marie Ève nouvelle et joie de ton Seigneur, tu as donné naissance à Jésus le Sauveur. Par toi nous sont ouvertes les portes du jardin, guide-nous en chemin, étoile du matin.</p>
+          <div class="ch-refrain" style="margin-top: 5px;"><strong>Refrain</strong><em>Nous te saluons, ô toi Notre Dame, Marie Vierge sainte que drape le soleil. Couronnée d’étoiles, la lune est sous tes pas, en toi nous est donnée l’aurore du salut.</em></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════ SPREAD 7 · XIII + XIV ════════ -->
+<div class="spread">
+
+  <!-- Page XIII : Chant final Galates 3, 27 -->
+  <div class="page inner">
+    <div class="eb">Septième partie · Suite</div>
+    <h2>Chant final</h2>
+    <hr class="rule">
+
+    <div class="step">
+      <span class="step-num">xxiii.</span>
+      <div>
+        <div class="step-title">Galates 3, 27</div>
+        <div class="chant-inline">
+          <div class="ch-source">Antienne biblique</div>
+          <div class="ch-refrain"><em>Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ. Alléluia.</em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="verse-block" style="margin-top: 24px;">
+      <div class="fleuron" style="margin-bottom: 6px;">✦</div>
+      <div class="verse" style="font-size: 13px;">« Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ. »</div>
+      <div class="ref">Galates 3, 27</div>
+    </div>
+  </div>
+
+  <!-- Page XIV : QR code -->
+  <div class="page inner">
+    <h2 style="margin-top: 12px;">Chants du baptême</h2>
+    <hr class="rule">
+
+    <p style="font-family: var(--serif); font-style: italic; font-size: 11.5px; line-height: 1.55; color: var(--ink); text-align: center; margin: 0 0 14px;">
+      Pour ramener un peu de la cérémonie chez vous, retrouvez les chants entendus aujourd’hui, leurs paroles complètes et une note sur chacun.
+    </p>
+
+    <div class="qr-zone">
+      <img src="qr-musique.png" alt="QR code vers les chants du baptême">
+      <div class="qr-titre">Scannez avec votre téléphone</div>
+      <div class="qr-sub">Chants du baptême</div>
+      <div class="qr-url">monnier.family/baptemeelise/musique</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ SPREAD 8 · XV + XVI ════════ -->
+<div class="spread">
+
+  <!-- Page XV : verset paix -->
+  <div class="page inner" style="background: var(--cream); justify-content: center;">
+    <div class="verse-block" style="margin: auto 0;">
+      <div class="fleuron" style="margin-bottom: 12px; font-size: 18px;">✦</div>
+      <div class="verse" style="font-size: 16px; line-height: 1.5;">
+        « Je vous donne ma paix,<br>je vous laisse ma paix.<br>Que votre cœur ne se trouble pas,<br>et qu’il ne craigne pas. »
+      </div>
+      <div class="ref" style="margin-top: 10px;">Évangile selon saint Jean · 14, 27</div>
+    </div>
+  </div>
+
+  <!-- Page XVI : Dos -->
+  <div class="page back">
+    <div class="back-bulles">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <g opacity="0.85">
+          <circle cx="40"  cy="40"  r="18" fill="#f4d6e0"/>
+          <circle cx="80"  cy="36"  r="12" fill="#dde8f2"/>
+          <circle cx="60"  cy="68"  r="22" fill="#e2a9f1" opacity=".5"/>
+          <circle cx="92"  cy="78"  r="9"  fill="#2e4ea0" opacity=".18"/>
+          <circle cx="28"  cy="84"  r="10" fill="#d1e1e7"/>
+          <circle cx="74"  cy="100" r="8"  fill="#19577e" opacity=".22"/>
+        </g>
+        <g fill="#fff" opacity=".55">
+          <circle cx="36"  cy="36"  r="3"/>
+          <circle cx="56"  cy="62"  r="4"/>
+          <circle cx="86"  cy="74"  r="3"/>
+        </g>
+      </svg>
+    </div>
+
+    <div>
+      <div class="star">✦</div>
+      <blockquote>« Laissez les petits enfants venir à moi, ne les empêchez pas, car le royaume des cieux est à ceux qui leur ressemblent. »<cite>Évangile selon saint Matthieu · 19, 14</cite></blockquote>
+    </div>
+
+    <div class="signature">Avec toute notre joie,<br>la famille Monnier · de Savoie</div>
+
+    <div class="sources">
+      Sources liturgiques · Rituel du baptême des petits enfants · Catéchisme de l’Église catholique, paragraphe 1235 · eglise.catholique.fr · liturgie.catholique.fr · Diocèse de Paris · Diocèse de Nantes
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
