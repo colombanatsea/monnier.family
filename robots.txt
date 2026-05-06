@@ -1,3 +1,85 @@
 # monnier.family — site familial privé, aucun crawl autorisé
+# Article 4 de la directive UE 2019/790 sur le droit d'auteur
+# All AI training, scraping and archiving expressly forbidden
+
+# ─── Disallow général ─────────────────────────────────────
 User-agent: *
 Disallow: /
+
+# ─── Archiveurs ────────────────────────────────────────────
+User-agent: ia_archiver
+Disallow: /
+
+User-agent: archive.org_bot
+Disallow: /
+
+User-agent: Wayback
+Disallow: /
+
+# ─── Scrapers IA non couverts par Cloudflare Managed ──────
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Perplexity-User
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: cohere-training-data-crawler
+Disallow: /
+
+User-agent: ai2bot
+Disallow: /
+
+User-agent: AI2Bot
+Disallow: /
+
+User-agent: AwarioRssBot
+Disallow: /
+
+User-agent: AwarioSmartBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: img2dataset
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+User-agent: omgilibot
+Disallow: /
+
+User-agent: peer39_crawler
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: Timpibot
+Disallow: /
+
+User-agent: VelenPublicWebCrawler
+Disallow: /
+
+User-agent: Webzio-Extended
+Disallow: /
+
+# Note : Cloudflare Managed Content ajoute en amont :
+# Amazonbot, Applebot-Extended, Bytespider, CCBot, ClaudeBot,
+# Google-Extended, GPTBot, meta-externalagent
