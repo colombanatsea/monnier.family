@@ -1,27 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Livret de cérémonie · Baptême d’Élise · 16 mai 2026</title>
-
-<meta name="robots" content="noindex, nofollow">
-<meta name="referrer" content="strict-origin">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, max-snippet:0, max-image-preview:none">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'">
+<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta name="description" content="Livret de la cérémonie de baptême d’Élise, samedi 16 mai 2026, Église Saint-Laurent d’Annecy-le-Vieux.">
-
-<meta property="og:title" content="Livret de cérémonie · Baptême d’Élise">
-<meta property="og:description" content="Samedi 16 mai 2026 · Église Saint-Laurent · Annecy-le-Vieux">
-<meta property="og:type" content="article">
-<meta property="og:image" content="https://monnier.family/og/bapteme.png">
-
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 60' fill='none' stroke='%232e4ea0' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='20' y1='6' x2='20' y2='54'/%3E%3Cline x1='8' y1='20' x2='32' y2='20'/%3E%3C/svg%3E">
-
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<title>Livret · Format imprimable · Baptême d’Élise</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
+
   :root {
     --ink:        #2e4ea0;
     --ink-soft:   #19577e;
@@ -597,49 +589,196 @@
     }
   }
 
-  /* === Bouton version imprimable (écran uniquement) === */
-  .btn-imprimer {
+
+  /* === Toolbar (visible écran uniquement) === */
+  .toolbar-print {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
-    z-index: 100;
-    background: var(--ink);
-    color: white;
-    text-decoration: none;
+    top: 16px;
+    right: 16px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.15);
     font-family: var(--sans);
     font-size: 13px;
-    font-weight: 500;
-    padding: 12px 18px;
-    border-radius: 30px;
-    box-shadow: 0 4px 20px rgba(46,78,160,.30);
-    transition: all .2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
   }
-  .btn-imprimer:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(46,78,160,.40);
-    background: var(--ink-soft);
+  .toolbar-print a, .toolbar-print button {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 8px 14px;
+    border: 1px solid var(--ink);
+    background: white;
+    color: var(--ink);
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all .15s ease;
+  }
+  .toolbar-print button.primary {
+    background: var(--ink);
+    color: white;
+  }
+  .toolbar-print a:hover, .toolbar-print button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(46,78,160,.25);
+  }
+  
+  /* === Bandeau d'instruction === */
+  .instructions {
+    max-width: 297mm;
+    margin: 80px auto 32px;
+    padding: 18px 24px;
+    background: #fff;
+    border-left: 3px solid var(--ink);
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    font-family: var(--serif);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .instructions strong { color: var(--ink); font-weight: 500; }
+  .instructions ol { margin: 8px 0 0; padding-left: 22px; }
+  .instructions li { margin: 4px 0; }
+  
+  /* === Layout feuilles A4 paysage === */
+  body {
+    background: #f0f0f4;
+    margin: 0;
+    padding: 0;
+    font-family: var(--serif);
+  }
+  
+  .feuille {
+    width: 297mm;
+    height: 210mm;
+    background: white;
+    margin: 0 auto 50px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.10);
+    display: grid;
+    grid-template-columns: 148.5mm 148.5mm;
+    position: relative;
+    overflow: hidden;
+  }
+  .feuille::before {
+    content: attr(data-label);
+    position: absolute;
+    top: -28px;
+    left: 0;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: #666;
+  }
+  .feuille::after {
+    /* Ligne médiane indicative pour le pli */
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    border-left: 1px dashed rgba(0,0,0,.18);
+    pointer-events: none;
+  }
+  
+  .page-half {
+    width: 148.5mm;
+    height: 210mm;
+    overflow: hidden;
+  }
+  /* Annuler les box-shadow et ajustements des pages réutilisées */
+  .page-half .page {
+    box-shadow: none !important;
+    width: 148.5mm !important;
+    height: 210mm !important;
+    aspect-ratio: unset !important;
+    margin: 0 !important;
+  }
+  
+  /* === Mode impression === */
+  @page {
+    size: A4 landscape;
+    margin: 0;
   }
   @media print {
-    .btn-imprimer { display: none !important; }
+    body {
+      background: white;
+      margin: 0;
+      padding: 0;
+    }
+    .toolbar-print, .instructions {
+      display: none !important;
+    }
+    .feuille {
+      box-shadow: none;
+      margin: 0;
+      page-break-after: always;
+      width: 297mm;
+      height: 210mm;
+    }
+    .feuille::before, .feuille::after {
+      display: none;
+    }
+    .feuille:last-child {
+      page-break-after: auto;
+    }
   }
 
 </style>
 </head>
 <body>
 
-<div class="toolbar">
-  <a class="back-link" href="/baptemeelise/">← Retour</a>
-  <span>Livret · 16 pages · Impression A4 paysage recto-verso, 2-up</span>
-  <a href="javascript:window.print()">Imprimer</a>
+<div class="toolbar-print">
+  <a href="../">← Retour au livret</a>
+  <button class="primary" onclick="window.print()">📄 Lancer l’impression</button>
 </div>
 
-<!-- ════════ SPREAD 1 · I + II ════════ -->
-<div class="spread">
+<div class="instructions">
+  <strong>Instructions d’impression — piqûre à cheval</strong>
+  <ol>
+    <li>Imprimer ces 8 feuilles en A4 paysage, <strong>recto-verso</strong> (retournement par le bord court).</li>
+    <li>Empiler les 4 feuilles dans l’ordre (Feuille 1 dessus, Feuille 4 dessous).</li>
+    <li>Plier l’ensemble en deux dans le sens vertical au niveau du pointillé central.</li>
+    <li>Lier les feuilles au pli avec une corde fine ou agrafer au milieu.</li>
+  </ol>
+</div>
 
-  <div class="page cover">
+
+  <div class="feuille" data-label="Feuille 1 · Recto · pages 16 et 1">
+    <div class="page-half"><div class="page back">
+    <div class="back-bulles">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <g opacity="0.85">
+          <circle cx="40"  cy="40"  r="18" fill="#f4d6e0"/>
+          <circle cx="80"  cy="36"  r="12" fill="#dde8f2"/>
+          <circle cx="60"  cy="68"  r="22" fill="#e2a9f1" opacity=".5"/>
+          <circle cx="92"  cy="78"  r="9"  fill="#2e4ea0" opacity=".18"/>
+          <circle cx="28"  cy="84"  r="10" fill="#d1e1e7"/>
+          <circle cx="74"  cy="100" r="8"  fill="#19577e" opacity=".22"/>
+        </g>
+        <g fill="#fff" opacity=".55">
+          <circle cx="36"  cy="36"  r="3"/>
+          <circle cx="56"  cy="62"  r="4"/>
+          <circle cx="86"  cy="74"  r="3"/>
+        </g>
+      </svg>
+    </div>
+
+    <div>
+      <div class="star">✦</div>
+      <blockquote>« Laissez les petits enfants venir à moi, ne les empêchez pas, car le royaume des cieux est à ceux qui leur ressemblent. »<cite>Évangile selon saint Matthieu · 19, 14</cite></blockquote>
+    </div>
+
+    <div class="signature">Avec toute notre joie,<br>la famille Monnier de Savoie</div>
+
+    <div class="sources">
+      Sources · Saintes Écritures (TOB) · Rituel du baptême des petits enfants · Catéchisme de l’Église catholique · saint Grégoire Palamas, Triades pour la défense des saints hésychastes · Cyrille Argenti, Le baptême · eglise.catholique.fr · liturgie.catholique.fr
+    </div>
+  </div></div>
+    <div class="page-half"><div class="page cover">
     <span class="badge">Cérémonie · Annecy-le-Vieux</span>
 
     <div class="cover-art">
@@ -669,9 +808,10 @@
       <div class="date">Samedi 16 mai 2026</div>
       <div class="place">Église Saint-Laurent · Annecy-le-Vieux</div>
     </div>
+  </div></div>
   </div>
-
-  <div class="page inner">
+  <div class="feuille" data-label="Feuille 1 · Verso · pages 2 et 15">
+    <div class="page-half"><div class="page inner">
     <div class="eb">Préambule</div>
     <h2>L’accueil de l’enfant</h2>
     <hr class="rule">
@@ -722,14 +862,34 @@
         </div>
       </div>
     </div>
+  </div></div>
+    <div class="page-half"><div class="page inner" style="background: var(--cream); justify-content: center;">
+    <div class="verse-block" style="margin: auto 0;">
+      <div class="fleuron" style="margin-bottom: 12px; font-size: 18px;">✦</div>
+      <div class="verse" style="font-size: 16px; line-height: 1.5;">
+        « Je vous donne ma paix,<br>je vous laisse ma paix.<br>Que votre cœur ne se trouble pas,<br>et qu’il ne craigne pas. »
+      </div>
+      <div class="ref" style="margin-top: 10px;">Évangile selon saint Jean · 14, 27</div>
+    </div>
+  </div></div>
   </div>
-</div>
+  <div class="feuille" data-label="Feuille 2 · Recto · pages 14 et 3">
+    <div class="page-half"><div class="page inner">
+    <h2 style="margin-top: 12px;">Chants du baptême</h2>
+    <hr class="rule">
 
-<!-- ════════ SPREAD 2 · III + IV ════════ -->
-<div class="spread">
+    <p style="font-family: var(--serif); font-style: italic; font-size: 11.5px; line-height: 1.55; color: var(--ink); text-align: center; margin: 0 0 14px;">
+      Pour ramener un peu de la cérémonie chez vous, retrouvez les chants, leurs paroles complètes et une note sur chacun.
+    </p>
 
-  <!-- Page III : Lectures Isaïe + Psaume 23 -->
-  <div class="page inner">
+    <div class="qr-zone">
+      <img src="qr-musique.png" alt="QR code vers les chants du baptême">
+      <div class="qr-titre">Scannez avec votre téléphone</div>
+      <div class="qr-sub">Chants du baptême</div>
+      <div class="qr-url">monnier.family/baptemeelise/musique</div>
+    </div>
+  </div></div>
+    <div class="page-half"><div class="page inner">
     <div class="eb">Première partie</div>
     <h2>Liturgie de la Parole</h2>
     <hr class="rule">
@@ -768,10 +928,10 @@
         </div>
       </div>
     </div>
+  </div></div>
   </div>
-
-  <!-- Page IV : Éphésiens + Évangile + Homélie -->
-  <div class="page inner">
+  <div class="feuille" data-label="Feuille 2 · Verso · pages 4 et 13">
+    <div class="page-half"><div class="page inner">
     <div class="eb">Première partie · Suite</div>
     <h2>Liturgie de la Parole</h2>
     <hr class="rule">
@@ -813,14 +973,71 @@
         <div class="step-text">Le Père David commente les textes.</div>
       </div>
     </div>
+  </div></div>
+    <div class="page-half"><div class="page inner">
+    <div class="eb">Septième partie · Suite</div>
+    <h2>Chant final</h2>
+    <hr class="rule">
+
+    <div class="step">
+      <span class="step-num">xxiv.</span>
+      <div>
+        <div class="step-title">Galates 3, 27</div>
+        <div class="chant-inline">
+          <div class="ch-source">Antienne biblique</div>
+          <div class="ch-refrain"><em>Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ. Alléluia.</em></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="verse-block" style="margin-top: 24px;">
+      <div class="fleuron" style="margin-bottom: 6px;">✦</div>
+      <div class="verse" style="font-size: 13px;">« Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ. »</div>
+      <div class="ref">Galates 3, 27</div>
+    </div>
+  </div></div>
   </div>
-</div>
+  <div class="feuille" data-label="Feuille 3 · Recto · pages 12 et 5">
+    <div class="page-half"><div class="page inner" style="background: var(--cream);">
+    <div class="eb">Septième partie</div>
+    <h2>Consécration à Marie Théotokos</h2>
+    <hr class="rule">
 
-<!-- ════════ SPREAD 3 · V + VI ════════ -->
-<div class="spread">
+    <p style="font-family: var(--serif); font-style: italic; font-size: 11px; line-height: 1.5; color: var(--ink-soft); text-align: center; margin: 0 0 8px;">
+      Élise est confiée à la Mère de Dieu.
+    </p>
 
-  <!-- Page V : Prière universelle -->
-  <div class="page inner">
+    <div class="priere" style="font-size: 11.5px; padding: 10px 8px; line-height: 1.6; background: var(--paper);">
+      Marie, pleine de grâce,<br>
+      le Seigneur est avec toi.<br>
+      Tu es bénie entre toutes les femmes,<br>
+      et Jésus, le fruit de tes entrailles, est béni.<br>
+      Tu as donné naissance<br>
+      au Sauveur de nos âmes.
+    </div>
+
+    <div class="step" style="margin-top: 10px;">
+      <span class="step-num">xxii.</span>
+      <div>
+        <div class="step-title">Remise de la médaille</div>
+        <div class="step-text">Le Père David bénit la médaille. Nathalie et Xavier la mettent ensemble autour du cou d’Élise pendant le chant marial.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xxiii.</span>
+      <div>
+        <div class="step-title">Couronnée d’étoiles</div>
+        <div class="chant-inline">
+          <span class="ch-eb">Refrain</span>
+          <div class="ch-refrain"><em>Nous te saluons, ô toi Notre Dame, Marie Vierge sainte que drape le soleil. Couronnée d’étoiles, la lune est sous tes pas, en toi nous est donnée l’aurore du salut.</em></div>
+          <p class="ch-couplet" style="margin-top: 5px;"><span class="ch-num">1.</span> Marie Ève nouvelle et joie de ton Seigneur, tu as donné naissance à Jésus le Sauveur. Par toi nous sont ouvertes les portes du jardin, guide-nous en chemin, étoile du matin.</p>
+          <div class="ch-refrain" style="margin-top: 5px;"><strong>Refrain</strong><em>Nous te saluons, ô toi Notre Dame, Marie Vierge sainte que drape le soleil. Couronnée d’étoiles, la lune est sous tes pas, en toi nous est donnée l’aurore du salut.</em></div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+    <div class="page-half"><div class="page inner">
     <div class="eb">Deuxième partie</div>
     <h2>Prière universelle</h2>
     <hr class="rule">
@@ -868,10 +1085,10 @@
       </div>
 
     </div>
+  </div></div>
   </div>
-
-  <!-- Page VI : Litanie des saints -->
-  <div class="page inner">
+  <div class="feuille" data-label="Feuille 3 · Verso · pages 6 et 11">
+    <div class="page-half"><div class="page inner">
     <div class="eb">Communion des saints</div>
     <h2>Litanie des saints</h2>
     <hr class="rule">
@@ -909,14 +1126,74 @@
       <span class="sens-eb">Sens du rite</span>
       Les litanies des saints illustrent la confiance de l’Église en leur intercession. Elles mettent en valeur la communion qui unit l’Église de la Jérusalem céleste à celle qui pèlerine sur la terre.
     </div>
+  </div></div>
+    <div class="page-half"><div class="page inner">
+    <div class="eb">Sixième partie</div>
+    <h2>Envoi</h2>
+    <hr class="rule">
+
+    <div class="step">
+      <span class="step-num">xix.</span>
+      <div>
+        <div class="step-title">Notre Père</div>
+        <div class="priere" style="font-size: 10px;">
+          Notre Père, qui es aux cieux,<br>
+          que ton nom soit sanctifié,<br>
+          que ton règne vienne,<br>
+          que ta volonté soit faite sur la terre comme au ciel.<br>
+          Donne-nous aujourd’hui notre pain de ce jour.<br>
+          Pardonne-nous nos offenses,<br>
+          comme nous pardonnons aussi à ceux qui nous ont offensés.<br>
+          Et ne nous laisse pas entrer en tentation,<br>
+          mais délivre-nous du Mal. Amen.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xx.</span>
+      <div>
+        <div class="step-title">Bénédiction finale</div>
+        <div class="step-text">Le Père David bénit l’assemblée, les parents, le parrain, la marraine et toute la famille.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xxi.</span>
+      <div>
+        <div class="step-title">Signatures des registres</div>
+        <div class="step-text">Le parrain Xavier et la marraine Nathalie signent les registres de la paroisse.</div>
+      </div>
+    </div>
+  </div></div>
   </div>
-</div>
+  <div class="feuille" data-label="Feuille 4 · Recto · pages 10 et 7">
+    <div class="page-half"><div class="page inner">
+    <div class="eb">Cinquième partie · Suite</div>
+    <h2>Chant après le baptême</h2>
+    <hr class="rule">
 
-<!-- ════════ SPREAD 4 · VII + VIII ════════ -->
-<div class="spread">
+    <div class="step">
+      <span class="step-num">xviii.</span>
+      <div>
+        <div class="step-title">Tu es devenu enfant de Dieu</div>
+        <div class="chant-inline">
+          <span class="ch-eb">Refrain</span>
+          <div class="ch-source">D. Bourgeois &amp; J.-P. Revel · Musique : A. Gouzes, o.p.</div>
+          <div class="ch-refrain"><em>Tu es devenu enfant de Dieu et frère de Jésus, alléluia ! Aujourd’hui l’Esprit repose en toi et chante alléluia.</em></div>
+          <p class="ch-couplet"><span class="ch-num">1.</span> Tu rentres dans la ronde, la ronde de son amour, tu danses avec tes frères la danse de sa joie.</p>
+          <p class="ch-couplet"><span class="ch-num">2.</span> Tu portes sa lumière, lumière de sa beauté, tu chantes ses merveilles, merveilles de son cœur.</p>
+        </div>
+      </div>
+    </div>
 
-  <!-- Page VII : Au bord de l'eau -->
-  <div class="page inner">
+    <div class="verse-block" style="margin-top: 24px;">
+      <div class="fleuron" style="margin-bottom: 6px;">✦</div>
+      <div class="verse" style="font-size: 12px;">« Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ. »</div>
+      <div class="ref">Galates 3, 27</div>
+    </div>
+  </div></div>
+    <div class="page-half"><div class="page inner">
     <div class="eb">Troisième partie</div>
     <h2>Au bord de l’eau</h2>
     <hr class="rule">
@@ -976,10 +1253,10 @@
         </div>
       </div>
     </div>
+  </div></div>
   </div>
-
-  <!-- Page VIII : Le baptême -->
-  <div class="page inner" style="background: var(--paper);">
+  <div class="feuille" data-label="Feuille 4 · Verso · pages 8 et 9">
+    <div class="page-half"><div class="page inner" style="background: var(--paper);">
     <div class="eb">Quatrième partie</div>
     <h2>Le baptême</h2>
     <hr class="rule">
@@ -1005,14 +1282,8 @@
       <div class="verse" style="font-size: 13px;">« L’eau du baptême est pour vous à la fois tombeau et mère. »</div>
       <div class="ref">Saint Cyrille de Jérusalem</div>
     </div>
-  </div>
-</div>
-
-<!-- ════════ SPREAD 5 · IX + X ════════ -->
-<div class="spread">
-
-  <!-- Page IX : Rites complémentaires -->
-  <div class="page inner">
+  </div></div>
+    <div class="page-half"><div class="page inner">
     <div class="eb">Cinquième partie</div>
     <h2>Rites complémentaires</h2>
     <hr class="rule">
@@ -1064,216 +1335,8 @@
         </div>
       </div>
     </div>
+  </div></div>
   </div>
 
-  <!-- Page X : Tu es devenu enfant de Dieu -->
-  <div class="page inner">
-    <div class="eb">Cinquième partie · Suite</div>
-    <h2>Chant après le baptême</h2>
-    <hr class="rule">
-
-    <div class="step">
-      <span class="step-num">xviii.</span>
-      <div>
-        <div class="step-title">Tu es devenu enfant de Dieu</div>
-        <div class="chant-inline">
-          <span class="ch-eb">Refrain</span>
-          <div class="ch-source">D. Bourgeois &amp; J.-P. Revel · Musique : A. Gouzes, o.p.</div>
-          <div class="ch-refrain"><em>Tu es devenu enfant de Dieu et frère de Jésus, alléluia ! Aujourd’hui l’Esprit repose en toi et chante alléluia.</em></div>
-          <p class="ch-couplet"><span class="ch-num">1.</span> Tu rentres dans la ronde, la ronde de son amour, tu danses avec tes frères la danse de sa joie.</p>
-          <p class="ch-couplet"><span class="ch-num">2.</span> Tu portes sa lumière, lumière de sa beauté, tu chantes ses merveilles, merveilles de son cœur.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="verse-block" style="margin-top: 24px;">
-      <div class="fleuron" style="margin-bottom: 6px;">✦</div>
-      <div class="verse" style="font-size: 12px;">« Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ. »</div>
-      <div class="ref">Galates 3, 27</div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════ SPREAD 6 · XI + XII ════════ -->
-<div class="spread">
-
-  <!-- Page XI : Envoi (Notre Père + bénédiction) -->
-  <div class="page inner">
-    <div class="eb">Sixième partie</div>
-    <h2>Envoi</h2>
-    <hr class="rule">
-
-    <div class="step">
-      <span class="step-num">xix.</span>
-      <div>
-        <div class="step-title">Notre Père</div>
-        <div class="priere" style="font-size: 10px;">
-          Notre Père, qui es aux cieux,<br>
-          que ton nom soit sanctifié,<br>
-          que ton règne vienne,<br>
-          que ta volonté soit faite sur la terre comme au ciel.<br>
-          Donne-nous aujourd’hui notre pain de ce jour.<br>
-          Pardonne-nous nos offenses,<br>
-          comme nous pardonnons aussi à ceux qui nous ont offensés.<br>
-          Et ne nous laisse pas entrer en tentation,<br>
-          mais délivre-nous du Mal. Amen.
-        </div>
-      </div>
-    </div>
-
-    <div class="step">
-      <span class="step-num">xx.</span>
-      <div>
-        <div class="step-title">Bénédiction finale</div>
-        <div class="step-text">Le Père David bénit l’assemblée, les parents, le parrain, la marraine et toute la famille.</div>
-      </div>
-    </div>
-
-    <div class="step">
-      <span class="step-num">xxi.</span>
-      <div>
-        <div class="step-title">Signatures des registres</div>
-        <div class="step-text">Le parrain Xavier et la marraine Nathalie signent les registres de la paroisse.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Page XII : Consécration à Marie Théotokos + Couronnée d'étoiles + médaille -->
-  <div class="page inner" style="background: var(--cream);">
-    <div class="eb">Septième partie</div>
-    <h2>Consécration à Marie Théotokos</h2>
-    <hr class="rule">
-
-    <p style="font-family: var(--serif); font-style: italic; font-size: 11px; line-height: 1.5; color: var(--ink-soft); text-align: center; margin: 0 0 8px;">
-      Élise est confiée à la Mère de Dieu.
-    </p>
-
-    <div class="priere" style="font-size: 11.5px; padding: 10px 8px; line-height: 1.6; background: var(--paper);">
-      Marie, pleine de grâce,<br>
-      le Seigneur est avec toi.<br>
-      Tu es bénie entre toutes les femmes,<br>
-      et Jésus, le fruit de tes entrailles, est béni.<br>
-      Tu as donné naissance<br>
-      au Sauveur de nos âmes.
-    </div>
-
-    <div class="step" style="margin-top: 10px;">
-      <span class="step-num">xxii.</span>
-      <div>
-        <div class="step-title">Remise de la médaille</div>
-        <div class="step-text">Le Père David bénit la médaille. Nathalie et Xavier la mettent ensemble autour du cou d’Élise pendant le chant marial.</div>
-      </div>
-    </div>
-
-    <div class="step">
-      <span class="step-num">xxiii.</span>
-      <div>
-        <div class="step-title">Couronnée d’étoiles</div>
-        <div class="chant-inline">
-          <span class="ch-eb">Refrain</span>
-          <div class="ch-refrain"><em>Nous te saluons, ô toi Notre Dame, Marie Vierge sainte que drape le soleil. Couronnée d’étoiles, la lune est sous tes pas, en toi nous est donnée l’aurore du salut.</em></div>
-          <p class="ch-couplet" style="margin-top: 5px;"><span class="ch-num">1.</span> Marie Ève nouvelle et joie de ton Seigneur, tu as donné naissance à Jésus le Sauveur. Par toi nous sont ouvertes les portes du jardin, guide-nous en chemin, étoile du matin.</p>
-          <div class="ch-refrain" style="margin-top: 5px;"><strong>Refrain</strong><em>Nous te saluons, ô toi Notre Dame, Marie Vierge sainte que drape le soleil. Couronnée d’étoiles, la lune est sous tes pas, en toi nous est donnée l’aurore du salut.</em></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- ════════ SPREAD 7 · XIII + XIV ════════ -->
-<div class="spread">
-
-  <!-- Page XIII : Chant final Galates 3, 27 -->
-  <div class="page inner">
-    <div class="eb">Septième partie · Suite</div>
-    <h2>Chant final</h2>
-    <hr class="rule">
-
-    <div class="step">
-      <span class="step-num">xxiv.</span>
-      <div>
-        <div class="step-title">Galates 3, 27</div>
-        <div class="chant-inline">
-          <div class="ch-source">Antienne biblique</div>
-          <div class="ch-refrain"><em>Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ. Alléluia.</em></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="verse-block" style="margin-top: 24px;">
-      <div class="fleuron" style="margin-bottom: 6px;">✦</div>
-      <div class="verse" style="font-size: 13px;">« Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ. »</div>
-      <div class="ref">Galates 3, 27</div>
-    </div>
-  </div>
-
-  <!-- Page XIV : QR code -->
-  <div class="page inner">
-    <h2 style="margin-top: 12px;">Chants du baptême</h2>
-    <hr class="rule">
-
-    <p style="font-family: var(--serif); font-style: italic; font-size: 11.5px; line-height: 1.55; color: var(--ink); text-align: center; margin: 0 0 14px;">
-      Pour ramener un peu de la cérémonie chez vous, retrouvez les chants, leurs paroles complètes et une note sur chacun.
-    </p>
-
-    <div class="qr-zone">
-      <img src="qr-musique.png" alt="QR code vers les chants du baptême">
-      <div class="qr-titre">Scannez avec votre téléphone</div>
-      <div class="qr-sub">Chants du baptême</div>
-      <div class="qr-url">monnier.family/baptemeelise/musique</div>
-    </div>
-  </div>
-</div>
-
-<!-- ════════ SPREAD 8 · XV + XVI ════════ -->
-<div class="spread">
-
-  <!-- Page XV : verset paix -->
-  <div class="page inner" style="background: var(--cream); justify-content: center;">
-    <div class="verse-block" style="margin: auto 0;">
-      <div class="fleuron" style="margin-bottom: 12px; font-size: 18px;">✦</div>
-      <div class="verse" style="font-size: 16px; line-height: 1.5;">
-        « Je vous donne ma paix,<br>je vous laisse ma paix.<br>Que votre cœur ne se trouble pas,<br>et qu’il ne craigne pas. »
-      </div>
-      <div class="ref" style="margin-top: 10px;">Évangile selon saint Jean · 14, 27</div>
-    </div>
-  </div>
-
-  <!-- Page XVI : Dos -->
-  <div class="page back">
-    <div class="back-bulles">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-        <g opacity="0.85">
-          <circle cx="40"  cy="40"  r="18" fill="#f4d6e0"/>
-          <circle cx="80"  cy="36"  r="12" fill="#dde8f2"/>
-          <circle cx="60"  cy="68"  r="22" fill="#e2a9f1" opacity=".5"/>
-          <circle cx="92"  cy="78"  r="9"  fill="#2e4ea0" opacity=".18"/>
-          <circle cx="28"  cy="84"  r="10" fill="#d1e1e7"/>
-          <circle cx="74"  cy="100" r="8"  fill="#19577e" opacity=".22"/>
-        </g>
-        <g fill="#fff" opacity=".55">
-          <circle cx="36"  cy="36"  r="3"/>
-          <circle cx="56"  cy="62"  r="4"/>
-          <circle cx="86"  cy="74"  r="3"/>
-        </g>
-      </svg>
-    </div>
-
-    <div>
-      <div class="star">✦</div>
-      <blockquote>« Laissez les petits enfants venir à moi, ne les empêchez pas, car le royaume des cieux est à ceux qui leur ressemblent. »<cite>Évangile selon saint Matthieu · 19, 14</cite></blockquote>
-    </div>
-
-    <div class="signature">Avec toute notre joie,<br>la famille Monnier de Savoie</div>
-
-    <div class="sources">
-      Sources · Saintes Écritures (TOB) · Rituel du baptême des petits enfants · Catéchisme de l’Église catholique · saint Grégoire Palamas, Triades pour la défense des saints hésychastes · Cyrille Argenti, Le baptême · eglise.catholique.fr · liturgie.catholique.fr
-    </div>
-  </div>
-</div>
-
-
-<a href="imprimer/" class="btn-imprimer">📄 Version à imprimer</a>
 </body>
 </html>
