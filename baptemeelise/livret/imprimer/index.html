@@ -555,6 +555,37 @@
   }
 
   /* ════════ IMPRESSION A4 paysage 2-up recto-verso ════════ */
+  /* === Page dense (P4 : Éphésiens + Évangile + Homélie) === */
+  .page.dense .lecture {
+    font-size: 13.5px;
+    padding: 4px 8px;
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+  .page.dense .lec-eb {
+    margin-bottom: 1px;
+    font-size: 9.5px;
+  }
+  .page.dense .step {
+    margin-bottom: 3px;
+  }
+  .page.dense .step-text {
+    margin-top: 1px;
+  }
+  .page.dense h2 {
+    font-size: 23px;
+    margin-bottom: 1px;
+  }
+  .page.dense .rule {
+    margin-bottom: 5px;
+  }
+  .page.dense .eb {
+    margin-bottom: 2px;
+  }
+  .page.dense .step-title {
+    margin-bottom: 1px;
+  }
+
   @media print {
     @page { size: A4 landscape; margin: 0; }
     html, body {
@@ -957,7 +988,7 @@
   </div></div>
   </div>
   <div class="feuille" data-label="Feuille 2 · Verso · pages 4 et 13">
-    <div class="page-half"><div class="page inner">
+    <div class="page-half"><div class="page inner dense">
     <div class="eb">Première partie · Suite</div>
     <h2>Liturgie de la Parole</h2>
     <hr class="rule">
