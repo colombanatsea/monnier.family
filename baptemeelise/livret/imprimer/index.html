@@ -784,6 +784,55 @@
       page-break-after: auto;
     }
   }
+
+/* === BOOST IMPRESSION : maximiser la lisibilité personnes âgées === */
+/* S'applique aux pages NON dense (P4) et NON tight (P3) qui ont du jeu */
+/* Cible la version imprimable uniquement (pas le livret écran) */
+
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .priere {
+    font-size: 16.5px !important;
+    line-height: 1.55 !important;
+    padding: 9px 7px !important;
+  }
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .dialogue {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+    padding: 8px 11px !important;
+  }
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .lecture {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    padding: 6px 10px !important;
+  }
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .ch-refrain {
+    font-size: 15.5px !important;
+    line-height: 1.55 !important;
+  }
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .ch-couplet {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+  }
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .step-text {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+  }
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .step-title {
+    font-size: 17px !important;
+  }
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .sens {
+    font-size: 11.5px !important;
+    line-height: 1.5 !important;
+  }
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .refrain-langue {
+    font-size: 14px !important;
+  }
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .litanies p {
+    font-size: 13px !important;
+  }
+  .feuille .page-half .page.inner:not(.dense):not(.tight) h2 {
+    font-size: 28px !important;
+  }
+
 </style>
 </head>
 <body>
@@ -946,7 +995,7 @@
       <div class="qr-url">monnier.family/baptemeelise/musique</div>
     </div>
   </div></div>
-    <div class="page-half"><div class="page inner">
+    <div class="page-half"><div class="page inner tight">
     <div class="eb">Première partie</div>
     <h2>Liturgie de la Parole</h2>
     <hr class="rule">
@@ -981,7 +1030,7 @@
         </div>
         <div class="sens">
           <span class="sens-eb">Sens de la lecture</span>
-          « Le Seigneur est mon berger, je ne manque de rien » : par le baptême, Élise est confiée à ce Berger qui la conduira toute sa vie. Aux eaux tranquilles, elle apprendra à ne rien craindre, parce qu’elle est aimée et qu’elle peut tout remettre entre ses mains.
+          « Le Seigneur est mon berger, je ne manque de rien » : Élise apprendra à ne rien craindre car elle est aimée et guidée.
         </div>
       </div>
     </div>
@@ -1349,8 +1398,8 @@
 
     <div class="verse-block" style="margin-top: 24px;">
       <div class="fleuron" style="margin-bottom: 6px;">✦</div>
-      <div class="verse" style="font-size: 13px;">« L’eau du baptême est pour vous à la fois tombeau et mère. »</div>
-      <div class="ref">Saint Cyrille de Jérusalem</div>
+      <div class="verse" style="font-size: 13px;">« La même eau salutaire est devenue pour vous et votre tombeau et votre mère. »</div>
+      <div class="ref">Saint Cyrille de Jérusalem · Catéchèse mystagogique 2, 4</div>
     </div>
   </div></div>
     <div class="page-half"><div class="page inner">
