@@ -76,14 +76,15 @@
 
   .spread {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 148.5mm 148.5mm;
     gap: 12px;
-    max-width: 980px;
+    max-width: none;
+    width: fit-content;
     margin: 0 auto 24px;
   }
   .page {
-    width: 100%;
-    aspect-ratio: 148 / 210;
+    width: 148.5mm;
+    height: 210mm;
     background: var(--paper);
     box-shadow: 0 4px 30px rgba(46,78,160,.10), 0 1px 4px rgba(0,0,0,.06);
     position: relative;
@@ -592,6 +593,23 @@
   }
   .page.dense .step-title {
     margin-bottom: 1px;
+  }
+
+  /* Responsive : sur petit écran, on bascule en pages empilées et adaptées */
+  @media (max-width: 1200px) {
+    .spread {
+      grid-template-columns: 1fr;
+      max-width: 148.5mm;
+      width: 100%;
+    }
+  }
+  @media (max-width: 600px) {
+    .page {
+      width: 100%;
+      height: auto;
+      min-height: 210mm;
+      aspect-ratio: 148 / 210;
+    }
   }
 
   @media print {
