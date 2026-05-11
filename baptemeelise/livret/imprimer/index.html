@@ -14,6 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 
+
   :root {
     --ink:        #2e4ea0;
     --ink-soft:   #19577e;
@@ -586,6 +587,34 @@
     margin-bottom: 1px;
   }
 
+  .psaume-refrain {
+    text-align: center;
+    margin: 4px 0;
+    color: var(--blue-deep);
+    font-family: var(--serif);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .psaume-refrain::before {
+    content: '♪ ';
+    font-size: 12px;
+    opacity: .7;
+  }
+
+  .alleluia {
+    text-align: center;
+    margin: 6px 0 0;
+    padding: 8px;
+    background: linear-gradient(180deg, rgba(255,237,179,.35), rgba(255,237,179,.15));
+    border-top: 1px solid rgba(184,149,90,.3);
+    border-bottom: 1px solid rgba(184,149,90,.3);
+    color: var(--gold-dark, #8b6f3a);
+    font-family: var(--serif);
+    font-size: 16px;
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+
   @media print {
     @page { size: A4 landscape; margin: 0; }
     html, body {
@@ -645,6 +674,34 @@
     box-shadow: 0 6px 24px rgba(46,78,160,.40);
     background: var(--ink-soft);
   }
+  .psaume-refrain {
+    text-align: center;
+    margin: 4px 0;
+    color: var(--blue-deep);
+    font-family: var(--serif);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .psaume-refrain::before {
+    content: '♪ ';
+    font-size: 12px;
+    opacity: .7;
+  }
+
+  .alleluia {
+    text-align: center;
+    margin: 6px 0 0;
+    padding: 8px;
+    background: linear-gradient(180deg, rgba(255,237,179,.35), rgba(255,237,179,.15));
+    border-top: 1px solid rgba(184,149,90,.3);
+    border-bottom: 1px solid rgba(184,149,90,.3);
+    color: var(--gold-dark, #8b6f3a);
+    font-family: var(--serif);
+    font-size: 16px;
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+
   @media print {
     .btn-imprimer { display: none !important; }
   }
@@ -761,6 +818,34 @@
     size: A4 landscape;
     margin: 0;
   }
+  .psaume-refrain {
+    text-align: center;
+    margin: 4px 0;
+    color: var(--blue-deep);
+    font-family: var(--serif);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .psaume-refrain::before {
+    content: '♪ ';
+    font-size: 12px;
+    opacity: .7;
+  }
+
+  .alleluia {
+    text-align: center;
+    margin: 6px 0 0;
+    padding: 8px;
+    background: linear-gradient(180deg, rgba(255,237,179,.35), rgba(255,237,179,.15));
+    border-top: 1px solid rgba(184,149,90,.3);
+    border-bottom: 1px solid rgba(184,149,90,.3);
+    color: var(--gold-dark, #8b6f3a);
+    font-family: var(--serif);
+    font-size: 16px;
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+
   @media print {
     body {
       background: white;
@@ -832,6 +917,7 @@
   .feuille .page-half .page.inner:not(.dense):not(.tight) h2 {
     font-size: 28px !important;
   }
+
 </style>
 </head>
 <body>
@@ -1024,8 +1110,12 @@
           <span class="lec-eb">Psaume du roi David</span>
           <p><span class="strophe">Le Seigneur est mon berger : je ne manque de rien.<br>Sur des prés d’herbe fraîche, il me fait reposer.</span></p>
           <p><span class="strophe">Il me mène vers les eaux tranquilles et me fait revivre ;<br>il me conduit par le juste chemin pour l’honneur de son nom.</span></p>
+          <p class="psaume-refrain"><em>Le Seigneur est mon berger, rien ne saurait me manquer.</em></p>
           <p><span class="strophe">Si je traverse les ravins de la mort, je ne crains aucun mal,<br>car tu es avec moi : ton bâton me guide et me rassure.</span></p>
+          <p><span class="strophe">Tu prépares la table pour moi devant mes ennemis ;<br>tu répands le parfum sur ma tête, ma coupe est débordante.</span></p>
+          <p class="psaume-refrain"><em>Le Seigneur est mon berger, rien ne saurait me manquer.</em></p>
           <p><span class="strophe">Grâce et bonheur m’accompagnent tous les jours de ma vie ;<br>j’habiterai la maison du Seigneur pour la durée de mes jours.</span></p>
+          <p class="psaume-refrain"><em>Le Seigneur est mon berger, rien ne saurait me manquer.</em></p>
         </div>
         <div class="sens">
           <span class="sens-eb">Sens de la lecture</span>
@@ -1062,6 +1152,20 @@
     <div class="step">
       <span class="step-num">vii.</span>
       <div>
+        <div class="step-title">Acclamation à l’Évangile</div>
+        <div class="alleluia">
+          <em>Alléluia, alléluia, alléluia.</em>
+        </div>
+        <div class="sens">
+          <span class="sens-eb">Sens du rite</span>
+          L’assemblée se lève. L’Alléluia accueille la parole vivante du Christ qui va être proclamée.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">viii.</span>
+      <div>
         <div class="step-title">Évangile · Matthieu 28, 16-20 <span style="font-style: italic; font-weight: 400; color: var(--ink-soft); font-size: 10px;">, lu par Alain</span></div>
         <div class="lecture">
           <span class="lec-eb">Évangile selon saint Matthieu</span>
@@ -1071,13 +1175,6 @@
       </div>
     </div>
 
-    <div class="step">
-      <span class="step-num">viii.</span>
-      <div>
-        <div class="step-title">Homélie</div>
-        <div class="step-text">Le Père David commente les textes.</div>
-      </div>
-    </div>
   </div></div>
     <div class="page-half"><div class="page inner">
     <div class="eb">Septième partie · Suite</div>
@@ -1122,6 +1219,14 @@
     </div>
 
     <div class="step" style="margin-top: 10px;">
+      <span class="step-num">xxi.</span>
+      <div>
+        <div class="step-title">Signatures des registres</div>
+        <div class="step-text">Le parrain Xavier et la marraine Nathalie signent les registres de la paroisse pendant que l’assemblée écoute la prière mariale et se prépare au chant marial.</div>
+      </div>
+    </div>
+
+    <div class="step">
       <span class="step-num">xxii.</span>
       <div>
         <div class="step-title">Remise de la médaille</div>
@@ -1143,9 +1248,17 @@
     </div>
   </div></div>
     <div class="page-half"><div class="page inner">
-    <div class="eb">Deuxième partie</div>
-    <h2>Prière universelle</h2>
+    <div class="eb">Première partie · Conclusion</div>
+    <h2>Homélie &amp; Prière universelle</h2>
     <hr class="rule">
+    <div class="step">
+      <span class="step-num">ix.</span>
+      <div>
+        <div class="step-title">Homélie</div>
+        <div class="step-text">Le Père David commente les textes.</div>
+      </div>
+    </div>
+
 
     <p style="font-family: var(--serif); font-style: italic; font-size: 10.5px; line-height: 1.5; color: var(--ink); text-align: center; margin: 0 0 8px;">
       Quatre intentions, quatre langues, une seule prière qui rassemble :<br>Seigneur, prends pitié.
@@ -1156,36 +1269,36 @@
       <div class="refrain-item">
         <span class="refrain-num">1.</span>
         <div>
+          <div class="step-text">Pour les enfants et leurs parents qui traversent les épreuves, la guerre, la misère ou la faim. Seigneur, nous te prions.</div>
           <div class="refrain-langue">« Seigneur, aie pitié de nous »</div>
           <div class="refrain-tradition">Français · Langue maternelle</div>
-          <div class="step-text" style="margin-top: 3px;">Pour les enfants et leurs parents qui traversent les épreuves, la guerre, la misère ou la faim. Seigneur, nous te prions.</div>
         </div>
       </div>
 
       <div class="refrain-item">
         <span class="refrain-num">2.</span>
         <div>
+          <div class="step-text">Pour guider nos dirigeants et dirigeantes afin d’établir la paix dans le monde. Seigneur, nous te prions.</div>
           <div class="refrain-langue">« Domine, miserere nobis »</div>
           <div class="refrain-tradition">Latin · Tradition romaine</div>
-          <div class="step-text" style="margin-top: 3px;">Pour guider nos dirigeants et dirigeantes afin d’établir la paix dans le monde. Seigneur, nous te prions.</div>
         </div>
       </div>
 
       <div class="refrain-item">
         <span class="refrain-num">3.</span>
         <div>
+          <div class="step-text">Pour nos familles et nos proches, afin que nous grandissions ensemble dans l’Amour fraternel et la joie pour te servir. Seigneur, nous te prions.</div>
           <div class="refrain-langue">« Kyrie eleison »</div>
           <div class="refrain-tradition">Grec · Tradition byzantine</div>
-          <div class="step-text" style="margin-top: 3px;">Pour nos familles et nos proches, afin que nous grandissions ensemble dans l’Amour fraternel et la joie pour te servir. Seigneur, nous te prions.</div>
         </div>
       </div>
 
       <div class="refrain-item">
         <span class="refrain-num">4.</span>
         <div>
+          <div class="step-text">Pour les défunts de nos familles, afin que tu les accueilles près de toi et qu’il nous soit donné, un jour, d’être tous réunis dans ton royaume. Seigneur, nous te prions.</div>
           <div class="refrain-langue">« Gospodi pomiluj » <span style="font-size: 8.5px; color: var(--ink-soft); opacity: .7;">(Gospodi pomiloï)</span></div>
           <div class="refrain-tradition">Slavon · Tradition slave</div>
-          <div class="step-text" style="margin-top: 3px;">Pour les défunts de nos familles, afin que tu les accueilles près de toi et qu’il nous soit donné, un jour, d’être tous réunis dans ton royaume. Seigneur, nous te prions.</div>
         </div>
       </div>
 
@@ -1263,13 +1376,6 @@
       </div>
     </div>
 
-    <div class="step">
-      <span class="step-num">xxi.</span>
-      <div>
-        <div class="step-title">Signatures des registres</div>
-        <div class="step-text">Le parrain Xavier et la marraine Nathalie signent les registres de la paroisse.</div>
-      </div>
-    </div>
   </div></div>
   </div>
   <div class="feuille" data-label="Feuille 4 · Recto · pages 10 et 7">
@@ -1277,19 +1383,6 @@
     <div class="eb">Cinquième partie · Suite</div>
     <h2>Chant après le baptême</h2>
     <hr class="rule">
-    <div class="step">
-      <span class="step-num">xvii.</span>
-      <div>
-        <div class="step-title">Effata · « Ouvre-toi »</div>
-        <div class="step-text">Le Père David touche les oreilles et les lèvres d’Élise.</div>
-        <div class="sens">
-          <span class="sens-eb">Sens du rite</span>
-          Geste évangélique tiré de Marc 7, 34. Il exprime la nécessité de la grâce pour entendre la Parole de Dieu et la proclamer.
-        </div>
-      </div>
-    </div>
-
-
     <div class="step">
       <span class="step-num">xviii.</span>
       <div>
@@ -1316,21 +1409,26 @@
     <hr class="rule">
 
     <div class="step">
-      <span class="step-num">ix.</span>
+      <span class="step-num">x.</span>
       <div>
-        <div class="step-title">Prière de délivrance &amp; imposition de la main</div>
+        <div class="step-title">Prière de délivrance, imposition de la main et Effata</div>
         <div class="priere" style="font-size: 12.5px; padding: 8px 6px;">
           Dieu tout-puissant, tu as envoyé ton Fils unique pour délivrer l’homme, esclave du péché. Pour Élisabeth, qui se prépare à recevoir le baptême, nous te prions humblement : fais qu’elle échappe au pouvoir de Satan et accorde-lui de marcher dans la liberté des enfants de Dieu. Par Jésus, le Christ, notre Seigneur.
         </div>
         <div class="sens">
-          <span class="sens-eb">Sens du rite</span>
+          <span class="sens-eb">Sens du rite (1)</span>
           L’imposition de la main et la prière de délivrance demandent à Dieu de protéger Élise du mal et de la conduire dans la liberté des enfants de Dieu.
+        </div>
+        <div class="step-text" style="margin-top: 8px;"><strong>Effata · « Ouvre-toi »</strong><br>Le Père David touche les oreilles et les lèvres d’Élise.</div>
+        <div class="sens">
+          <span class="sens-eb">Sens du rite (2)</span>
+          Geste évangélique tiré de Marc 7, 34. Il exprime la nécessité de la grâce pour entendre la Parole de Dieu et la proclamer.
         </div>
       </div>
     </div>
 
     <div class="step">
-      <span class="step-num">x.</span>
+      <span class="step-num">xi.</span>
       <div>
         <div class="step-title">Bénédiction de l’eau</div>
         <div class="step-text">Le Père David bénit l’eau en mémoire des actes de salut accomplis par l’eau dans toute l’histoire du salut : aux origines, au déluge, à la mer Rouge, au Jourdain.</div>
@@ -1342,7 +1440,7 @@
     </div>
 
     <div class="step">
-      <span class="step-num">xi.</span>
+      <span class="step-num">xii.</span>
       <div>
         <div class="step-title">Renonciation au mal</div>
         <div class="dialogue">
@@ -1364,23 +1462,25 @@
     <h2>Le baptême</h2>
     <hr class="rule">
     <div class="step">
-      <span class="step-num">xii.</span>
+      <span class="step-num">xiii.</span>
       <div>
         <div class="step-title">Profession de foi</div>
         <div class="dialogue">
-          <p><strong>Père David</strong> · Croyez-vous en Dieu, le Père tout-puissant ?</p>
+          <p><strong>Père David</strong> · Croyez-vous en Dieu, le Père tout-puissant, créateur du ciel et de la terre ?</p>
           <p><strong>Tous</strong> · Nous croyons.</p>
-          <p style="margin-top: 4px;"><strong>Père David</strong> · Croyez-vous en Jésus Christ, son Fils unique, mort et ressuscité ?</p>
+          <p style="margin-top: 4px;"><strong>Père David</strong> · Croyez-vous en Jésus Christ, son Fils unique, notre Seigneur, qui est né de la Vierge Marie, a souffert la passion, a été enseveli, est ressuscité d’entre les morts, et qui est assis à la droite du Père ?</p>
           <p><strong>Tous</strong> · Nous croyons.</p>
-          <p style="margin-top: 4px;"><strong>Père David</strong> · Croyez-vous en l’Esprit Saint, à la sainte Église, à la communion des saints, à la vie éternelle ?</p>
+          <p style="margin-top: 4px;"><strong>Père David</strong> · Croyez-vous en l’Esprit Saint, à la sainte Église catholique, à la communion des saints, à la rémission des péchés, à la résurrection de la chair et à la vie éternelle ?</p>
           <p><strong>Tous</strong> · Nous croyons.</p>
+          <p style="margin-top: 6px;"><strong>Père David</strong> · Voulez-vous que votre fille Élisabeth soit baptisée dans cette foi de l’Église que nous venons de professer ensemble ?</p>
+          <p><strong>Marie et Colomban</strong> · Oui, nous le voulons.</p>
         </div>
       </div>
     </div>
 
 
     <div class="step">
-      <span class="step-num">xiii.</span>
+      <span class="step-num">xiv.</span>
       <div>
         <div class="step-title">Le sacrement</div>
         <div class="priere" style="font-size: 12.5px; padding: 14px 8px; line-height: 1.7;">
@@ -1407,7 +1507,7 @@
     <hr class="rule">
 
     <div class="step">
-      <span class="step-num">xiv.</span>
+      <span class="step-num">xv.</span>
       <div>
         <div class="step-title">Saint Chrême</div>
         <div class="step-text">Onction sur le front d’Élise.</div>
@@ -1419,10 +1519,10 @@
     </div>
 
     <div class="step">
-      <span class="step-num">xv.</span>
+      <span class="step-num">xvi.</span>
       <div>
         <div class="step-title">Vêtement blanc</div>
-        <div class="step-text">Élise revêt le Christ, robe de la résurrection.</div>
+        <div class="step-text">Nathalie, la marraine, revêt Élise du vêtement blanc, robe de la résurrection.</div>
         <div class="sens">
           <span class="sens-eb">Sens du rite</span>
           Le vêtement blanc signifie la dignité nouvelle de la baptisée, revêtue du Christ comme on enfile un habit de fête. C’est l’écho visible de la parole de saint Paul : « Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ » (Galates 3, 27).
@@ -1431,10 +1531,10 @@
     </div>
 
     <div class="step">
-      <span class="step-num">xvi.</span>
+      <span class="step-num">xvii.</span>
       <div>
         <div class="step-title">Cierge allumé au cierge pascal</div>
-        <div class="step-text">Lumière transmise de proche en proche.</div>
+        <div class="step-text">Xavier, le parrain, allume le cierge d’Élise au cierge pascal et le lui remet.</div>
         <div class="sens">
           <span class="sens-eb">Sens du rite</span>
           Le cierge pascal signifie la présence vivante du Christ ressuscité. Les Pères grecs depuis Justin appellent le baptême φωτισμός, illumination.
