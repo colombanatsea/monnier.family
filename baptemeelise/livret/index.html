@@ -241,7 +241,7 @@
     margin: 4px 0;
     color: var(--blue-deep);
     font-family: var(--serif);
-    font-size: 14px;
+    font-size: 15.5px;
     font-weight: 500;
   }
   .psaume-refrain::before {
@@ -253,12 +253,12 @@
   /* Sens du rite : compact, italique, libellé inline */
   .sens {
     background: var(--sky);
-    padding: 3px 8px;
-    margin: 1px 0 0;
+    padding: 4px 9px;
+    margin: 3px 0 0;
     border-radius: 3px;
     font-family: var(--sans);
-    font-size: 14px;
-    line-height: 1.35;
+    font-size: 12px;
+    line-height: 1.45;
     color: var(--ink-soft);
     font-style: italic;
   }
@@ -279,11 +279,28 @@
     background: var(--cream);
     border-left: 2px solid var(--ink);
     padding: 5px 10px;
-    margin: 1px 0 0;
+    margin: 3px 0 0;
     font-family: var(--sans);
-    font-size: 14px;
-    line-height: 1.55;
+    font-size: 14.5px;
+    line-height: 1.4;
     color: var(--ink-soft);
+  }
+  .dialogue p {
+    margin: 0;
+  }
+  .dialogue p + p {
+    margin-top: 1px;
+  }
+  /* En mode .page.tight, dialogue encore plus compact */
+  .page.tight .dialogue {
+    padding: 4px 10px;
+    line-height: 1.35;
+  }
+  .page.tight .dialogue p {
+    margin: 0;
+  }
+  .page.tight .dialogue p + p {
+    margin-top: 0;
   }
   .dialogue p { margin: 0 0 3px; }
   .dialogue p:last-child { margin: 0; }
@@ -293,16 +310,31 @@
     background: var(--paper);
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
-    padding: 4px 5px;
-    margin: 2px 0 0;
+    padding: 5px 6px;
+    margin: 3px 0 0;
     font-family: var(--serif);
     font-style: italic;
-    font-size: 15px;
+    font-size: 15.5px;
     line-height: 1.55;
     color: var(--ink);
     text-align: center;
     text-wrap: pretty;
   }
+
+  /* Longues prières récitées par le célébrant seul : taille intermédiaire pour faire tenir le texte officiel */
+  .priere.priere-longue {
+    font-size: 13.5px;
+    line-height: 1.5;
+    padding: 5px 8px;
+    text-align: left;
+  }
+  .priere.priere-longue p {
+    margin: 0 0 3px;
+  }
+  .priere.priere-longue p:last-child {
+    margin: 0;
+  }
+
   .priere strong {
     font-style: normal;
     font-weight: 500;
@@ -331,11 +363,11 @@
     display: block;
     margin-bottom: 2px;
   }
-  .lecture p { margin: 0 0 4px; }
+  .lecture p { margin: 0 0 2px; }
   .lecture p:last-child { margin: 0; }
   .lecture .strophe {
     display: block;
-    margin: 4px 0;
+    margin: 2px 0;
     padding-left: 10px;
     border-left: 1px solid var(--rule);
     font-style: italic;
@@ -344,13 +376,13 @@
   .refrains { margin: 4px 0 0; }
   .refrain-item {
     display: grid;
-    grid-template-columns: 16px 1fr;
+    grid-template-columns: 18px 1fr;
     gap: 8px;
-    margin-bottom: 5px;
+    margin-bottom: 9px;
     font-family: var(--sans);
-    font-size: 11px;
-    line-height: 1.5;
-    color: var(--ink-soft);
+    font-size: 14.5px;
+    line-height: 1.45;
+    color: var(--ink);
   }
   .refrain-item:last-child { margin-bottom: 0; }
   .refrain-num {
@@ -362,9 +394,10 @@
   .refrain-langue {
     font-family: var(--serif);
     font-style: italic;
-    font-size: 14px;
-    color: var(--ink);
-    margin-bottom: 1px;
+    font-size: 17px;
+    color: var(--blue-deep);
+    margin-bottom: 2px;
+    line-height: 1.35;
   }
   .refrain-tradition {
     font-size: 10px;
@@ -376,12 +409,13 @@
 
   .litanies {
     column-count: 2;
-    column-gap: 16px;
-    font-family: var(--sans);
-    font-size: 11.5px;
-    line-height: 1.65;
-    color: var(--ink);
-    margin: 4px 0 0;
+    column-gap: 20px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.4;
+    color: var(--blue-deep);
+    margin: 6px 0 0;
   }
   .litanies p { margin: 0 0 3px; break-inside: avoid; }
 
@@ -466,16 +500,26 @@
 
   .alleluia {
     text-align: center;
-    margin: 6px 0 0;
-    padding: 8px;
-    background: linear-gradient(180deg, rgba(255,237,179,.35), rgba(255,237,179,.15));
-    border-top: 1px solid rgba(184,149,90,.3);
-    border-bottom: 1px solid rgba(184,149,90,.3);
+    margin: 8px 0;
+    padding: 10px 12px;
+    background: linear-gradient(180deg, rgba(255,237,179,.4), rgba(255,237,179,.18));
+    border-top: 1px solid rgba(184,149,90,.35);
+    border-bottom: 1px solid rgba(184,149,90,.35);
     color: var(--gold-dark, #8b6f3a);
     font-family: var(--serif);
-    font-size: 16px;
+    font-size: 17px;
     font-style: italic;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
+  }
+  .alleluia::before,
+  .alleluia::after {
+    content: '♪';
+    color: #B8895E;
+    font-size: 15px;
+    margin: 0 9px;
+    vertical-align: 1px;
+    font-style: normal;
+    display: inline-block;
   }
 
   /* Note patristique en marge */
@@ -599,19 +643,21 @@
     line-height: 1.4;
     margin-top: 2px;
   }
-  /* Psaume : compact pour permettre les 5 strophes + 3 refrains */
+  /* Psaume : 16px (très proche de 17px lectures, 1px d'écart imperceptible
+     pour faire tenir 5 strophes + 3 refrains sur la même page qu'Isaïe) */
   .lecture-psaume {
-    font-size: 14.5px;
-    line-height: 1.4;
-    padding: 6px 8px;
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 3px 10px;
   }
-  .lecture-psaume p { margin: 0 0 2px; }
+  .lecture-psaume p { margin: 0; }
   .lecture-psaume .strophe {
-    margin: 2px 0;
-    padding-left: 8px;
+    margin: 0;
+    padding-left: 10px;
   }
-  .lecture-psaume + .sens, .lecture-psaume .psaume-refrain {
-    /* refrains internes au lecture-psaume restent visibles */
+  .lecture-psaume .psaume-refrain {
+    margin: 3px 0;
+    font-size: 14.5px;
   }
   .page.dense .lec-eb {
     margin-bottom: 1px;
@@ -653,6 +699,15 @@
       aspect-ratio: 148 / 210;
     }
   }
+
+    /* Mode compact pour pages denses (P3 Lectures, P10 Renonciation+Profession) */
+  .page.tight .eb { margin-bottom: 0; font-size: 9.5px; }
+  .page.tight h2 { font-size: 21px; margin-top: 0; margin-bottom: 2px; }
+  .page.tight hr.rule { margin: 2px 0 6px; }
+  .page.tight .step { margin-bottom: 4px; }
+  .page.tight .step + .step { margin-top: 4px; }
+  .page.tight .step-title { margin-bottom: 2px; font-size: 16.5px; }
+  .page.tight .lecture { padding: 3px 9px; }
 
   @media print {
     @page { size: A4 landscape; margin: 0; }
@@ -853,10 +908,6 @@
           <p><span class="strophe">Grâce et bonheur m’accompagnent tous les jours de ma vie ;<br>j’habiterai la maison du Seigneur pour la durée de mes jours.</span></p>
           <p class="psaume-refrain"><em>Le Seigneur est mon berger, rien ne saurait me manquer.</em></p>
         </div>
-        <div class="sens">
-          <span class="sens-eb">Sens de la lecture</span>
-          « Le Seigneur est mon berger, je ne manque de rien » : Élise apprendra à ne rien craindre car elle est aimée et guidée.
-        </div>
       </div>
     </div>
   </div>
@@ -938,8 +989,8 @@
     <h2>Prière universelle</h2>
     <hr class="rule">
 
-    <p style="font-family: var(--serif); font-style: italic; font-size: 10.5px; line-height: 1.5; color: var(--ink); text-align: center; margin: 0 0 8px;">
-      Quatre intentions, quatre langues, une seule prière qui rassemble :<br>Seigneur, prends pitié.
+    <p style="font-family: var(--serif); font-style: italic; font-size: 14px; line-height: 1.5; color: var(--ink); text-align: center; margin: 0 0 12px;">
+      Quatre intentions, quatre langues, une seule prière qui rassemble :<br><span style="color: var(--blue-deep); font-size: 16px;">Seigneur, prends pitié.</span>
     </p>
 
     <div class="refrains">
@@ -995,11 +1046,11 @@
     <h2>Litanie des saints</h2>
     <hr class="rule">
 
-    <p style="font-family: var(--serif); font-style: italic; font-size: 10.5px; line-height: 1.55; color: var(--ink-soft); text-align: center; margin: 0 0 10px;">
+    <p style="font-family: var(--serif); font-style: italic; font-size: 14px; line-height: 1.5; color: var(--ink); text-align: center; margin: 0 0 12px;">
       L’assemblée invoque les saints qui ont précédé Élise. Ils intercèdent auprès de Dieu pour elle.
     </p>
 
-    <p style="font-family: var(--sans); font-size: 8px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink); text-align: center; margin: 0 0 10px; opacity: .7;">
+    <p style="font-family: var(--sans); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); text-align: center; margin: 0 0 12px; opacity: .8;">
       À chaque invocation, l’assemblée répond : « priez pour nous »
     </p>
 
@@ -1040,7 +1091,7 @@
       <span class="step-num">x.</span>
       <div>
         <div class="step-title">Prière d’exorcisme</div>
-        <div class="priere" style="font-size: 12.5px; padding: 8px 6px;">
+        <div class="priere priere-longue">
           Père tout-puissant, tu as envoyé ton Fils unique dans le monde pour délivrer l’homme, esclave du péché, et lui rendre la liberté propre à tes fils ; tu sais qu’Élisabeth, comme chacun de nous, sera tentée par les mensonges de ce monde et devra résister à Satan.<br><br>
           Nous te supplions humblement : par la passion de ton Fils et sa résurrection, arrache-la au pouvoir des ténèbres ; donne-lui la force du Christ, et garde-la tout au long de sa vie. Par Jésus, le Christ, notre Seigneur.
         </div>
@@ -1059,14 +1110,14 @@
       <div>
         <div class="step-title">Imposition de la main et Effata</div>
         <div class="step-text"><em>Le Père David impose la main sur Élise et dit :</em></div>
-        <div class="priere" style="font-size: 13px; padding: 8px 6px;">
+        <div class="priere priere-longue">
           Que la force du Christ te fortifie, lui qui est le Sauveur et qui vit pour les siècles des siècles.
         </div>
         <div class="dialogue" style="margin-top: 4px;">
           <p><strong>Tous</strong> · Amen.</p>
         </div>
         <div class="step-text" style="margin-top: 8px;"><em>Le Père David reprend un geste de Jésus dans l’Évangile (Marc 7, 32-35) : il touche les oreilles et la bouche d’Élise, en disant :</em></div>
-        <div class="priere" style="font-size: 12.5px; padding: 8px 6px;">
+        <div class="priere priere-longue">
           Effétah, c’est-à-dire : Ouvre-toi ! Le Seigneur Jésus a fait entendre les sourds et parler les muets ; qu’il te donne d’écouter sa parole, et de proclamer la foi pour la louange et la gloire de Dieu le Père.
         </div>
         <div class="dialogue" style="margin-top: 4px;">
@@ -1096,26 +1147,26 @@
       <span class="step-num">xii.</span>
       <div>
         <div class="step-title">Bénédiction de l’eau</div>
-        <div class="priere" style="font-size: 12px; padding: 8px 6px; line-height: 1.55;">
+        <div class="priere priere-longue">
           Dieu, dont la puissance invisible accomplit des merveilles par les sacrements, tu as voulu, au cours des temps, que l’eau, ta créature, révèle ce que serait la grâce du baptême.<br><br>
           Dès les commencements du monde, c’est ton Esprit qui planait sur les eaux, pour qu’elles reçoivent en germe la force de sanctifier.<br><br>
           Par les flots du déluge, tu annonçais le baptême qui fait renaître, puisque l’eau y préfigurait à la fois la fin de tout péché et le début de toute justice.
         </div>
         <p class="psaume-refrain" style="margin: 4px 0;"><em>Béni soit Dieu maintenant et toujours.</em></p>
-        <div class="priere" style="font-size: 12px; padding: 8px 6px; line-height: 1.55;">
+        <div class="priere priere-longue">
           Aux enfants d’Abraham, tu as fait passer la mer Rouge à pied sec pour que le peuple d’Israël, libéré de la servitude, préfigure le peuple des baptisés.
         </div>
         <p class="psaume-refrain" style="margin: 4px 0;"><em>Béni soit Dieu maintenant et toujours.</em></p>
-        <div class="priere" style="font-size: 12px; padding: 8px 6px; line-height: 1.55;">
+        <div class="priere priere-longue">
           Ton Fils bien-aimé, baptisé par Jean dans les eaux du Jourdain, consacré par l’onction de ton Esprit, suspendu au bois de la croix, laissa couler de son côté ouvert du sang et de l’eau ; et quand il fut ressuscité, il dit à ses disciples : « Allez, enseignez toutes les nations, et baptisez-les au nom du Père, et du Fils, et du Saint-Esprit. »
         </div>
         <p class="psaume-refrain" style="margin: 4px 0;"><em>Béni soit Dieu maintenant et toujours.</em></p>
-        <div class="priere" style="font-size: 12px; padding: 8px 6px; line-height: 1.55;">
+        <div class="priere priere-longue">
           Maintenant, Seigneur notre Dieu, regarde avec amour ton Église et fais jaillir en elle la source du baptême.<br><br>
           Que cette eau reçoive de l’Esprit Saint la grâce de ton Fils unique, afin que l’homme, créé à ta ressemblance et lavé par le baptême des souillures qui déforment cette image, puisse renaître de l’eau et de l’Esprit pour la vie nouvelle d’enfant de Dieu.
         </div>
         <div class="step-text" style="margin-top: 6px;"><em>Le Père David touche l’eau de la main droite, et continue :</em></div>
-        <div class="priere" style="font-size: 12px; padding: 8px 6px; line-height: 1.55;">
+        <div class="priere priere-longue">
           Nous t’en prions, Seigneur notre Dieu : Par la grâce de ton Fils, que vienne sur cette eau la puissance de l’Esprit Saint, afin que tout homme qui sera baptisé, enseveli dans la mort avec le Christ, ressuscite avec le Christ pour la vie, car il est vivant pour les siècles des siècles.
         </div>
         <div class="dialogue" style="margin-top: 4px;">
@@ -1127,7 +1178,7 @@
 </div>
 
   <!-- Page X : Renonciation + Profession de foi -->
-  <div class="page inner">
+  <div class="page inner tight">
     <div class="eb">Quatrième partie</div>
     <h2>Renonciation et Profession de foi</h2>
     <hr class="rule">
