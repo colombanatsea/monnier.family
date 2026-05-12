@@ -35,6 +35,10 @@
     --grey:       #d1e1e7;
     --rule:       rgba(46,78,160,.18);
     --rule-soft:  rgba(46,78,160,.08);
+    --purple:       #6b4a8f;
+    --purple-deep:  #4d3470;
+    --purple-pale:  #ede5f4;
+    --purple-rule:  rgba(107,74,143,.22);
     --serif: 'Cormorant Garamond', 'Garamond', Georgia, serif;
     --sans:  'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
   }
@@ -252,25 +256,24 @@
 
   /* Sens du rite : compact, italique, libellé inline */
   .sens {
-    background: var(--sky);
+    background: var(--purple-pale);
     padding: 4px 9px;
     margin: 3px 0 0;
     border-radius: 3px;
+    border-left: 2px solid var(--purple);
     font-family: var(--sans);
     font-size: 12px;
     line-height: 1.45;
-    color: var(--ink-soft);
+    color: var(--purple-deep);
     font-style: italic;
   }
   .sens .sens-eb {
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--ink);
-    opacity: .75;
-    display: inline;
+    font-family: var(--sans);
+    font-size: 8.5px;
     font-style: normal;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--purple);
     margin-right: 4px;
   }
   .sens .sens-eb::after { content: " ·"; }
@@ -284,6 +287,15 @@
     font-size: 14.5px;
     line-height: 1.4;
     color: var(--ink-soft);
+  }
+  .dialogue em {
+    font-size: 16px;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .page.tight .dialogue em {
+    font-size: 15px;
   }
   .dialogue p {
     margin: 0;
@@ -1220,7 +1232,7 @@
         </div>
         <div class="sens" style="font-size: 10.5px; line-height: 1.4; margin-top: 8px;">
           <span class="sens-eb">¹ Sainte Église catholique</span>
-          Du grec <em>katholikos</em>, « universel », « selon le tout ». Dans le Credo de Nicée-Constantinople (381), le terme désigne l’Église dans sa plénitude répandue partout, et non une confession particulière.
+          Du grec <em>katholikos</em>, « universel », « selon le tout ». Le terme désigne l’Église dans sa plénitude répandue partout.
         </div>
       </div>
     </div>
