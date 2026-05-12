@@ -15,6 +15,7 @@
 <style>
 
 
+
   :root {
     --ink:        #2e4ea0;
     --ink-soft:   #19577e;
@@ -615,6 +616,20 @@
     letter-spacing: 0.02em;
   }
 
+  /* Psaume : compact pour permettre les 5 strophes + 3 refrains */
+  .lecture-psaume {
+    font-size: 14.5px;
+    line-height: 1.4;
+    padding: 6px 8px;
+  }
+  .lecture-psaume p { margin: 0 0 2px; }
+  .lecture-psaume .strophe {
+    margin: 2px 0;
+    padding-left: 8px;
+  }
+  .lecture-psaume + .sens, .lecture-psaume .psaume-refrain {
+    /* refrains internes au lecture-psaume restent visibles */
+  }
   @media print {
     @page { size: A4 landscape; margin: 0; }
     html, body {
@@ -918,6 +933,7 @@
     font-size: 28px !important;
   }
 
+
 </style>
 </head>
 <body>
@@ -1054,18 +1070,24 @@
       </div>
     </div>
   </div></div>
-    <div class="page-half"><div class="page inner" style="background: var(--cream); justify-content: center;">
-    <div class="verse-block" style="margin: auto 0;">
-      <div class="fleuron" style="margin-bottom: 12px; font-size: 18px;">✦</div>
-      <div class="verse" style="font-size: 16px; line-height: 1.5;">
-        « Je vous laisse la paix,<br>je vous donne ma paix.<br>Que votre cœur ne se trouble pas,<br>et qu’il ne craigne pas. »
-      </div>
-      <div class="ref" style="margin-top: 10px;">Évangile selon saint Jean · 14, 27</div>
-    </div>
-  </div></div>
-  </div>
-  <div class="feuille" data-label="Feuille 2 · Recto · pages 14 et 3">
     <div class="page-half"><div class="page inner">
+    <div class="eb">Septième partie · Suite</div>
+    <h2>Chant final</h2>
+    <hr class="rule">
+
+    <div class="step">
+      <span class="step-num">xxv.</span>
+      <div>
+        <div class="step-title">Galates 3, 27</div>
+        <div class="chant-inline">
+          <div class="ch-source">Antienne biblique</div>
+          <div class="ch-refrain"><em>Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ. Alléluia.</em></div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule" style="margin: 14px 0;">
+
     <h2 style="margin-top: 12px;">Chants du baptême</h2>
     <hr class="rule">
 
@@ -1079,7 +1101,59 @@
       <div class="qr-sub">Chants du baptême</div>
       <div class="qr-url">monnier.family/baptemeelise/musique</div>
     </div>
-  </div></div>
+  
+
+</div></div>
+  </div>
+  <div class="feuille" data-label="Feuille 2 · Recto · pages 14 et 3">
+    <div class="page-half"><div class="page inner" style="background: var(--cream);">
+    <div class="eb">Septième partie</div>
+    <h2>Consécration à Marie Théotokos</h2>
+    <hr class="rule">
+
+    <p style="font-family: var(--serif); font-style: italic; font-size: 11px; line-height: 1.5; color: var(--ink-soft); text-align: center; margin: 0 0 8px;">
+      Élise est confiée à la Mère de Dieu.
+    </p>
+
+    <div class="priere" style="padding: 10px 8px; line-height: 1.65; background: var(--paper);">
+      Marie, pleine de grâce,<br>
+      le Seigneur est avec toi.<br>
+      Tu es bénie entre toutes les femmes,<br>
+      et Jésus, le fruit de tes entrailles, est béni.<br>
+      Tu as donné naissance<br>
+      au Sauveur de nos âmes.
+    </div>
+
+    <div class="step" style="margin-top: 10px;">
+      <span class="step-num">xxii.</span>
+      <div>
+        <div class="step-title">Signatures des registres</div>
+        <div class="step-text">Le parrain Xavier et la marraine Nathalie signent les registres de la paroisse pendant que l’assemblée écoute la prière mariale et se prépare au chant marial.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xxiii.</span>
+      <div>
+        <div class="step-title">Remise de la médaille</div>
+        <div class="step-text">Le Père David bénit la médaille. Nathalie et Xavier la mettent ensemble autour du cou d’Élise pendant le chant marial.</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xxiv.</span>
+      <div>
+        <div class="step-title">Couronnée d’étoiles</div>
+        <div class="chant-inline">
+          <span class="ch-eb">Refrain</span>
+          <div class="ch-refrain"><em>Nous te saluons, ô toi Notre Dame, Marie Vierge sainte que drape le soleil. Couronnée d’étoiles, la lune est sous tes pas, en toi nous est donnée l’aurore du salut.</em></div>
+          <p class="ch-couplet" style="margin-top: 5px;"><span class="ch-num">1.</span> Marie Ève nouvelle et joie de ton Seigneur, tu as donné naissance à Jésus le Sauveur. Par toi nous sont ouvertes les portes du jardin, guide-nous en chemin, étoile du matin.</p>
+          <div class="ch-refrain" style="margin-top: 5px;"><strong>Refrain</strong><em>Nous te saluons, ô toi Notre Dame, Marie Vierge sainte que drape le soleil. Couronnée d’étoiles, la lune est sous tes pas, en toi nous est donnée l’aurore du salut.</em></div>
+        </div>
+      </div>
+    </div>
+
+</div></div>
     <div class="page-half"><div class="page inner tight">
     <div class="eb">Première partie</div>
     <h2>Liturgie de la Parole</h2>
@@ -1126,11 +1200,10 @@
   </div></div>
   </div>
   <div class="feuille" data-label="Feuille 2 · Verso · pages 4 et 13">
-    <div class="page-half"><div class="page inner dense">
-    <div class="eb">Première partie · Suite</div>
+    <div class="page-half"><div class="page inner">
+    <div class="eb">Première partie · Lecture apostolique</div>
     <h2>Liturgie de la Parole</h2>
     <hr class="rule">
-
     <div class="step">
       <span class="step-num">vi.</span>
       <div>
@@ -1149,6 +1222,95 @@
       </div>
     </div>
 
+</div></div>
+    <div class="page-half"><div class="page inner">
+    <div class="eb">Sixième partie</div>
+    <h2>Envoi</h2>
+    <hr class="rule">
+
+    <div class="step">
+      <span class="step-num">xx.</span>
+      <div>
+        <div class="step-title">Notre Père</div>
+        <div class="priere" style="line-height: 1.7;">
+          Notre Père, qui es aux cieux,<br>
+          que ton nom soit sanctifié,<br>
+          que ton règne vienne,<br>
+          que ta volonté soit faite sur la terre comme au ciel.<br>
+          Donne-nous aujourd’hui notre pain de ce jour.<br>
+          Pardonne-nous nos offenses,<br>
+          comme nous pardonnons aussi à ceux qui nous ont offensés.<br>
+          Et ne nous laisse pas entrer en tentation,<br>
+          mais délivre-nous du Mal. Amen.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xxi.</span>
+      <div>
+        <div class="step-title">Bénédiction finale</div>
+        <div class="step-text">Le Père David bénit l’assemblée, les parents, le parrain, la marraine et toute la famille.</div>
+      </div>
+    </div>
+
+    <div class="verse-block" style="margin-top: 24px;">
+      <div class="fleuron" style="margin-bottom: 6px;">✦</div>
+      <div class="verse" style="font-size: 12px;">« Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ. »</div>
+      <div class="ref">Galates 3, 27</div>
+    </div>
+
+</div></div>
+  </div>
+  <div class="feuille" data-label="Feuille 3 · Recto · pages 12 et 5">
+    <div class="page-half"><div class="page inner">
+    <div class="eb">Cinquième partie · Suite</div>
+    <h2>Rites complémentaires &amp; chant</h2>
+    <hr class="rule">
+
+    <div class="step">
+      <span class="step-num">xvii.</span>
+      <div>
+        <div class="step-title">Vêtement blanc</div>
+        <div class="step-text">Nathalie, la marraine, revêt Élise du vêtement blanc, robe de la résurrection.</div>
+        <div class="sens">
+          <span class="sens-eb">Sens du rite</span>
+          Le vêtement blanc signifie la dignité nouvelle de la baptisée, revêtue du Christ comme on enfile un habit de fête. C’est l’écho visible de la parole de saint Paul : « Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ » (Galates 3, 27).
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xviii.</span>
+      <div>
+        <div class="step-title">Cierge allumé au cierge pascal</div>
+        <div class="step-text">Xavier, le parrain, allume le cierge d’Élise au cierge pascal et le lui remet.</div>
+        <div class="sens">
+          <span class="sens-eb">Sens du rite</span>
+          Le cierge pascal signifie la présence vivante du Christ ressuscité. Les Pères grecs depuis Justin appellent le baptême φωτισμός, illumination.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xix.</span>
+      <div>
+        <div class="step-title">Tu es devenu enfant de Dieu</div>
+        <div class="chant-inline">
+          <span class="ch-eb">Refrain</span>
+          <div class="ch-source">D. Bourgeois &amp; J.-P. Revel · Musique : A. Gouzes, o.p.</div>
+          <div class="ch-refrain"><em>Tu es devenu enfant de Dieu et frère de Jésus, alléluia ! Aujourd’hui l’Esprit repose en toi et chante alléluia.</em></div>
+          <p class="ch-couplet"><span class="ch-num">1.</span> Tu rentres dans la ronde, la ronde de son amour, tu danses avec tes frères la danse de sa joie.</p>
+          <p class="ch-couplet"><span class="ch-num">2.</span> Tu portes sa lumière, lumière de sa beauté, tu chantes ses merveilles, merveilles de son cœur.</p>
+        </div>
+      </div>
+    </div>
+
+</div></div>
+    <div class="page-half"><div class="page inner">
+    <div class="eb">Première partie · Évangile</div>
+    <h2>Acclamation, Évangile et Homélie</h2>
+    <hr class="rule">
     <div class="step">
       <span class="step-num">vii.</span>
       <div>
@@ -1175,82 +1337,6 @@
       </div>
     </div>
 
-  </div></div>
-    <div class="page-half"><div class="page inner">
-    <div class="eb">Septième partie · Suite</div>
-    <h2>Chant final</h2>
-    <hr class="rule">
-
-    <div class="step">
-      <span class="step-num">xxiv.</span>
-      <div>
-        <div class="step-title">Galates 3, 27</div>
-        <div class="chant-inline">
-          <div class="ch-source">Antienne biblique</div>
-          <div class="ch-refrain"><em>Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ. Alléluia.</em></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="verse-block" style="margin-top: 24px;">
-      <div class="fleuron" style="margin-bottom: 6px;">✦</div>
-      <div class="verse" style="font-size: 13px;">« Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ. »</div>
-      <div class="ref">Galates 3, 27</div>
-    </div>
-  </div></div>
-  </div>
-  <div class="feuille" data-label="Feuille 3 · Recto · pages 12 et 5">
-    <div class="page-half"><div class="page inner" style="background: var(--cream);">
-    <div class="eb">Septième partie</div>
-    <h2>Consécration à Marie Théotokos</h2>
-    <hr class="rule">
-
-    <p style="font-family: var(--serif); font-style: italic; font-size: 11px; line-height: 1.5; color: var(--ink-soft); text-align: center; margin: 0 0 8px;">
-      Élise est confiée à la Mère de Dieu.
-    </p>
-
-    <div class="priere" style="padding: 10px 8px; line-height: 1.65; background: var(--paper);">
-      Marie, pleine de grâce,<br>
-      le Seigneur est avec toi.<br>
-      Tu es bénie entre toutes les femmes,<br>
-      et Jésus, le fruit de tes entrailles, est béni.<br>
-      Tu as donné naissance<br>
-      au Sauveur de nos âmes.
-    </div>
-
-    <div class="step" style="margin-top: 10px;">
-      <span class="step-num">xxi.</span>
-      <div>
-        <div class="step-title">Signatures des registres</div>
-        <div class="step-text">Le parrain Xavier et la marraine Nathalie signent les registres de la paroisse pendant que l’assemblée écoute la prière mariale et se prépare au chant marial.</div>
-      </div>
-    </div>
-
-    <div class="step">
-      <span class="step-num">xxii.</span>
-      <div>
-        <div class="step-title">Remise de la médaille</div>
-        <div class="step-text">Le Père David bénit la médaille. Nathalie et Xavier la mettent ensemble autour du cou d’Élise pendant le chant marial.</div>
-      </div>
-    </div>
-
-    <div class="step">
-      <span class="step-num">xxiii.</span>
-      <div>
-        <div class="step-title">Couronnée d’étoiles</div>
-        <div class="chant-inline">
-          <span class="ch-eb">Refrain</span>
-          <div class="ch-refrain"><em>Nous te saluons, ô toi Notre Dame, Marie Vierge sainte que drape le soleil. Couronnée d’étoiles, la lune est sous tes pas, en toi nous est donnée l’aurore du salut.</em></div>
-          <p class="ch-couplet" style="margin-top: 5px;"><span class="ch-num">1.</span> Marie Ève nouvelle et joie de ton Seigneur, tu as donné naissance à Jésus le Sauveur. Par toi nous sont ouvertes les portes du jardin, guide-nous en chemin, étoile du matin.</p>
-          <div class="ch-refrain" style="margin-top: 5px;"><strong>Refrain</strong><em>Nous te saluons, ô toi Notre Dame, Marie Vierge sainte que drape le soleil. Couronnée d’étoiles, la lune est sous tes pas, en toi nous est donnée l’aurore du salut.</em></div>
-        </div>
-      </div>
-    </div>
-  </div></div>
-    <div class="page-half"><div class="page inner">
-    <div class="eb">Première partie · Conclusion</div>
-    <h2>Homélie &amp; Prière universelle</h2>
-    <hr class="rule">
     <div class="step">
       <span class="step-num">ix.</span>
       <div>
@@ -1259,6 +1345,13 @@
       </div>
     </div>
 
+</div></div>
+  </div>
+  <div class="feuille" data-label="Feuille 3 · Verso · pages 6 et 11">
+    <div class="page-half"><div class="page inner">
+    <div class="eb">Deuxième partie</div>
+    <h2>Prière universelle</h2>
+    <hr class="rule">
 
     <p style="font-family: var(--serif); font-style: italic; font-size: 10.5px; line-height: 1.5; color: var(--ink); text-align: center; margin: 0 0 8px;">
       Quatre intentions, quatre langues, une seule prière qui rassemble :<br>Seigneur, prends pitié.
@@ -1303,9 +1396,93 @@
       </div>
 
     </div>
-  </div></div>
+
+</div></div>
+    <div class="page-half"><div class="page inner" style="background: var(--paper);">
+    <div class="eb">Cinquième partie</div>
+    <h2>Le baptême</h2>
+    <hr class="rule">
+
+    <div class="step">
+      <span class="step-num">xv.</span>
+      <div>
+        <div class="step-title">Le sacrement</div>
+        <div class="priere" style="font-size: 12.5px; padding: 14px 8px; line-height: 1.7;">
+          « Élisabeth, je te baptise au nom du Père,<br>
+          et du Fils,<br>
+          et du Saint-Esprit. »
+        </div>
+        <div class="sens" style="margin-top: 12px;">
+          <span class="sens-eb">Sens du rite</span>
+          L’eau versée trois fois plonge Élise dans la mort et la résurrection du Christ. Purification de tout mal et naissance à la vie nouvelle. La croix tracée sur le front au seuil de l’Église marque déjà l’appartenance au Christ.
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xvi.</span>
+      <div>
+        <div class="step-title">Saint Chrême</div>
+        <div class="step-text">Onction sur le front d’Élise.</div>
+        <div class="sens">
+          <span class="sens-eb">Sens du rite</span>
+          Le saint chrême est une huile parfumée consacrée. Son onction confère le don de l’Esprit Saint et marque la nouvelle baptisée comme prêtre, prophète et roi par sa configuration au Christ.
+        </div>
+      </div>
+    </div>
+
+    <div class="verse-block" style="margin-top: 24px;">
+      <div class="fleuron" style="margin-bottom: 6px;">✦</div>
+      <div class="verse" style="font-size: 13px;">« La même eau salutaire est devenue pour vous et votre tombeau et votre mère. »</div>
+      <div class="ref">Saint Cyrille de Jérusalem · Catéchèse mystagogique 2, 4</div>
+    </div>
+
+</div></div>
   </div>
-  <div class="feuille" data-label="Feuille 3 · Verso · pages 6 et 11">
+  <div class="feuille" data-label="Feuille 4 · Recto · pages 10 et 7">
+    <div class="page-half"><div class="page inner">
+    <div class="eb">Quatrième partie</div>
+    <h2>Renonciation et Profession de foi</h2>
+    <hr class="rule">
+
+    <div class="step">
+      <span class="step-num">xiii.</span>
+      <div>
+        <div class="step-title">Renonciation au mal</div>
+        <div class="dialogue">
+          <p><strong>Père David</strong> · Pour vivre dans la liberté des enfants de Dieu, rejetez-vous le péché ?</p>
+          <p><strong>Les parents, le parrain et la marraine</strong> · Nous le rejetons.</p>
+          <p style="margin-top: 4px;"><strong>Père David</strong> · Pour échapper à l’emprise du péché, rejetez-vous ce qui conduit au mal ?</p>
+          <p><strong>Tous</strong> · Nous le rejetons.</p>
+          <p style="margin-top: 4px;"><strong>Père David</strong> · Pour suivre Jésus Christ, rejetez-vous Satan, qui est l’auteur du péché ?</p>
+          <p><strong>Tous</strong> · Nous le rejetons.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step">
+      <span class="step-num">xiv.</span>
+      <div>
+        <div class="step-title">Profession de foi</div>
+        <div class="dialogue">
+          <p><strong>Père David</strong> · Croyez-vous en Dieu, le Père tout-puissant, créateur du ciel et de la terre ?</p>
+          <p><strong>Parents et Parrains</strong> · Nous croyons.</p>
+          <p style="margin-top: 4px;"><strong>Père David</strong> · Croyez-vous en Jésus Christ, son Fils unique, notre Seigneur, qui est né de la Vierge Marie, a souffert la passion, a été enseveli, est ressuscité d’entre les morts, et qui est assis à la droite du Père ?</p>
+          <p><strong>Parents et Parrains</strong> · Nous croyons.</p>
+          <p style="margin-top: 4px;"><strong>Père David</strong> · Croyez-vous en l’Esprit Saint, à la sainte Église catholique<sup style="font-size: 8px; color: var(--blue);">¹</sup>, à la communion des saints, à la rémission des péchés, à la résurrection de la chair et à la vie éternelle ?</p>
+          <p><strong>Parents et Parrains</strong> · Nous croyons.</p>
+          <p style="margin-top: 6px;"><strong>Tous</strong> · Telle est notre foi. Telle est la foi de l’Église que nous sommes fiers de proclamer dans le Christ Jésus notre Seigneur.</p>
+          <p style="margin-top: 6px;"><strong>Père David</strong> · Voulez-vous que votre fille Élisabeth soit baptisée dans cette foi de l’Église que nous venons de professer ensemble ?</p>
+          <p><strong>Marie et Colomban</strong> · Oui, nous le voulons.</p>
+        </div>
+        <div class="sens" style="font-size: 10.5px; line-height: 1.4; margin-top: 8px;">
+          <span class="sens-eb">¹ Sainte Église catholique</span>
+          Du grec <em>katholikos</em>, « universel », « selon le tout ». Dans le Credo de Nicée-Constantinople (381), le terme désigne l’Église dans sa plénitude répandue partout, et non une confession particulière.
+        </div>
+      </div>
+    </div>
+
+</div></div>
     <div class="page-half"><div class="page inner">
     <div class="eb">Communion des saints</div>
     <h2>Litanie des saints</h2>
@@ -1345,64 +1522,8 @@
       Les litanies des saints illustrent la confiance de l’Église en leur intercession. Elles mettent en valeur la communion qui unit l’Église de la Jérusalem céleste à celle qui pèlerine sur la terre.
     </div>
   </div></div>
-    <div class="page-half"><div class="page inner">
-    <div class="eb">Sixième partie</div>
-    <h2>Envoi</h2>
-    <hr class="rule">
-
-    <div class="step">
-      <span class="step-num">xix.</span>
-      <div>
-        <div class="step-title">Notre Père</div>
-        <div class="priere" style="line-height: 1.7;">
-          Notre Père, qui es aux cieux,<br>
-          que ton nom soit sanctifié,<br>
-          que ton règne vienne,<br>
-          que ta volonté soit faite sur la terre comme au ciel.<br>
-          Donne-nous aujourd’hui notre pain de ce jour.<br>
-          Pardonne-nous nos offenses,<br>
-          comme nous pardonnons aussi à ceux qui nous ont offensés.<br>
-          Et ne nous laisse pas entrer en tentation,<br>
-          mais délivre-nous du Mal. Amen.
-        </div>
-      </div>
-    </div>
-
-    <div class="step">
-      <span class="step-num">xx.</span>
-      <div>
-        <div class="step-title">Bénédiction finale</div>
-        <div class="step-text">Le Père David bénit l’assemblée, les parents, le parrain, la marraine et toute la famille.</div>
-      </div>
-    </div>
-
-  </div></div>
   </div>
-  <div class="feuille" data-label="Feuille 4 · Recto · pages 10 et 7">
-    <div class="page-half"><div class="page inner">
-    <div class="eb">Cinquième partie · Suite</div>
-    <h2>Chant après le baptême</h2>
-    <hr class="rule">
-    <div class="step">
-      <span class="step-num">xviii.</span>
-      <div>
-        <div class="step-title">Tu es devenu enfant de Dieu</div>
-        <div class="chant-inline">
-          <span class="ch-eb">Refrain</span>
-          <div class="ch-source">D. Bourgeois &amp; J.-P. Revel · Musique : A. Gouzes, o.p.</div>
-          <div class="ch-refrain"><em>Tu es devenu enfant de Dieu et frère de Jésus, alléluia ! Aujourd’hui l’Esprit repose en toi et chante alléluia.</em></div>
-          <p class="ch-couplet"><span class="ch-num">1.</span> Tu rentres dans la ronde, la ronde de son amour, tu danses avec tes frères la danse de sa joie.</p>
-          <p class="ch-couplet"><span class="ch-num">2.</span> Tu portes sa lumière, lumière de sa beauté, tu chantes ses merveilles, merveilles de son cœur.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="verse-block" style="margin-top: 24px;">
-      <div class="fleuron" style="margin-bottom: 6px;">✦</div>
-      <div class="verse" style="font-size: 12px;">« Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ. »</div>
-      <div class="ref">Galates 3, 27</div>
-    </div>
-  </div></div>
+  <div class="feuille" data-label="Feuille 4 · Verso · pages 8 et 9">
     <div class="page-half"><div class="page inner">
     <div class="eb">Troisième partie</div>
     <h2>Au bord de l’eau</h2>
@@ -1411,18 +1532,17 @@
     <div class="step">
       <span class="step-num">x.</span>
       <div>
-        <div class="step-title">Prière de délivrance, imposition de la main et Effata</div>
+        <div class="step-title">Prière d’exorcisme</div>
         <div class="priere" style="font-size: 12.5px; padding: 8px 6px;">
-          Dieu tout-puissant, tu as envoyé ton Fils unique pour délivrer l’homme, esclave du péché. Pour Élisabeth, qui se prépare à recevoir le baptême, nous te prions humblement : fais qu’elle échappe au pouvoir de Satan et accorde-lui de marcher dans la liberté des enfants de Dieu. Par Jésus, le Christ, notre Seigneur.
+          Père tout-puissant, tu as envoyé ton Fils unique dans le monde pour délivrer l’homme, esclave du péché, et lui rendre la liberté propre à tes fils ; tu sais qu’Élisabeth, comme chacun de nous, sera tentée par les mensonges de ce monde et devra résister à Satan.<br><br>
+          Nous te supplions humblement : par la passion de ton Fils et sa résurrection, arrache-la au pouvoir des ténèbres ; donne-lui la force du Christ, et garde-la tout au long de sa vie. Par Jésus, le Christ, notre Seigneur.
+        </div>
+        <div class="dialogue" style="margin-top: 6px;">
+          <p><strong>Tous</strong> · Amen.</p>
         </div>
         <div class="sens">
-          <span class="sens-eb">Sens du rite (1)</span>
-          L’imposition de la main et la prière de délivrance demandent à Dieu de protéger Élise du mal et de la conduire dans la liberté des enfants de Dieu.
-        </div>
-        <div class="step-text" style="margin-top: 8px;"><strong>Effata · « Ouvre-toi »</strong><br>Le Père David touche les oreilles et les lèvres d’Élise.</div>
-        <div class="sens">
-          <span class="sens-eb">Sens du rite (2)</span>
-          Geste évangélique tiré de Marc 7, 34. Il exprime la nécessité de la grâce pour entendre la Parole de Dieu et la proclamer.
+          <span class="sens-eb">Sens du rite</span>
+          La prière demande à Dieu de protéger Élise des mensonges du monde et de la conduire dans la liberté des enfants de Dieu.
         </div>
       </div>
     </div>
@@ -1430,119 +1550,67 @@
     <div class="step">
       <span class="step-num">xi.</span>
       <div>
-        <div class="step-title">Bénédiction de l’eau</div>
-        <div class="step-text">Le Père David bénit l’eau en mémoire des actes de salut accomplis par l’eau dans toute l’histoire du salut : aux origines, au déluge, à la mer Rouge, au Jourdain.</div>
+        <div class="step-title">Imposition de la main et Effata</div>
+        <div class="step-text"><em>Le Père David impose la main sur Élise et dit :</em></div>
+        <div class="priere" style="font-size: 13px; padding: 8px 6px;">
+          Que la force du Christ te fortifie, lui qui est le Sauveur et qui vit pour les siècles des siècles.
+        </div>
+        <div class="dialogue" style="margin-top: 4px;">
+          <p><strong>Tous</strong> · Amen.</p>
+        </div>
+        <div class="step-text" style="margin-top: 8px;"><em>Le Père David reprend un geste de Jésus dans l’Évangile (Marc 7, 32-35) : il touche les oreilles et la bouche d’Élise, en disant :</em></div>
+        <div class="priere" style="font-size: 12.5px; padding: 8px 6px;">
+          Effétah, c’est-à-dire : Ouvre-toi ! Le Seigneur Jésus a fait entendre les sourds et parler les muets ; qu’il te donne d’écouter sa parole, et de proclamer la foi pour la louange et la gloire de Dieu le Père.
+        </div>
+        <div class="dialogue" style="margin-top: 4px;">
+          <p><strong>Tous</strong> · Amen.</p>
+        </div>
         <div class="sens">
           <span class="sens-eb">Sens du rite</span>
-          La bénédiction proclame que l’efficacité du baptême ne vient pas de l’eau seule, mais de l’Esprit Saint qui agit par elle.
+          L’imposition de la main demande la force du Christ. L’Effata reprend le geste évangélique : il exprime la grâce nécessaire pour entendre la Parole et la proclamer.
         </div>
       </div>
     </div>
+
+</div></div>
+    <div class="page-half"><div class="page inner">
+    <div class="eb">Troisième partie · Suite</div>
+    <h2>Bénédiction de l’eau</h2>
+    <hr class="rule">
 
     <div class="step">
       <span class="step-num">xii.</span>
       <div>
-        <div class="step-title">Renonciation au mal</div>
-        <div class="dialogue">
-          <p><strong>Père David</strong> · Pour vivre dans la liberté des enfants de Dieu, rejetez-vous le péché ?</p>
-          <p><strong>Les parents, le parrain et la marraine</strong> · Nous le rejetons.</p>
-          <p style="margin-top: 4px;"><strong>Père David</strong> · Pour échapper à l’emprise du péché, rejetez-vous ce qui conduit au mal ?</p>
-          <p><strong>Tous</strong> · Nous le rejetons.</p>
-          <p style="margin-top: 4px;"><strong>Père David</strong> · Pour suivre Jésus Christ, rejetez-vous Satan, qui est l’auteur du péché ?</p>
-          <p><strong>Tous</strong> · Nous le rejetons.</p>
+        <div class="step-title">Bénédiction de l’eau</div>
+        <div class="priere" style="font-size: 12px; padding: 8px 6px; line-height: 1.55;">
+          Dieu, dont la puissance invisible accomplit des merveilles par les sacrements, tu as voulu, au cours des temps, que l’eau, ta créature, révèle ce que serait la grâce du baptême.<br><br>
+          Dès les commencements du monde, c’est ton Esprit qui planait sur les eaux, pour qu’elles reçoivent en germe la force de sanctifier.<br><br>
+          Par les flots du déluge, tu annonçais le baptême qui fait renaître, puisque l’eau y préfigurait à la fois la fin de tout péché et le début de toute justice.
+        </div>
+        <p class="psaume-refrain" style="margin: 4px 0;"><em>Béni soit Dieu maintenant et toujours.</em></p>
+        <div class="priere" style="font-size: 12px; padding: 8px 6px; line-height: 1.55;">
+          Aux enfants d’Abraham, tu as fait passer la mer Rouge à pied sec pour que le peuple d’Israël, libéré de la servitude, préfigure le peuple des baptisés.
+        </div>
+        <p class="psaume-refrain" style="margin: 4px 0;"><em>Béni soit Dieu maintenant et toujours.</em></p>
+        <div class="priere" style="font-size: 12px; padding: 8px 6px; line-height: 1.55;">
+          Ton Fils bien-aimé, baptisé par Jean dans les eaux du Jourdain, consacré par l’onction de ton Esprit, suspendu au bois de la croix, laissa couler de son côté ouvert du sang et de l’eau ; et quand il fut ressuscité, il dit à ses disciples : « Allez, enseignez toutes les nations, et baptisez-les au nom du Père, et du Fils, et du Saint-Esprit. »
+        </div>
+        <p class="psaume-refrain" style="margin: 4px 0;"><em>Béni soit Dieu maintenant et toujours.</em></p>
+        <div class="priere" style="font-size: 12px; padding: 8px 6px; line-height: 1.55;">
+          Maintenant, Seigneur notre Dieu, regarde avec amour ton Église et fais jaillir en elle la source du baptême.<br><br>
+          Que cette eau reçoive de l’Esprit Saint la grâce de ton Fils unique, afin que l’homme, créé à ta ressemblance et lavé par le baptême des souillures qui déforment cette image, puisse renaître de l’eau et de l’Esprit pour la vie nouvelle d’enfant de Dieu.
+        </div>
+        <div class="step-text" style="margin-top: 6px;"><em>Le Père David touche l’eau de la main droite, et continue :</em></div>
+        <div class="priere" style="font-size: 12px; padding: 8px 6px; line-height: 1.55;">
+          Nous t’en prions, Seigneur notre Dieu : Par la grâce de ton Fils, que vienne sur cette eau la puissance de l’Esprit Saint, afin que tout homme qui sera baptisé, enseveli dans la mort avec le Christ, ressuscite avec le Christ pour la vie, car il est vivant pour les siècles des siècles.
+        </div>
+        <div class="dialogue" style="margin-top: 4px;">
+          <p><strong>Tous</strong> · Amen.</p>
         </div>
       </div>
     </div>
 
-  </div></div>
-  </div>
-  <div class="feuille" data-label="Feuille 4 · Verso · pages 8 et 9">
-    <div class="page-half"><div class="page inner" style="background: var(--paper);">
-    <div class="eb">Quatrième partie</div>
-    <h2>Le baptême</h2>
-    <hr class="rule">
-    <div class="step">
-      <span class="step-num">xiii.</span>
-      <div>
-        <div class="step-title">Profession de foi</div>
-        <div class="dialogue">
-          <p><strong>Père David</strong> · Croyez-vous en Dieu, le Père tout-puissant, créateur du ciel et de la terre ?</p>
-          <p><strong>Tous</strong> · Nous croyons.</p>
-          <p style="margin-top: 4px;"><strong>Père David</strong> · Croyez-vous en Jésus Christ, son Fils unique, notre Seigneur, qui est né de la Vierge Marie, a souffert la passion, a été enseveli, est ressuscité d’entre les morts, et qui est assis à la droite du Père ?</p>
-          <p><strong>Tous</strong> · Nous croyons.</p>
-          <p style="margin-top: 4px;"><strong>Père David</strong> · Croyez-vous en l’Esprit Saint, à la sainte Église catholique, à la communion des saints, à la rémission des péchés, à la résurrection de la chair et à la vie éternelle ?</p>
-          <p><strong>Tous</strong> · Nous croyons.</p>
-          <p style="margin-top: 6px;"><strong>Père David</strong> · Voulez-vous que votre fille Élisabeth soit baptisée dans cette foi de l’Église que nous venons de professer ensemble ?</p>
-          <p><strong>Marie et Colomban</strong> · Oui, nous le voulons.</p>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="step">
-      <span class="step-num">xiv.</span>
-      <div>
-        <div class="step-title">Le sacrement</div>
-        <div class="priere" style="font-size: 12.5px; padding: 14px 8px; line-height: 1.7;">
-          « Élisabeth, je te baptise au nom du Père,<br>
-          et du Fils,<br>
-          et du Saint-Esprit. »
-        </div>
-        <div class="sens" style="margin-top: 12px;">
-          <span class="sens-eb">Sens du rite</span>
-          L’eau versée trois fois plonge Élise dans la mort et la résurrection du Christ. Purification de tout mal et naissance à la vie nouvelle. La croix tracée sur le front au seuil de l’Église marque déjà l’appartenance au Christ.
-        </div>
-      </div>
-    </div>
-
-    <div class="verse-block" style="margin-top: 24px;">
-      <div class="fleuron" style="margin-bottom: 6px;">✦</div>
-      <div class="verse" style="font-size: 13px;">« La même eau salutaire est devenue pour vous et votre tombeau et votre mère. »</div>
-      <div class="ref">Saint Cyrille de Jérusalem · Catéchèse mystagogique 2, 4</div>
-    </div>
-  </div></div>
-    <div class="page-half"><div class="page inner">
-    <div class="eb">Cinquième partie</div>
-    <h2>Rites complémentaires</h2>
-    <hr class="rule">
-
-    <div class="step">
-      <span class="step-num">xv.</span>
-      <div>
-        <div class="step-title">Saint Chrême</div>
-        <div class="step-text">Onction sur le front d’Élise.</div>
-        <div class="sens">
-          <span class="sens-eb">Sens du rite</span>
-          Le saint chrême est une huile parfumée consacrée. Son onction confère le don de l’Esprit Saint et marque la nouvelle baptisée comme prêtre, prophète et roi par sa configuration au Christ.
-        </div>
-      </div>
-    </div>
-
-    <div class="step">
-      <span class="step-num">xvi.</span>
-      <div>
-        <div class="step-title">Vêtement blanc</div>
-        <div class="step-text">Nathalie, la marraine, revêt Élise du vêtement blanc, robe de la résurrection.</div>
-        <div class="sens">
-          <span class="sens-eb">Sens du rite</span>
-          Le vêtement blanc signifie la dignité nouvelle de la baptisée, revêtue du Christ comme on enfile un habit de fête. C’est l’écho visible de la parole de saint Paul : « Vous tous qui avez été baptisés en Christ, vous avez revêtu le Christ » (Galates 3, 27).
-        </div>
-      </div>
-    </div>
-
-    <div class="step">
-      <span class="step-num">xvii.</span>
-      <div>
-        <div class="step-title">Cierge allumé au cierge pascal</div>
-        <div class="step-text">Xavier, le parrain, allume le cierge d’Élise au cierge pascal et le lui remet.</div>
-        <div class="sens">
-          <span class="sens-eb">Sens du rite</span>
-          Le cierge pascal signifie la présence vivante du Christ ressuscité. Les Pères grecs depuis Justin appellent le baptême φωτισμός, illumination.
-        </div>
-      </div>
-    </div>
-
-  </div></div>
+</div></div>
   </div>
 
 </body>
