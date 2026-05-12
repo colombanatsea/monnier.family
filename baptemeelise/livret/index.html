@@ -345,7 +345,7 @@
   .lecture {
     font-family: var(--serif);
     font-size: 17px;
-    line-height: 1.5;
+    line-height: 1.55;
     color: var(--ink);
     background: var(--cream);
     padding: 5px 9px;
@@ -363,11 +363,11 @@
     display: block;
     margin-bottom: 2px;
   }
-  .lecture p { margin: 0 0 2px; }
+  .lecture p { margin: 0 0 6px; }
   .lecture p:last-child { margin: 0; }
   .lecture .strophe {
     display: block;
-    margin: 2px 0;
+    margin: 4px 0;
     padding-left: 10px;
     border-left: 1px solid var(--rule);
     font-style: italic;
@@ -707,7 +707,12 @@
   .page.tight .step { margin-bottom: 4px; }
   .page.tight .step + .step { margin-top: 4px; }
   .page.tight .step-title { margin-bottom: 2px; font-size: 16.5px; }
-  .page.tight .lecture { padding: 3px 9px; }
+  .page.tight .lecture {
+    padding: 2px 9px;
+    line-height: 1.4;
+  }
+  .page.tight .lecture p { margin: 0 0 1px; }
+  .page.tight .lecture .strophe { margin: 0; }
 
   @media print {
     @page { size: A4 landscape; margin: 0; }
@@ -824,9 +829,9 @@
     <h3 style="text-align: center; margin-top: 12px; font-size: 12px;">Présentation à l’Église</h3>
     <div class="dialogue" style="text-align: center; border-left: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 7px 6px;">
       <p><strong>Père David</strong> · Quel prénom avez-vous choisi pour l’enfant ?</p>
-      <p><strong>Les parents</strong> · Élisabeth.</p>
+      <p><strong>Les parents</strong> · <em>Élisabeth.</em></p>
       <p style="margin-top: 5px;"><strong>Père David</strong> · Que demandez-vous à l’Église ?</p>
-      <p><strong>Les parents</strong> · Qu’elle trouve la Vérité, la Joie et l’Amour dans la foi chrétienne. Qu’elle bénéficie du soutien de l’Église.</p>
+      <p><strong>Les parents</strong> · <em>Qu’elle trouve la Vérité, la Joie et l’Amour dans la foi chrétienne. Qu’elle bénéficie du soutien de l’Église.</em></p>
     </div>
 
     <div class="step" style="margin-top: 12px;">
@@ -1096,7 +1101,7 @@
           Nous te supplions humblement : par la passion de ton Fils et sa résurrection, arrache-la au pouvoir des ténèbres ; donne-lui la force du Christ, et garde-la tout au long de sa vie. Par Jésus, le Christ, notre Seigneur.
         </div>
         <div class="dialogue" style="margin-top: 6px;">
-          <p><strong>Tous</strong> · Amen.</p>
+          <p><strong>Tous</strong> · <em>Amen.</em></p>
         </div>
         <div class="sens">
           <span class="sens-eb">Sens du rite</span>
@@ -1114,14 +1119,14 @@
           Que la force du Christ te fortifie, lui qui est le Sauveur et qui vit pour les siècles des siècles.
         </div>
         <div class="dialogue" style="margin-top: 4px;">
-          <p><strong>Tous</strong> · Amen.</p>
+          <p><strong>Tous</strong> · <em>Amen.</em></p>
         </div>
         <div class="step-text" style="margin-top: 8px;"><em>Le Père David reprend un geste de Jésus dans l’Évangile (Marc 7, 32-35) : il touche les oreilles et la bouche d’Élise, en disant :</em></div>
         <div class="priere priere-longue">
           Effétah, c’est-à-dire : Ouvre-toi ! Le Seigneur Jésus a fait entendre les sourds et parler les muets ; qu’il te donne d’écouter sa parole, et de proclamer la foi pour la louange et la gloire de Dieu le Père.
         </div>
         <div class="dialogue" style="margin-top: 4px;">
-          <p><strong>Tous</strong> · Amen.</p>
+          <p><strong>Tous</strong> · <em>Amen.</em></p>
         </div>
         <div class="sens">
           <span class="sens-eb">Sens du rite</span>
@@ -1170,7 +1175,7 @@
           Nous t’en prions, Seigneur notre Dieu : Par la grâce de ton Fils, que vienne sur cette eau la puissance de l’Esprit Saint, afin que tout homme qui sera baptisé, enseveli dans la mort avec le Christ, ressuscite avec le Christ pour la vie, car il est vivant pour les siècles des siècles.
         </div>
         <div class="dialogue" style="margin-top: 4px;">
-          <p><strong>Tous</strong> · Amen.</p>
+          <p><strong>Tous</strong> · <em>Amen.</em></p>
         </div>
       </div>
     </div>
@@ -1189,11 +1194,11 @@
         <div class="step-title">Renonciation au mal</div>
         <div class="dialogue">
           <p><strong>Père David</strong> · Pour vivre dans la liberté des enfants de Dieu, rejetez-vous le péché ?</p>
-          <p><strong>Les parents, le parrain et la marraine</strong> · Nous le rejetons.</p>
+          <p><strong>Les parents, le parrain et la marraine</strong> · <em>Nous le rejetons.</em></p>
           <p style="margin-top: 4px;"><strong>Père David</strong> · Pour échapper à l’emprise du péché, rejetez-vous ce qui conduit au mal ?</p>
-          <p><strong>Tous</strong> · Nous le rejetons.</p>
+          <p><strong>Tous</strong> · <em>Nous le rejetons.</em></p>
           <p style="margin-top: 4px;"><strong>Père David</strong> · Pour suivre Jésus Christ, rejetez-vous Satan, qui est l’auteur du péché ?</p>
-          <p><strong>Tous</strong> · Nous le rejetons.</p>
+          <p><strong>Tous</strong> · <em>Nous le rejetons.</em></p>
         </div>
       </div>
     </div>
@@ -1204,14 +1209,14 @@
         <div class="step-title">Profession de foi</div>
         <div class="dialogue">
           <p><strong>Père David</strong> · Croyez-vous en Dieu, le Père tout-puissant, créateur du ciel et de la terre ?</p>
-          <p><strong>Parents et Parrains</strong> · Nous croyons.</p>
+          <p><strong>Parents et Parrains</strong> · <em>Nous croyons.</em></p>
           <p style="margin-top: 4px;"><strong>Père David</strong> · Croyez-vous en Jésus Christ, son Fils unique, notre Seigneur, qui est né de la Vierge Marie, a souffert la passion, a été enseveli, est ressuscité d’entre les morts, et qui est assis à la droite du Père ?</p>
-          <p><strong>Parents et Parrains</strong> · Nous croyons.</p>
+          <p><strong>Parents et Parrains</strong> · <em>Nous croyons.</em></p>
           <p style="margin-top: 4px;"><strong>Père David</strong> · Croyez-vous en l’Esprit Saint, à la sainte Église catholique<sup style="font-size: 8px; color: var(--blue);">¹</sup>, à la communion des saints, à la rémission des péchés, à la résurrection de la chair et à la vie éternelle ?</p>
-          <p><strong>Parents et Parrains</strong> · Nous croyons.</p>
-          <p style="margin-top: 6px;"><strong>Tous</strong> · Telle est notre foi. Telle est la foi de l’Église que nous sommes fiers de proclamer dans le Christ Jésus notre Seigneur.</p>
+          <p><strong>Parents et Parrains</strong> · <em>Nous croyons.</em></p>
+          <p style="margin-top: 6px;"><strong>Tous</strong> · <em>Telle est notre foi. Telle est la foi de l’Église que nous sommes fiers de proclamer dans le Christ Jésus notre Seigneur.</em></p>
           <p style="margin-top: 6px;"><strong>Père David</strong> · Voulez-vous que votre fille Élisabeth soit baptisée dans cette foi de l’Église que nous venons de professer ensemble ?</p>
-          <p><strong>Marie et Colomban</strong> · Oui, nous le voulons.</p>
+          <p><strong>Marie et Colomban</strong> · <em>Oui, nous le voulons.</em></p>
         </div>
         <div class="sens" style="font-size: 10.5px; line-height: 1.4; margin-top: 8px;">
           <span class="sens-eb">¹ Sainte Église catholique</span>
