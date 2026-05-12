@@ -8,13 +8,11 @@
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-<title>Livret · Format imprimable · Baptême d’Élise</title>
+<title>Livret · Format imprimable · Baptême d'Élise</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-
-
 
   :root {
     --ink:        #2e4ea0;
@@ -70,14 +68,15 @@
 
   .spread {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 148.5mm 148.5mm;
     gap: 12px;
-    max-width: 980px;
+    max-width: none;
+    width: fit-content;
     margin: 0 auto 24px;
   }
   .page {
-    width: 100%;
-    aspect-ratio: 148 / 210;
+    width: 148.5mm;
+    height: 210mm;
     background: var(--paper);
     box-shadow: 0 4px 30px rgba(46,78,160,.10), 0 1px 4px rgba(0,0,0,.06);
     position: relative;
@@ -229,15 +228,29 @@
   .step-text em { color: var(--ink); font-style: italic; }
   .step-text strong { font-weight: 500; color: var(--ink); }
 
+  .psaume-refrain {
+    text-align: center;
+    margin: 4px 0;
+    color: var(--blue-deep);
+    font-family: var(--serif);
+    font-size: 15.5px;
+    font-weight: 500;
+  }
+  .psaume-refrain::before {
+    content: '♪ ';
+    font-size: 12px;
+    opacity: .7;
+  }
+
   /* Sens du rite : compact, italique, libellé inline */
   .sens {
     background: var(--sky);
-    padding: 3px 8px;
-    margin: 1px 0 0;
+    padding: 4px 9px;
+    margin: 3px 0 0;
     border-radius: 3px;
     font-family: var(--sans);
-    font-size: 14px;
-    line-height: 1.35;
+    font-size: 12px;
+    line-height: 1.45;
     color: var(--ink-soft);
     font-style: italic;
   }
@@ -258,11 +271,28 @@
     background: var(--cream);
     border-left: 2px solid var(--ink);
     padding: 5px 10px;
-    margin: 1px 0 0;
+    margin: 3px 0 0;
     font-family: var(--sans);
-    font-size: 14px;
-    line-height: 1.55;
+    font-size: 14.5px;
+    line-height: 1.4;
     color: var(--ink-soft);
+  }
+  .dialogue p {
+    margin: 0;
+  }
+  .dialogue p + p {
+    margin-top: 1px;
+  }
+  /* En mode .page.tight, dialogue encore plus compact */
+  .page.tight .dialogue {
+    padding: 4px 10px;
+    line-height: 1.35;
+  }
+  .page.tight .dialogue p {
+    margin: 0;
+  }
+  .page.tight .dialogue p + p {
+    margin-top: 0;
   }
   .dialogue p { margin: 0 0 3px; }
   .dialogue p:last-child { margin: 0; }
@@ -272,16 +302,31 @@
     background: var(--paper);
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
-    padding: 4px 5px;
-    margin: 2px 0 0;
+    padding: 5px 6px;
+    margin: 3px 0 0;
     font-family: var(--serif);
     font-style: italic;
-    font-size: 15px;
+    font-size: 15.5px;
     line-height: 1.55;
     color: var(--ink);
     text-align: center;
     text-wrap: pretty;
   }
+
+  /* Longues prières récitées par le célébrant seul : taille intermédiaire pour faire tenir le texte officiel */
+  .priere.priere-longue {
+    font-size: 13.5px;
+    line-height: 1.5;
+    padding: 5px 8px;
+    text-align: left;
+  }
+  .priere.priere-longue p {
+    margin: 0 0 3px;
+  }
+  .priere.priere-longue p:last-child {
+    margin: 0;
+  }
+
   .priere strong {
     font-style: normal;
     font-weight: 500;
@@ -310,11 +355,11 @@
     display: block;
     margin-bottom: 2px;
   }
-  .lecture p { margin: 0 0 4px; }
+  .lecture p { margin: 0 0 2px; }
   .lecture p:last-child { margin: 0; }
   .lecture .strophe {
     display: block;
-    margin: 4px 0;
+    margin: 2px 0;
     padding-left: 10px;
     border-left: 1px solid var(--rule);
     font-style: italic;
@@ -323,13 +368,13 @@
   .refrains { margin: 4px 0 0; }
   .refrain-item {
     display: grid;
-    grid-template-columns: 16px 1fr;
+    grid-template-columns: 18px 1fr;
     gap: 8px;
-    margin-bottom: 5px;
+    margin-bottom: 9px;
     font-family: var(--sans);
-    font-size: 11px;
-    line-height: 1.5;
-    color: var(--ink-soft);
+    font-size: 14.5px;
+    line-height: 1.45;
+    color: var(--ink);
   }
   .refrain-item:last-child { margin-bottom: 0; }
   .refrain-num {
@@ -341,9 +386,10 @@
   .refrain-langue {
     font-family: var(--serif);
     font-style: italic;
-    font-size: 14px;
-    color: var(--ink);
-    margin-bottom: 1px;
+    font-size: 17px;
+    color: var(--blue-deep);
+    margin-bottom: 2px;
+    line-height: 1.35;
   }
   .refrain-tradition {
     font-size: 10px;
@@ -355,12 +401,13 @@
 
   .litanies {
     column-count: 2;
-    column-gap: 16px;
-    font-family: var(--sans);
-    font-size: 11.5px;
-    line-height: 1.65;
-    color: var(--ink);
-    margin: 4px 0 0;
+    column-gap: 20px;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.4;
+    color: var(--blue-deep);
+    margin: 6px 0 0;
   }
   .litanies p { margin: 0 0 3px; break-inside: avoid; }
 
@@ -441,6 +488,30 @@
     color: var(--ink-soft);
     font-weight: 500;
     margin-right: 4px;
+  }
+
+  .alleluia {
+    text-align: center;
+    margin: 8px 0;
+    padding: 10px 12px;
+    background: linear-gradient(180deg, rgba(255,237,179,.4), rgba(255,237,179,.18));
+    border-top: 1px solid rgba(184,149,90,.35);
+    border-bottom: 1px solid rgba(184,149,90,.35);
+    color: var(--gold-dark, #8b6f3a);
+    font-family: var(--serif);
+    font-size: 17px;
+    font-style: italic;
+    letter-spacing: 0.01em;
+  }
+  .alleluia::before,
+  .alleluia::after {
+    content: '♪';
+    color: #B8895E;
+    font-size: 15px;
+    margin: 0 9px;
+    vertical-align: 1px;
+    font-style: normal;
+    display: inline-block;
   }
 
   /* Note patristique en marge */
@@ -564,6 +635,22 @@
     line-height: 1.4;
     margin-top: 2px;
   }
+  /* Psaume : 16px (très proche de 17px lectures, 1px d'écart imperceptible
+     pour faire tenir 5 strophes + 3 refrains sur la même page qu'Isaïe) */
+  .lecture-psaume {
+    font-size: 16px;
+    line-height: 1.35;
+    padding: 3px 10px;
+  }
+  .lecture-psaume p { margin: 0; }
+  .lecture-psaume .strophe {
+    margin: 0;
+    padding-left: 10px;
+  }
+  .lecture-psaume .psaume-refrain {
+    margin: 3px 0;
+    font-size: 14.5px;
+  }
   .page.dense .lec-eb {
     margin-bottom: 1px;
     font-size: 9.5px;
@@ -588,48 +675,32 @@
     margin-bottom: 1px;
   }
 
-  .psaume-refrain {
-    text-align: center;
-    margin: 4px 0;
-    color: var(--blue-deep);
-    font-family: var(--serif);
-    font-size: 14px;
-    font-weight: 500;
+  /* Responsive : sur petit écran, on bascule en pages empilées et adaptées */
+  @media (max-width: 1200px) {
+    .spread {
+      grid-template-columns: 1fr;
+      max-width: 148.5mm;
+      width: 100%;
+    }
   }
-  .psaume-refrain::before {
-    content: '♪ ';
-    font-size: 12px;
-    opacity: .7;
-  }
-
-  .alleluia {
-    text-align: center;
-    margin: 6px 0 0;
-    padding: 8px;
-    background: linear-gradient(180deg, rgba(255,237,179,.35), rgba(255,237,179,.15));
-    border-top: 1px solid rgba(184,149,90,.3);
-    border-bottom: 1px solid rgba(184,149,90,.3);
-    color: var(--gold-dark, #8b6f3a);
-    font-family: var(--serif);
-    font-size: 16px;
-    font-style: italic;
-    letter-spacing: 0.02em;
+  @media (max-width: 600px) {
+    .page {
+      width: 100%;
+      height: auto;
+      min-height: 210mm;
+      aspect-ratio: 148 / 210;
+    }
   }
 
-  /* Psaume : compact pour permettre les 5 strophes + 3 refrains */
-  .lecture-psaume {
-    font-size: 14.5px;
-    line-height: 1.4;
-    padding: 6px 8px;
-  }
-  .lecture-psaume p { margin: 0 0 2px; }
-  .lecture-psaume .strophe {
-    margin: 2px 0;
-    padding-left: 8px;
-  }
-  .lecture-psaume + .sens, .lecture-psaume .psaume-refrain {
-    /* refrains internes au lecture-psaume restent visibles */
-  }
+    /* Mode compact pour pages denses (P3 Lectures, P10 Renonciation+Profession) */
+  .page.tight .eb { margin-bottom: 0; font-size: 9.5px; }
+  .page.tight h2 { font-size: 21px; margin-top: 0; margin-bottom: 2px; }
+  .page.tight hr.rule { margin: 2px 0 6px; }
+  .page.tight .step { margin-bottom: 4px; }
+  .page.tight .step + .step { margin-top: 4px; }
+  .page.tight .step-title { margin-bottom: 2px; font-size: 16.5px; }
+  .page.tight .lecture { padding: 3px 9px; }
+
   @media print {
     @page { size: A4 landscape; margin: 0; }
     html, body {
@@ -689,40 +760,12 @@
     box-shadow: 0 6px 24px rgba(46,78,160,.40);
     background: var(--ink-soft);
   }
-  .psaume-refrain {
-    text-align: center;
-    margin: 4px 0;
-    color: var(--blue-deep);
-    font-family: var(--serif);
-    font-size: 14px;
-    font-weight: 500;
-  }
-  .psaume-refrain::before {
-    content: '♪ ';
-    font-size: 12px;
-    opacity: .7;
-  }
-
-  .alleluia {
-    text-align: center;
-    margin: 6px 0 0;
-    padding: 8px;
-    background: linear-gradient(180deg, rgba(255,237,179,.35), rgba(255,237,179,.15));
-    border-top: 1px solid rgba(184,149,90,.3);
-    border-bottom: 1px solid rgba(184,149,90,.3);
-    color: var(--gold-dark, #8b6f3a);
-    font-family: var(--serif);
-    font-size: 16px;
-    font-style: italic;
-    letter-spacing: 0.02em;
-  }
-
   @media print {
     .btn-imprimer { display: none !important; }
   }
 
+  /* === Spécifique imprimer/ === */
 
-/* === Toolbar (visible écran uniquement) === */
   .toolbar-print {
     position: fixed;
     top: 16px;
@@ -737,6 +780,7 @@
     font-family: var(--sans);
     font-size: 13px;
   }
+
   .toolbar-print a, .toolbar-print button {
     font-family: inherit;
     font-size: inherit;
@@ -749,15 +793,193 @@
     text-decoration: none;
     transition: all .15s ease;
   }
+
   .toolbar-print button.primary {
     background: var(--ink);
     color: white;
   }
+
   .toolbar-print a:hover, .toolbar-print button:hover {
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(46,78,160,.25);
   }
-  
+
+  .toolbar-print, .instructions {
+      display: none !important;
+    }
+
+  .feuille {
+    width: 297mm;
+    height: 210mm;
+    background: white;
+    margin: 0 auto 50px;
+    box-shadow: 0 4px 24px rgba(0,0,0,.10);
+    display: grid;
+    grid-template-columns: 148.5mm 148.5mm;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feuille::before {
+    content: attr(data-label);
+    position: absolute;
+    top: -28px;
+    left: 0;
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: #666;
+  }
+
+  .feuille::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    border-left: 1px dashed rgba(0,0,0,.18);
+    pointer-events: none;
+  }
+
+  .feuille {
+      box-shadow: none;
+      margin: 0;
+      page-break-after: always;
+      width: 297mm;
+      height: 210mm;
+    }
+
+  .feuille::before, .feuille::after {
+      display: none;
+    }
+
+  .feuille:last-child {
+      page-break-after: auto;
+    }
+
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .priere {
+    font-size: 16.5px !important;
+    line-height: 1.55 !important;
+    padding: 9px 7px !important;
+  }
+
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .dialogue {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+    padding: 8px 11px !important;
+  }
+
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .lecture {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    padding: 6px 10px !important;
+  }
+
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .ch-refrain {
+    font-size: 15.5px !important;
+    line-height: 1.55 !important;
+  }
+
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .ch-couplet {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+  }
+
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .step-text {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+  }
+
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .step-title {
+    font-size: 17px !important;
+  }
+
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .sens {
+    font-size: 11.5px !important;
+    line-height: 1.5 !important;
+  }
+
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .refrain-langue {
+    font-size: 14px !important;
+  }
+
+  .feuille .page-half .page.inner:not(.dense):not(.tight) .litanies p {
+    font-size: 13px !important;
+  }
+
+  .feuille .page-half .page.inner:not(.dense):not(.tight) h2 {
+    font-size: 28px !important;
+  }
+
+  .page-half {
+    width: 148.5mm;
+    height: 210mm;
+    overflow: hidden;
+  }
+
+  .page-half .page {
+    box-shadow: none !important;
+    width: 148.5mm !important;
+    height: 210mm !important;
+    aspect-ratio: unset !important;
+    margin: 0 !important;
+  }
+
+  .page-half .page.inner:not(.dense):not(.tight) .priere {
+    font-size: 16.5px !important;
+    line-height: 1.55 !important;
+    padding: 9px 7px !important;
+  }
+
+  .page-half .page.inner:not(.dense):not(.tight) .dialogue {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+    padding: 8px 11px !important;
+  }
+
+  .page-half .page.inner:not(.dense):not(.tight) .lecture {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    padding: 6px 10px !important;
+  }
+
+  .page-half .page.inner:not(.dense):not(.tight) .ch-refrain {
+    font-size: 15.5px !important;
+    line-height: 1.55 !important;
+  }
+
+  .page-half .page.inner:not(.dense):not(.tight) .ch-couplet {
+    font-size: 14.5px !important;
+    line-height: 1.55 !important;
+  }
+
+  .page-half .page.inner:not(.dense):not(.tight) .step-text {
+    font-size: 13.5px !important;
+    line-height: 1.55 !important;
+  }
+
+  .page-half .page.inner:not(.dense):not(.tight) .step-title {
+    font-size: 17px !important;
+  }
+
+  .page-half .page.inner:not(.dense):not(.tight) .sens {
+    font-size: 11.5px !important;
+    line-height: 1.5 !important;
+  }
+
+  .page-half .page.inner:not(.dense):not(.tight) .refrain-langue {
+    font-size: 14px !important;
+  }
+
+  .page-half .page.inner:not(.dense):not(.tight) .litanies p {
+    font-size: 13px !important;
+  }
+
+  .page-half .page.inner:not(.dense):not(.tight) h2 {
+    font-size: 28px !important;
+  }
+
   .instructions {
     max-width: 297mm;
     margin: 80px auto 32px;
@@ -770,185 +992,67 @@
     line-height: 1.6;
     color: var(--ink);
   }
+
   .instructions strong { color: var(--ink); font-weight: 500; }
+
   .instructions ol { margin: 8px 0 0; padding-left: 22px; }
+
   .instructions li { margin: 4px 0; }
-  
-  body {
-    background: #f0f0f4;
-    margin: 0;
-    padding: 0;
-    font-family: var(--serif);
-  }
-  
-  .feuille {
-    width: 297mm;
-    height: 210mm;
-    background: white;
-    margin: 0 auto 50px;
-    box-shadow: 0 4px 24px rgba(0,0,0,.10);
-    display: grid;
-    grid-template-columns: 148.5mm 148.5mm;
-    position: relative;
-    overflow: hidden;
-  }
-  .feuille::before {
-    content: attr(data-label);
-    position: absolute;
-    top: -28px;
-    left: 0;
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-    color: #666;
-  }
-  .feuille::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    border-left: 1px dashed rgba(0,0,0,.18);
-    pointer-events: none;
-  }
-  
-  .page-half {
-    width: 148.5mm;
-    height: 210mm;
-    overflow: hidden;
-  }
-  .page-half .page {
-    box-shadow: none !important;
-    width: 148.5mm !important;
-    height: 210mm !important;
-    aspect-ratio: unset !important;
-    margin: 0 !important;
-  }
-  
-  /* Bouton btn-imprimer du livret normal masqué */
-  .btn-imprimer { display: none !important; }
-  
-  @page {
-    size: A4 landscape;
-    margin: 0;
-  }
-  .psaume-refrain {
-    text-align: center;
-    margin: 4px 0;
-    color: var(--blue-deep);
-    font-family: var(--serif);
-    font-size: 14px;
-    font-weight: 500;
-  }
-  .psaume-refrain::before {
-    content: '♪ ';
-    font-size: 12px;
-    opacity: .7;
-  }
 
-  .alleluia {
-    text-align: center;
-    margin: 6px 0 0;
-    padding: 8px;
-    background: linear-gradient(180deg, rgba(255,237,179,.35), rgba(255,237,179,.15));
-    border-top: 1px solid rgba(184,149,90,.3);
-    border-bottom: 1px solid rgba(184,149,90,.3);
-    color: var(--gold-dark, #8b6f3a);
-    font-family: var(--serif);
-    font-size: 16px;
-    font-style: italic;
-    letter-spacing: 0.02em;
-  }
-
-  @media print {
-    body {
-      background: white;
-      margin: 0;
-      padding: 0;
-    }
-    .toolbar-print, .instructions {
+  .instructions {
       display: none !important;
     }
-    .feuille {
-      box-shadow: none;
+
+  @page { size: A4 landscape; margin: 0; }
+
+  @media print {
+    @page { size: A4 landscape; margin: 0; }
+    html, body {
+      background: white;
+      padding: 0;
       margin: 0;
-      page-break-after: always;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .toolbar { display: none; }
+    .spread {
+      display: flex;
+      flex-direction: row;
       width: 297mm;
       height: 210mm;
+      max-width: none;
+      margin: 0;
+      gap: 0;
+      page-break-after: always;
+      break-after: page;
+      page-break-inside: avoid;
+      break-inside: avoid;
     }
-    .feuille::before, .feuille::after {
-      display: none;
-    }
-    .feuille:last-child {
+    .spread:last-child { page-break-after: auto; break-after: auto; }
+    .page {
+      width: 148.5mm;
+      height: 210mm;
+      aspect-ratio: auto;
+      box-shadow: none;
       page-break-after: auto;
+      break-after: auto;
     }
   }
-
-/* === BOOST IMPRESSION : maximiser la lisibilité personnes âgées === */
-/* S'applique aux pages NON dense (P4) et NON tight (P3) qui ont du jeu */
-/* Cible la version imprimable uniquement (pas le livret écran) */
-
-  .feuille .page-half .page.inner:not(.dense):not(.tight) .priere {
-    font-size: 16.5px !important;
-    line-height: 1.55 !important;
-    padding: 9px 7px !important;
-  }
-  .feuille .page-half .page.inner:not(.dense):not(.tight) .dialogue {
-    font-size: 14.5px !important;
-    line-height: 1.55 !important;
-    padding: 8px 11px !important;
-  }
-  .feuille .page-half .page.inner:not(.dense):not(.tight) .lecture {
-    font-size: 15px !important;
-    line-height: 1.5 !important;
-    padding: 6px 10px !important;
-  }
-  .feuille .page-half .page.inner:not(.dense):not(.tight) .ch-refrain {
-    font-size: 15.5px !important;
-    line-height: 1.55 !important;
-  }
-  .feuille .page-half .page.inner:not(.dense):not(.tight) .ch-couplet {
-    font-size: 14.5px !important;
-    line-height: 1.55 !important;
-  }
-  .feuille .page-half .page.inner:not(.dense):not(.tight) .step-text {
-    font-size: 13.5px !important;
-    line-height: 1.55 !important;
-  }
-  .feuille .page-half .page.inner:not(.dense):not(.tight) .step-title {
-    font-size: 17px !important;
-  }
-  .feuille .page-half .page.inner:not(.dense):not(.tight) .sens {
-    font-size: 11.5px !important;
-    line-height: 1.5 !important;
-  }
-  .feuille .page-half .page.inner:not(.dense):not(.tight) .refrain-langue {
-    font-size: 14px !important;
-  }
-  .feuille .page-half .page.inner:not(.dense):not(.tight) .litanies p {
-    font-size: 13px !important;
-  }
-  .feuille .page-half .page.inner:not(.dense):not(.tight) h2 {
-    font-size: 28px !important;
-  }
-
-
 </style>
 </head>
 <body>
 
 <div class="toolbar-print">
   <a href="../">← Retour au livret</a>
-  <button class="primary" onclick="window.print()">📄 Lancer l’impression</button>
+  <button class="primary" onclick="window.print()">📄 Lancer l'impression</button>
 </div>
 
 <div class="instructions">
-  <strong>Instructions d’impression — piqûre à cheval</strong>
+  <strong>Instructions d'impression — piqûre à cheval</strong>
   <ol>
     <li>Imprimer ces 8 feuilles en A4 paysage, <strong>recto-verso, retournement sur les bords courts</strong> (short edge / tablet).</li>
-    <li>Empiler les 4 feuilles dans l’ordre (Feuille 1 dessus, Feuille 4 dessous).</li>
-    <li>Plier l’ensemble en deux dans le sens vertical au niveau du pointillé central.</li>
+    <li>Empiler les 4 feuilles dans l'ordre (Feuille 1 dessus, Feuille 4 dessous).</li>
+    <li>Plier l'ensemble en deux dans le sens vertical au niveau du pointillé central.</li>
     <li>Lier les feuilles au pli avec une corde fine ou agrafer au milieu.</li>
   </ol>
 </div>
@@ -1180,7 +1284,7 @@
       <span class="step-num">v.</span>
       <div>
         <div class="step-title">Psaume 22 <span style="font-style: italic; font-weight: 400; color: var(--ink-soft); font-size: 10px;">, lu par Marie Reine</span></div>
-        <div class="lecture">
+        <div class="lecture lecture-psaume">
           <span class="lec-eb">Psaume du roi David</span>
           <p><span class="strophe">Le Seigneur est mon berger : je ne manque de rien.<br>Sur des prés d’herbe fraîche, il me fait reposer.</span></p>
           <p><span class="strophe">Il me mène vers les eaux tranquilles et me fait revivre ;<br>il me conduit par le juste [retiré].</span></p>
@@ -1190,10 +1294,6 @@
           <p class="psaume-refrain"><em>Le Seigneur est mon berger, rien ne saurait me manquer.</em></p>
           <p><span class="strophe">Grâce et bonheur m’accompagnent tous les jours de ma vie ;<br>j’habiterai la maison du Seigneur pour la durée de mes jours.</span></p>
           <p class="psaume-refrain"><em>Le Seigneur est mon berger, rien ne saurait me manquer.</em></p>
-        </div>
-        <div class="sens">
-          <span class="sens-eb">Sens de la lecture</span>
-          « Le Seigneur est mon berger, je ne manque de rien » : Élise apprendra à ne rien craindre car elle est aimée et guidée.
         </div>
       </div>
     </div>
@@ -1353,8 +1453,8 @@
     <h2>Prière universelle</h2>
     <hr class="rule">
 
-    <p style="font-family: var(--serif); font-style: italic; font-size: 10.5px; line-height: 1.5; color: var(--ink); text-align: center; margin: 0 0 8px;">
-      Quatre intentions, quatre langues, une seule prière qui rassemble :<br>Seigneur, prends pitié.
+    <p style="font-family: var(--serif); font-style: italic; font-size: 14px; line-height: 1.5; color: var(--ink); text-align: center; margin: 0 0 12px;">
+      Quatre intentions, quatre langues, une seule prière qui rassemble :<br><span style="color: var(--blue-deep); font-size: 16px;">Seigneur, prends pitié.</span>
     </p>
 
     <div class="refrains">
@@ -1440,7 +1540,7 @@
 </div></div>
   </div>
   <div class="feuille" data-label="Feuille 4 · Recto · pages 10 et 7">
-    <div class="page-half"><div class="page inner">
+    <div class="page-half"><div class="page inner tight">
     <div class="eb">Quatrième partie</div>
     <h2>Renonciation et Profession de foi</h2>
     <hr class="rule">
@@ -1488,11 +1588,11 @@
     <h2>Litanie des saints</h2>
     <hr class="rule">
 
-    <p style="font-family: var(--serif); font-style: italic; font-size: 10.5px; line-height: 1.55; color: var(--ink-soft); text-align: center; margin: 0 0 10px;">
+    <p style="font-family: var(--serif); font-style: italic; font-size: 14px; line-height: 1.5; color: var(--ink); text-align: center; margin: 0 0 12px;">
       L’assemblée invoque les saints qui ont précédé Élise. Ils intercèdent auprès de Dieu pour elle.
     </p>
 
-    <p style="font-family: var(--sans); font-size: 8px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink); text-align: center; margin: 0 0 10px; opacity: .7;">
+    <p style="font-family: var(--sans); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); text-align: center; margin: 0 0 12px; opacity: .8;">
       À chaque invocation, l’assemblée répond : « priez pour nous »
     </p>
 
@@ -1533,7 +1633,7 @@
       <span class="step-num">x.</span>
       <div>
         <div class="step-title">Prière d’exorcisme</div>
-        <div class="priere" style="font-size: 12.5px; padding: 8px 6px;">
+        <div class="priere priere-longue">
           Père tout-puissant, tu as envoyé ton Fils unique dans le monde pour délivrer l’homme, esclave du péché, et lui rendre la liberté propre à tes fils ; tu sais qu’Élisabeth, comme chacun de nous, sera tentée par les mensonges de ce monde et devra résister à Satan.<br><br>
           Nous te supplions humblement : par la passion de ton Fils et sa résurrection, arrache-la au pouvoir des ténèbres ; donne-lui la force du Christ, et garde-la tout au long de sa vie. Par Jésus, le Christ, notre Seigneur.
         </div>
@@ -1552,14 +1652,14 @@
       <div>
         <div class="step-title">Imposition de la main et Effata</div>
         <div class="step-text"><em>Le Père David impose la main sur Élise et dit :</em></div>
-        <div class="priere" style="font-size: 13px; padding: 8px 6px;">
+        <div class="priere priere-longue">
           Que la force du Christ te fortifie, lui qui est le Sauveur et qui vit pour les siècles des siècles.
         </div>
         <div class="dialogue" style="margin-top: 4px;">
           <p><strong>Tous</strong> · Amen.</p>
         </div>
         <div class="step-text" style="margin-top: 8px;"><em>Le Père David reprend un geste de Jésus dans l’Évangile (Marc 7, 32-35) : il touche les oreilles et la bouche d’Élise, en disant :</em></div>
-        <div class="priere" style="font-size: 12.5px; padding: 8px 6px;">
+        <div class="priere priere-longue">
           Effétah, c’est-à-dire : Ouvre-toi ! Le Seigneur Jésus a fait entendre les sourds et parler les muets ; qu’il te donne d’écouter sa parole, et de proclamer la foi pour la louange et la gloire de Dieu le Père.
         </div>
         <div class="dialogue" style="margin-top: 4px;">
@@ -1582,26 +1682,26 @@
       <span class="step-num">xii.</span>
       <div>
         <div class="step-title">Bénédiction de l’eau</div>
-        <div class="priere" style="font-size: 12px; padding: 8px 6px; line-height: 1.55;">
+        <div class="priere priere-longue">
           Dieu, dont la puissance invisible accomplit des merveilles par les sacrements, tu as voulu, au cours des temps, que l’eau, ta créature, révèle ce que serait la grâce du baptême.<br><br>
           Dès les commencements du monde, c’est ton Esprit qui planait sur les eaux, pour qu’elles reçoivent en germe la force de sanctifier.<br><br>
           Par les flots du déluge, tu annonçais le baptême qui fait renaître, puisque l’eau y préfigurait à la fois la fin de tout péché et le début de toute justice.
         </div>
         <p class="psaume-refrain" style="margin: 4px 0;"><em>Béni soit Dieu maintenant et toujours.</em></p>
-        <div class="priere" style="font-size: 12px; padding: 8px 6px; line-height: 1.55;">
+        <div class="priere priere-longue">
           Aux enfants d’Abraham, tu as fait passer la mer Rouge à pied sec pour que le peuple d’Israël, libéré de la servitude, préfigure le peuple des baptisés.
         </div>
         <p class="psaume-refrain" style="margin: 4px 0;"><em>Béni soit Dieu maintenant et toujours.</em></p>
-        <div class="priere" style="font-size: 12px; padding: 8px 6px; line-height: 1.55;">
+        <div class="priere priere-longue">
           Ton Fils bien-aimé, baptisé par Jean dans les eaux du Jourdain, consacré par l’onction de ton Esprit, suspendu au bois de la croix, laissa couler de son côté ouvert du sang et de l’eau ; et quand il fut ressuscité, il dit à ses disciples : « Allez, enseignez toutes les nations, et baptisez-les au nom du Père, et du Fils, et du Saint-Esprit. »
         </div>
         <p class="psaume-refrain" style="margin: 4px 0;"><em>Béni soit Dieu maintenant et toujours.</em></p>
-        <div class="priere" style="font-size: 12px; padding: 8px 6px; line-height: 1.55;">
+        <div class="priere priere-longue">
           Maintenant, Seigneur notre Dieu, regarde avec amour ton Église et fais jaillir en elle la source du baptême.<br><br>
           Que cette eau reçoive de l’Esprit Saint la grâce de ton Fils unique, afin que l’homme, créé à ta ressemblance et lavé par le baptême des souillures qui déforment cette image, puisse renaître de l’eau et de l’Esprit pour la vie nouvelle d’enfant de Dieu.
         </div>
         <div class="step-text" style="margin-top: 6px;"><em>Le Père David touche l’eau de la main droite, et continue :</em></div>
-        <div class="priere" style="font-size: 12px; padding: 8px 6px; line-height: 1.55;">
+        <div class="priere priere-longue">
           Nous t’en prions, Seigneur notre Dieu : Par la grâce de ton Fils, que vienne sur cette eau la puissance de l’Esprit Saint, afin que tout homme qui sera baptisé, enseveli dans la mort avec le Christ, ressuscite avec le Christ pour la vie, car il est vivant pour les siècles des siècles.
         </div>
         <div class="dialogue" style="margin-top: 4px;">
