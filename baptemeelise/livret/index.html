@@ -769,61 +769,38 @@
     background: var(--ink);
     color: var(--cream);
     border: none;
-    padding: 11px 22px;
-    border-radius: 2em;
+    padding: 12px 20px;
+    border-radius: 30px;
     font-family: var(--sans);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
+    letter-spacing: .02em;
     cursor: pointer;
     text-decoration: none;
-    box-shadow: 0 4px 16px rgba(46,78,160,.30);
-    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    box-shadow: 0 4px 16px rgba(46,78,160,.30);
+    transition: all .2s ease;
   }
   .btn-imprimer:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 24px rgba(46,78,160,.40);
     background: var(--ink-soft);
   }
-  .btn-cahier {
-    position: fixed;
-    bottom: 32px;
-    right: 180px;
-    z-index: 100;
-    color: var(--ink-soft);
-    font-family: var(--sans);
-    font-size: 11px;
-    text-decoration: none;
-    padding: 4px 10px;
-    border-bottom: 1px dotted var(--ink-soft);
-    transition: opacity .2s ease, color .2s ease;
-    opacity: 0.75;
-  }
-  .btn-cahier:hover {
-    opacity: 1;
-    color: var(--ink);
-  }
   @media (max-width: 720px) {
-    .btn-cahier { display: none; }
   }
   @media print {
-    .btn-imprimer, .btn-cahier { display: none !important; }
+    .btn-imprimer { display: none !important; }
   }
 
 </style>
 </head>
 <body>
 
-<!-- Bouton d'impression (lance le dialogue système : PDF ou papier au choix) -->
-<button type="button" class="btn-imprimer" onclick="window.print()" aria-label="Imprimer ou enregistrer en PDF le livret">
-  <span aria-hidden="true">📄</span> Imprimer
-</button>
-
-<!-- Lien discret vers la version cahier piqué pour les puristes -->
-<a href="imprimer/" class="btn-cahier" aria-label="Version imposition cahier piqué pour reliure">
-  Version cahier piqué →
+<!-- Bouton d'impression : pointe vers la version cahier piqué (imposition correcte) -->
+<a href="imprimer/" class="btn-imprimer" aria-label="Imprimer le livret en mode cahier piqué">
+  <span aria-hidden="true">📄</span> Imprimer le livret
 </a>
 
 <!-- ════════ SPREAD 1 · COUVERTURE + ENTRÉE ════════ -->
