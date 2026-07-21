@@ -1,10 +1,17 @@
 # monnier.family
 User-agent: *
-# Bloquer l'indexation des pages d'événements (adresse, dates, contacts)
-Disallow: /anniversairemarie2026/
-Disallow: /fetedesvoisins2026/
-
-# Autoriser la racine (page d'accueil générique)
 Allow: /
+
+# Zones réservées (honeypot — ne pas indexer)
+# NB : ces chemins n'existent pas légitimement sur ce site statique.
+# Un scanner obéissant les évite ; un scanner hostile les visite et,
+# une fois le Worker tarpit déployé côté Cloudflare, y perd temps et tokens.
+# Les vraies pages d'événements ne sont PLUS nommées ici (leur non-indexation
+# passe par une Transform Rule X-Robots-Tag, pas par ce fichier public).
+Disallow: /admin/
+Disallow: /backup/
+Disallow: /config/
+Disallow: /.git/
+Disallow: /api/
 
 Sitemap: https://monnier.family/sitemap.xml
